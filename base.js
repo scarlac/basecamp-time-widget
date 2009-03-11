@@ -41,8 +41,8 @@ function dotest() {
 	// * set externally in localsettings.js
 	var username=bc_username;
 	var password=bc_password;
-	
-	var baseURL = "https://konstellationdk.basecamphq.com";
+	var baseURL = bc_base_url;
+
 	var projectsURL = baseURL + "/projects.xml";
 	
 	$.ajaxSetup({
