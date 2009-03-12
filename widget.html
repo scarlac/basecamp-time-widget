@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html>
 	<head>
 		<style type="text/css">
@@ -15,8 +16,18 @@
 	<body onload="setup()">
 		<div id="front">
 			<h1>Front</h1>
-			<select id="projects"></select>
-			<input type="button" value="Pull projects" onclick="loadStuff()" />
+			<p>
+				<select id="projects"><option disabled="disabled" value="">- No projects -</option></select>
+				<input type="button" value="Pull projects" onclick="loadProjects()" />
+			</p>
+			
+			<p>
+				<select id="todos"><option disabled="disabled" value="">- No todos -</option></select>
+				<input type="button" value="Pull todos on project" onclick="loadTodos()" />
+			</p>
+			
+			<div id="loadindicator">Loading...</div>
+			
 			<input type="button" value="i" id="infoButton" />
 		</div>
 		<div id="back" style="display:none">

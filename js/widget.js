@@ -18,6 +18,12 @@ function setup() {
 	
 	allProjects = {};
 	allCompanies = {};
+	
+	$("#loadindicator").hide();
+	$("#loadindicator").ajaxStart(function() { $(this).show(); });
+	$("#loadindicator").ajaxStop(function() { $(this).hide(); });
+	
+	$("#projects").change(changeProject);
 }
 
 function showPrefs() {
@@ -49,8 +55,13 @@ function hidePrefs() {
 		setTimeout('widget.performTransition();', 0);
 }
 
-function loadStuff() {
-	pullProjects(); // * Will also pull project todos, etc.
+function loadProjects() {
+	pullProjects();
+}
+
+function loadTodos() {
+	var prj_id = $("#projects").val();
+	pullProjectTodoLists(prj_id);
 }
 
 function pullProjects() {
@@ -64,14 +75,25 @@ function pullProjects() {
 	$.ajax(opts);
 }
 
-function pullProjectTodos(id) {
-	var todoURL = bc_base_url + "/projects/"+id+".xml";
+function pullProjectTodoLists(project_id) {
+	var todoURL = bc_base_url + "/projects/"+project_id+"/todo_lists.xml";
 	var opts = ajaxOptions;
 	
 	console.log('pulling project todos from ' + todoURL);
 
 	opts.url = todoURL;
-	opts.success = parseProjectTodos;
+	opts.success = parseProjectTodoLists;
+	$.ajax(opts);
+}
+
+function pullTodoItems(list_id) {
+	var listURL = bc_base_url + "/todo_lists/"+list_id+"/todo_items.xml";
+	var opts = ajaxOptions;
+	
+	console.log('pulling project todos from ' + listURL);
+
+	opts.url = listURL;
+	opts.success = parseTodoItems;
 	$.ajax(opts);
 }
 
@@ -109,17 +131,77 @@ function parseProjects(projectsNode) {
 			$("#projects").append('<option value="'+prj.id+'">&nbsp;&nbsp;'+prj.name+'</option>');
 		}
 	}
-	
-	pullProjectTodos();
 }
 
-function parseProjectTodos(rootNode) {
+function parseProjectTodoLists(todoNode) {
 	console.log('parsing project todos');
+	
+	todolists = {};
+	$(todoNode).find("todo-lists > todo-list").each(function(i) {
+		var t = $(this);
+		
+		var id = t.find("> id").text();
+		var name = t.find("> name").text();
+		var complete = (t.find("> complete").text().toLowerCase() == 'true');
+		var prjId = t.find("> project-id").text();
+		var list = new TodoList(id, name, complete);
+		
+		todolists[list.id] = list;
+		
+		// * add the todolist to the specific project
+		var prj = allProjects[prjId];
+		if(prj != null)
+			prj.todolists[list.id] = list;
+	});
+}
+
+function parseTodoItems(itemsNode) {
+	console.log('parsing todo items');
+	
+	/*todolists = {};
+	$(todoNode).find("todo-lists > todo-list").each(function(i) {
+		var t = $(this);
+		
+		var id = t.find("> id").text();
+		var name = t.find("> name").text();
+		var complete = (t.find("> complete").text().toLowerCase() == 'true');
+		var prjId = t.find("> project-id").text();
+		var list = new TodoList(id, name, complete);
+		
+		todolists[list.id] = list;
+		
+		// * add the todolist to the specific project
+		var prj = allProjects[prjId];
+		if(prj != null)
+			prj.todolists[list.id] = list;
+	});*/
+}
+
+function changeProject() {
+	// * setup the drop down
+	var projectId = $("#projects").val();
+	var todolists = allProjects[projectId].todolists;
+	$("#todos").html('<option value="">- Select todo -</option>');
+	for(var i in todolists) {
+		var list = todolists[i];
+		/*var todos = list.getTodos();*/
+		$("#todos").append('<option value="" disabled="disabled">'+list.name+'</option>');
+		/*for(var i in projects) {
+			var prj = projects[i];
+			$("#projects").append('<option value="'+prj.id+'">&nbsp;&nbsp;'+prj.name+'</option>');
+		}*/
+	}
 }
 
 Project = function(id, name) {
 	this.id = id;
 	this.name = name;
+	this.todolists = {};
+}
+
+Project.prototype.getTodos = function() {
+	var todos = {};
+	return todos;
 }
 
 Company = function(id, name) {
@@ -140,7 +222,14 @@ Company.prototype.getProjects = function() {
 	return projects;
 }
 
+TodoList = function(id, name, complete) {
+	this.id = id;
+	this.name = name;
+	this.complete = complete;
+}
+
 /*
+PROJECTS:
 <projects type="array">
   <project>
     <announcement nil="true"></announcement>
@@ -157,4 +246,21 @@ Company.prototype.getProjects = function() {
       <name>Simcorp</name>
     </company>
   </project>
+  
+TODOS:
+<todo-lists type="array">
+  <todo-list>
+    <completed-count type="integer">0</completed-count>
+    <description></description>
+    <id type="integer">123456</id>
+    <milestone-id type="integer" nil="true"></milestone-id>
+    <name>Do stuff</name>
+    <position type="integer">1</position>
+    <private type="boolean">true</private>
+    <project-id type="integer">123456</project-id>
+    <tracked type="boolean">false</tracked>
+    <uncompleted-count type="integer">1</uncompleted-count>
+    <complete>false</complete>
+  </todo-list>
+  
 */
