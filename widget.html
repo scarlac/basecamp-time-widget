@@ -7,7 +7,7 @@
 		<script type='text/javascript' src='/System/Library/WidgetResources/AppleClasses/AppleInfoButton.js' charset='utf-8'></script>
 		<script type='text/javascript' src='/System/Library/WidgetResources/AppleClasses/AppleAnimator.js' charset='utf-8'></script>
 		<script type='text/javascript' src='/System/Library/WidgetResources/AppleClasses/AppleButton.js' charset='utf-8'></script>
-		<script type='text/javascript' src='localsettings.js' charset='utf-8'></script>
+		<script type='text/javascript' src='localsettings.js' charset='utf-8'></script> <!-- optional. includes local settings -->
 		<script type='text/javascript' src='js/jquery.js' charset='utf-8'></script>
 		<script type='text/javascript' src='js/widget.js' charset='utf-8'></script>
 	</head>
@@ -15,7 +15,8 @@
 	<body onload="setup()">
 		<div id="front">
 			<h1>Front</h1>
-			<input type="button" value="Test" onclick="dotest()" />
+			<select id="projects"></select>
+			<input type="button" value="Pull projects" onclick="loadStuff()" />
 			<input type="button" value="i" id="infoButton" />
 		</div>
 		<div id="back" style="display:none">
