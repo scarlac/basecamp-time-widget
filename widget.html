@@ -10,6 +10,7 @@
 		<script type='text/javascript' src='/System/Library/WidgetResources/AppleClasses/AppleButton.js' charset='utf-8'></script>
 		<script type='text/javascript' src='localsettings.js' charset='utf-8'></script> <!-- optional. includes local settings -->
 		<script type='text/javascript' src='js/jquery.js' charset='utf-8'></script>
+		<script type='text/javascript' src='js/utils.js' charset='utf-8'></script>
 		<script type='text/javascript' src='js/widget.js' charset='utf-8'></script>
 	</head>
 	
@@ -24,6 +25,11 @@
 			<p>
 				<select id="todos"><option disabled="disabled" value="">- No todos -</option></select>
 				<input type="button" value="Pull todos on project" onclick="loadTodos()" />
+			</p>
+			
+			<p>
+				<input type="text" value="0,0" id="reporthours" /> hours &nbsp;
+				<input type="button" id="reportbtn" value="Report" />
 			</p>
 			
 			<div id="loadindicator">Loading...</div>

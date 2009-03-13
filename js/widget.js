@@ -5,7 +5,9 @@ var allCompanies = null;
 var ajaxOptions = {
 	type: 'GET',
 	username: '',
-	password: ''
+	password: '',
+	contentType: 'application/xml',
+	processData: false
 };
 
 function setup() {
@@ -23,7 +25,8 @@ function setup() {
 	$("#loadindicator").ajaxStart(function() { $(this).show(); });
 	$("#loadindicator").ajaxStop(function() { $(this).hide(); });
 	
-	$("#projects").change(changeProject);
+	$("#projects").change(updateProjectTodos);
+	$("#reportbtn").click(reportTime);
 }
 
 function showPrefs() {
@@ -68,10 +71,10 @@ function pullProjects() {
 	var projectsURL = bc_base_url + "/projects.xml";
 	var opts = ajaxOptions;
 	
-	console.log('pulling projects data from ' + projectsURL);
+	console.log('pulling projects data from login');
 
 	opts.url = projectsURL;
-	opts.success = parseProjects;
+	opts.success = function(root) { parseProjects(root); };
 	$.ajax(opts);
 }
 
@@ -79,21 +82,21 @@ function pullProjectTodoLists(project_id) {
 	var todoURL = bc_base_url + "/projects/"+project_id+"/todo_lists.xml";
 	var opts = ajaxOptions;
 	
-	console.log('pulling project todos from ' + todoURL);
-
+	console.log('pulling project todos from project ' + project_id);
+	
 	opts.url = todoURL;
-	opts.success = parseProjectTodoLists;
+	opts.success = function(root) { parseProjectTodoLists(root, project_id); };
 	$.ajax(opts);
 }
 
-function pullTodoItems(list_id) {
+function pullTodoItems(project_id, list_id) {
 	var listURL = bc_base_url + "/todo_lists/"+list_id+"/todo_items.xml";
 	var opts = ajaxOptions;
 	
-	console.log('pulling project todos from ' + listURL);
+	console.log('pulling project todos from project ' + project_id + ', list ' + list_id);
 
 	opts.url = listURL;
-	opts.success = parseTodoItems;
+	opts.success = function(root) { parseTodoItems(root, project_id, list_id); };
 	$.ajax(opts);
 }
 
@@ -144,7 +147,7 @@ function parseProjectTodoLists(todoNode) {
 		var name = t.find("> name").text();
 		var complete = (t.find("> complete").text().toLowerCase() == 'true');
 		var prjId = t.find("> project-id").text();
-		var list = new TodoList(id, name, complete);
+		var list = new TodoList(id, name, complete, prjId);
 		
 		todolists[list.id] = list;
 		
@@ -153,44 +156,83 @@ function parseProjectTodoLists(todoNode) {
 		if(prj != null)
 			prj.todolists[list.id] = list;
 	});
+	
+	console.log('pulling todo items');
+	for(var i in todolists) {
+		var list = todolists[i];
+		// * only pull lists with content
+		if(list.complete == false)
+			pullTodoItems(list.projectId, list.id);
+	}
 }
 
-function parseTodoItems(itemsNode) {
+function parseTodoItems(itemsNode, project_id, list_id) {
 	console.log('parsing todo items');
 	
-	/*todolists = {};
-	$(todoNode).find("todo-lists > todo-list").each(function(i) {
+	todos = {};
+	$(itemsNode).find("todo-items > todo-item").each(function(i) {
 		var t = $(this);
 		
 		var id = t.find("> id").text();
-		var name = t.find("> name").text();
-		var complete = (t.find("> complete").text().toLowerCase() == 'true');
-		var prjId = t.find("> project-id").text();
-		var list = new TodoList(id, name, complete);
+		var content = t.find("> content").text();
+		var completed = (t.find("> completed").text().toLowerCase() == 'true');
+		var item = new TodoItem(id, content, completed);
 		
-		todolists[list.id] = list;
-		
-		// * add the todolist to the specific project
-		var prj = allProjects[prjId];
+		var prj = allProjects[project_id];
 		if(prj != null)
-			prj.todolists[list.id] = list;
-	});*/
+			prj.todolists[list_id].items[id] = item;
+	});
+	updateProjectTodos();
 }
 
-function changeProject() {
+function updateProjectTodos() {
+	console.log('updating todo lists drop down');
+	
 	// * setup the drop down
 	var projectId = $("#projects").val();
-	var todolists = allProjects[projectId].todolists;
-	$("#todos").html('<option value="">- Select todo -</option>');
-	for(var i in todolists) {
-		var list = todolists[i];
-		/*var todos = list.getTodos();*/
-		$("#todos").append('<option value="" disabled="disabled">'+list.name+'</option>');
-		/*for(var i in projects) {
-			var prj = projects[i];
-			$("#projects").append('<option value="'+prj.id+'">&nbsp;&nbsp;'+prj.name+'</option>');
-		}*/
+	var prj = allProjects[projectId];
+	
+	if(prj != null) {
+		var todolists = prj.todolists;
+		$("#todos").html('<option value="">- Select todo -</option>');
+		for(var i in todolists) {
+			var list = todolists[i];
+			var displayName = strlimit(list.name, 30) + (list.complete ? ' (complete)' : '');
+			$("#todos").append('<option value="" disabled="disabled">'+displayName+'</option>');
+			
+			var items = list.items;
+			for(var i in items) {
+				var item = items[i];
+				var displayName = strlimit(item.content, 30) + (item.completed ? ' (complete)' : '');
+				$("#todos").append('<option value="'+item.id+'">&nbsp;&nbsp;'+displayName+'</option>');
+			}
+		}
 	}
+}
+
+function reportTime() {
+	var todoItemId = $("#todos").val();
+	var hours = $("#reporthours").val();
+	
+	var timeURL = bc_base_url + "/todo_items/" + todoItemId + "/time_entries.xml";
+	var opts = ajaxOptions;
+	
+	console.log('reporting time on item ' + todoItemId);
+	
+	var d = new Date();
+	var date = d.getFullYear() + "-" + zerofill(d.getMonth(), 2) + "-" + zerofill(d.getDate(), 2);
+	var data = '<time-entry>';
+	data += '<person-id>3310494</person-id>';
+	data += '<date>' + date + '</date>';
+	data += '<hours>' + hours + '</hours>';
+	data += '<description>Lorem ipsum, widget time registration</description>';
+	data += '</time-entry>';
+	opts.data = data;
+	
+	opts.type = 'POST';
+	opts.url = timeURL;
+	opts.success = function(root) { /* Returns HTTP status code 201 (Created) on success, with the Location header set to the URL of the new time entry. The integer ID of the entry may be extracted from that URL*/ };
+	$.ajax(opts);
 }
 
 Project = function(id, name) {
@@ -222,10 +264,18 @@ Company.prototype.getProjects = function() {
 	return projects;
 }
 
-TodoList = function(id, name, complete) {
+TodoList = function(id, name, complete, projectId) {
 	this.id = id;
 	this.name = name;
 	this.complete = complete;
+	this.projectId = projectId;
+	this.items = {};
+}
+
+TodoItem = function(id, content, completed) {
+	this.id = id;
+	this.content = content;
+	this.completed = completed;
 }
 
 /*
