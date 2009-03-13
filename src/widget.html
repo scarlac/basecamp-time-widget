@@ -1,22 +1,24 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html>
 	<head>
+		<title>Widget</title>
 		<style type="text/css">
+			@import "css/reset.css";
 			@import "css/widget.css";
 		</style>
 		<script type='text/javascript' src='/System/Library/WidgetResources/AppleClasses/AppleInfoButton.js' charset='utf-8'></script>
 		<script type='text/javascript' src='/System/Library/WidgetResources/AppleClasses/AppleAnimator.js' charset='utf-8'></script>
 		<script type='text/javascript' src='/System/Library/WidgetResources/AppleClasses/AppleButton.js' charset='utf-8'></script>
-		<script type='text/javascript' src='localsettings.js' charset='utf-8'></script> <!-- optional. includes local settings -->
 		<script type='text/javascript' src='js/jquery.js' charset='utf-8'></script>
 		<script type='text/javascript' src='js/utils.js' charset='utf-8'></script>
 		<script type='text/javascript' src='js/widget.js' charset='utf-8'></script>
 	</head>
 	
 	<body onload="setup()">
-		<div id="front">
-			<h1>Front</h1>
+		<div id="front" class="widgetside">
+			<b>Front</b><br/>
+			
 			<p>
 				<select id="projects"><option disabled="disabled" value="">- No projects -</option></select>
 				<input type="button" value="Pull projects" onclick="loadProjects()" />
@@ -28,20 +30,46 @@
 			</p>
 			
 			<p>
-				<b>Report</b><br/>
-				Description: <input type="text" value="Description" id="reportdescription" /><br/>
-				Hours: <input type="text" value="0,0" id="reporthours" /><br/>
+				<input type="text" value="Description" id="reportdescription" />
+				<input type="text" value="0,0" id="reporthours" /> hours<br/>
 				Date: <select id="reportdate_m"><option/></select><select id="reportdate_d"><option/></select><select id="reportdate_y"><option/></select><br/>
 				<input type="button" id="reportbtn" value="Report" />
 			</p>
 			
-			<div id="loadindicator">Loading...</div>
+			<!--
+			<b>Todos</b><br/>
+			<ul class="todolist">
+				<li>Todo item 1</li>
+				<li>Todo item 1</li>
+				<li>Todo item 1</li>
+				<li>Todo item 1</li>
+			</ul>
+			-->
 			
-			<input type="button" value="i" id="infoButton" />
+			<div id="loadindicator"><img src="images/ajax-loader.gif" alt="Loading..."/></div>
+			
+			<div id="info">&nbsp;</div>
 		</div>
-		<div id="back" style="display:none">
-			<h1>Back</h1>
-			<input type="button" value="back" id="doneButton" />
+		<div id="back" class="widgetside" style="display:none">
+			<b>Back</b><br/>
+			
+			<form action="#" method="get" id="login_form">
+				<p>
+					<label>Username</label>
+					<input type="text" value="" id="bc_username" />
+				</p>
+				<p>
+					<label>Password</label>
+					<input type="password" value="" id="bc_password" />
+				</p>
+				<p>
+					<label>Basecamp URL</label>
+					<input type="text" value="https://konstellationdk.basecamphq.com" id="bc_base_url" />
+				</p>
+				<input type="submit" value="Login" />
+			</form>
+			
+			<div id="done">&nbsp;</div>
 		</div>
 	</body>
 </html>

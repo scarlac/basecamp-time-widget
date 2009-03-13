@@ -2,12 +2,14 @@ var gDoneButton = null;
 var gInfoButton = null;
 var allProjects = null;
 var allCompanies = null;
+var bc_username = null;
+var bc_password = null;
+var bc_base_url = null;
 var ajaxOptions = {
 	type: 'GET',
 	username: '',
 	password: '',
-	contentType: 'application/xml',
-	processData: false
+	contentType: 'application/xml'
 };
 monthNames = [
 	{ short: 'Jan', long: 'January'},
@@ -25,19 +27,31 @@ monthNames = [
 ];
 
 function setup() {
-	// * set externally in localsettings.js
-	ajaxOptions.username = bc_username;
-	ajaxOptions.password = bc_password;
+	enableBrowserSupport();
+	
+	gDoneButton = new AppleGlassButton(document.getElementById("done"), "Back", hidePrefs);
+	gInfoButton = new AppleInfoButton(document.getElementById("info"), document.getElementById("front"), "white", "white", showPrefs);
 	
 	allProjects = {};
 	allCompanies = {};
 	
-	// * ui hooks {{{
-	$("#infoButton").text("i").click(showPrefs);
-	$("#doneButton").text("Tilbage").click(hidePrefs);
+	// * load settings {{{
+	bc_username = widget.preferenceForKey("username");
+	bc_password = widget.preferenceForKey("password");
+	bc_base_url = widget.preferenceForKey("base_url");
 	
+	$("#bc_username").val(bc_username);
+	$("#bc_password").val(bc_password);
+	$("#bc_base_url").val(bc_base_url);
+	
+	ajaxOptions.username = bc_username;
+	ajaxOptions.password = bc_password;
+	// }}}
+	
+	// * ui hooks {{{
 	$("#projects").change(updateProjectTodos);
 	$("#reportbtn").click(reportTime);
+	$("#login_form").submit(submitLogin);
 	// }}}
 	
 	// * set-up load indicator {{{
@@ -70,30 +84,25 @@ function setup() {
 function showPrefs() {
 	var front = document.getElementById("front");
 	var back = document.getElementById("back");
-	if (window.widget)
-		widget.prepareForTransition("ToBack");
+	
+	widget.prepareForTransition("ToBack");
 	
 	front.style.display="none";
 	back.style.display="block";
 	
-	if (window.widget)
-		setTimeout('widget.performTransition();', 0);
-	
-	$("#login_username").get(0).focus();
+	setTimeout('widget.performTransition();', 0);
 }
 
 function hidePrefs() {
 	var front = document.getElementById("front");
 	var back = document.getElementById("back");
 	
-	if (window.widget)
-		widget.prepareForTransition("ToFront");
+	widget.prepareForTransition("ToFront");
 	
 	back.style.display="none";
 	front.style.display="block";
 	
-	if(window.widget)
-		setTimeout('widget.performTransition();', 0);
+	setTimeout('widget.performTransition();', 0);
 }
 
 // * Temporary debugging functions {{{
@@ -276,12 +285,30 @@ function reportTime() {
 	data += '<description>Lorem ipsum, widget time registration</description>';
 	data += '</time-entry>';
 	opts.data = data;
+	opts.processData = false;
 	
 	opts.type = 'POST';
 	opts.url = timeURL;
 	opts.success = function(root) { /* Returns HTTP status code 201 (Created) on success, with the Location header set to the URL of the new time entry. The integer ID of the entry may be extracted from that URL*/ };
-	console.log(opts);
-	//$.ajax(opts);
+	$.ajax(opts);
+}
+
+function submitLogin() {
+	var username = $("#bc_username").val();
+	var password = $("#bc_password").val();
+	var base_url = $("#bc_base_url").val();
+	
+	if(username && password && base_url) {
+		widget.setPreferenceForKey(username, "username");
+		widget.setPreferenceForKey(password, "password");
+		widget.setPreferenceForKey(base_url, "base_url");
+		bc_username = username;
+		bc_password = password;
+		bc_base_url = base_url;
+		pullProjects();
+	}
+	
+	return false;
 }
 
 // * Classes, Project {{{

@@ -1,4 +1,15 @@
-#front { background: #fff; width: 350px; height: 200px; }
-#back  { background: #ddd; width: 350px; height: 200px; }
+body { background: transparent; font: 13px verdana; color: #fff; width: 400px; height: 350px; }
+
+#front { }
+#back  { }
+
+.widgetside { background: transparent url('../images/bg.png') no-repeat 0px 0px; position: relative; padding: 10px; width: 100%; height: 100%; }
+
+#info { position: absolute; right: 35px; bottom: 25px; cursor: default; }
+#done { position: absolute; right: 25px; bottom: 25px; cursor: default; }
+#loadindicator { position: absolute; right: 25px; top: 10px; cursor: default; }
 
 #reporthours { width: 40px; }
+
+#todolist { height: 70px; overflow: auto; width: 200px; }
+
