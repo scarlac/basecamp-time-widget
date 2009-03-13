@@ -9,11 +9,22 @@ var ajaxOptions = {
 	contentType: 'application/xml',
 	processData: false
 };
+monthNames = [
+	{ short: 'Jan', long: 'January'},
+	{ short: 'Feb', long: 'Febuary'},
+	{ short: 'Mar', long: 'March'},
+	{ short: 'Apr', long: 'April'},
+	{ short: 'May', long: 'May'},
+	{ short: 'Jun', long: 'June'},
+	{ short: 'Jul', long: 'July'},
+	{ short: 'Aug', long: 'August'},
+	{ short: 'Sep', long: 'September'},
+	{ short: 'Oct', long: 'October'},
+	{ short: 'Nov', long: 'November'},
+	{ short: 'Dec', long: 'December'}
+];
 
 function setup() {
-	$("#infoButton").text("i").click(showPrefs);
-	$("#doneButton").text("Tilbage").click(hidePrefs);
-	
 	// * set externally in localsettings.js
 	ajaxOptions.username = bc_username;
 	ajaxOptions.password = bc_password;
@@ -21,12 +32,39 @@ function setup() {
 	allProjects = {};
 	allCompanies = {};
 	
-	$("#loadindicator").hide();
-	$("#loadindicator").ajaxStart(function() { $(this).show(); });
-	$("#loadindicator").ajaxStop(function() { $(this).hide(); });
+	// * ui hooks {{{
+	$("#infoButton").text("i").click(showPrefs);
+	$("#doneButton").text("Tilbage").click(hidePrefs);
 	
 	$("#projects").change(updateProjectTodos);
 	$("#reportbtn").click(reportTime);
+	// }}}
+	
+	// * set-up load indicator {{{
+	$("#loadindicator").hide();
+	$("#loadindicator").ajaxStart(function() { $(this).show(); });
+	$("#loadindicator").ajaxStop(function() { $(this).hide(); });
+	// }}}
+	
+	// * generate data for date-drop downs {{{
+	// * months
+	$("#reportdate_m").html("");
+	for(var m = 0; m < 12; m++)
+		$("#reportdate_m").append('<option value="' + m + '">' + monthNames[m].short + '</option>');
+	
+	// * days
+	$("#reportdate_d").html("");
+	for(var d = 1; d <= 31; d++)
+		$("#reportdate_d").append('<option value="' + d + '">' + d + '</option>');
+	
+	// * years
+	$("#reportdate_y").html("");
+	var today = new Date();
+	var pastYears = 1; // * how many years back in the drop down
+	var futureYears = 1; // * how many years forth in the drop down
+	for(var y = today.getFullYear() - pastYears; y <= today.getFullYear() + futureYears; y++)
+		$("#reportdate_y").append('<option value="' + y + '">' + y + '</option>');
+	// }}}
 }
 
 function showPrefs() {
@@ -58,6 +96,7 @@ function hidePrefs() {
 		setTimeout('widget.performTransition();', 0);
 }
 
+// * Temporary debugging functions {{{
 function loadProjects() {
 	pullProjects();
 }
@@ -66,6 +105,9 @@ function loadTodos() {
 	var prj_id = $("#projects").val();
 	pullProjectTodoLists(prj_id);
 }
+// }}}
+
+// * Data-pulling/ajax functions {{{
 
 function pullProjects() {
 	var projectsURL = bc_base_url + "/projects.xml";
@@ -99,6 +141,10 @@ function pullTodoItems(project_id, list_id) {
 	opts.success = function(root) { parseTodoItems(root, project_id, list_id); };
 	$.ajax(opts);
 }
+
+// }}}
+
+// * Data parsing functions {{{
 
 function parseProjects(projectsNode) {
 	console.log('parsing projects data');
@@ -185,6 +231,8 @@ function parseTodoItems(itemsNode, project_id, list_id) {
 	updateProjectTodos();
 }
 
+// }}}
+
 function updateProjectTodos() {
 	console.log('updating todo lists drop down');
 	
@@ -220,7 +268,7 @@ function reportTime() {
 	console.log('reporting time on item ' + todoItemId);
 	
 	var d = new Date();
-	var date = d.getFullYear() + "-" + zerofill(d.getMonth()+1, 2) + "-" + zerofill(d.getDate(), 2);
+	var date = $("#reportdate_y").val() + "-" + zerofill(parseInt($("#reportdate_m").val())+1, 2) + "-" + zerofill($("#reportdate_d").val(), 2);
 	var data = '<time-entry>';
 	data += '<person-id>3310494</person-id>';
 	data += '<date>' + date + '</date>';
@@ -232,9 +280,11 @@ function reportTime() {
 	opts.type = 'POST';
 	opts.url = timeURL;
 	opts.success = function(root) { /* Returns HTTP status code 201 (Created) on success, with the Location header set to the URL of the new time entry. The integer ID of the entry may be extracted from that URL*/ };
-	$.ajax(opts);
+	console.log(opts);
+	//$.ajax(opts);
 }
 
+// * Classes, Project {{{
 Project = function(id, name) {
 	this.id = id;
 	this.name = name;
@@ -245,7 +295,9 @@ Project.prototype.getTodos = function() {
 	var todos = {};
 	return todos;
 }
+// }}}
 
+// * Classes, Company {{{
 Company = function(id, name) {
 	this.id = id;
 	this.name = name;
@@ -263,7 +315,9 @@ Company.prototype.getProjects = function() {
 	
 	return projects;
 }
+// }}}
 
+// * Classes, TodoItem and TodoList {{{
 TodoList = function(id, name, complete, projectId) {
 	this.id = id;
 	this.name = name;
@@ -277,6 +331,7 @@ TodoItem = function(id, content, completed) {
 	this.content = content;
 	this.completed = completed;
 }
+// }}}
 
 /*
 PROJECTS:
