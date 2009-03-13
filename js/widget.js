@@ -220,7 +220,7 @@ function reportTime() {
 	console.log('reporting time on item ' + todoItemId);
 	
 	var d = new Date();
-	var date = d.getFullYear() + "-" + zerofill(d.getMonth(), 2) + "-" + zerofill(d.getDate(), 2);
+	var date = d.getFullYear() + "-" + zerofill(d.getMonth()+1, 2) + "-" + zerofill(d.getDate(), 2);
 	var data = '<time-entry>';
 	data += '<person-id>3310494</person-id>';
 	data += '<date>' + date + '</date>';
