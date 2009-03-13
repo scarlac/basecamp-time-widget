@@ -1,4 +1,4 @@
-#front { background: #fff; }
-#back  { background: #ddd; }
+#front { background: #fff; width: 350px; height: 200px; }
+#back  { background: #ddd; width: 350px; height: 200px; }
 
 #reporthours { width: 40px; }
