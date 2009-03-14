@@ -5,6 +5,7 @@ var allCompanies = null;
 var bc_username = null;
 var bc_password = null;
 var bc_base_url = null;
+var globalTimer = null;
 var ajaxOptions = {
 	type: 'GET',
 	username: '',
@@ -34,6 +35,7 @@ function setup() {
 	
 	allProjects = {};
 	allCompanies = {};
+	globalTimer = new Timer();
 	
 	// * load settings {{{
 	bc_username = widget.preferenceForKey("username");
@@ -50,8 +52,12 @@ function setup() {
 	
 	// * ui hooks {{{
 	$("#projects").change(updateProjectTodos);
-	$("#reportbtn").click(reportTime);
 	$("#login_form").submit(submitLogin);
+	$("#starttime").click(startTimer);
+	$("#stoptime").click(stopTimer).attr("disabled", true);
+	$("#reportbtn").click(reportTime);
+	$("#reporthours").change(function(e) { changeTime() });
+	$("#reporthours").keydown(keyDownTime);
 	// }}}
 	
 	// * set-up load indicator {{{
@@ -61,19 +67,19 @@ function setup() {
 	// }}}
 	
 	// * generate data for date-drop downs {{{
+	var today = new Date();
 	// * months
 	$("#reportdate_m").html("");
 	for(var m = 0; m < 12; m++)
-		$("#reportdate_m").append('<option value="' + m + '">' + monthNames[m].short + '</option>');
+		$("#reportdate_m").append('<option '+(m == today.getMonth() ? 'selected="selected"' : '')+' value="' + m + '">' + monthNames[m].short + '</option>');
 	
 	// * days
 	$("#reportdate_d").html("");
 	for(var d = 1; d <= 31; d++)
-		$("#reportdate_d").append('<option value="' + d + '">' + d + '</option>');
+		$("#reportdate_d").append('<option '+(d == today.getDate() ? 'selected="selected"' : '')+' value="' + d + '">' + d + '</option>');
 	
 	// * years
 	$("#reportdate_y").html("");
-	var today = new Date();
 	var pastYears = 1; // * how many years back in the drop down
 	var futureYears = 1; // * how many years forth in the drop down
 	for(var y = today.getFullYear() - pastYears; y <= today.getFullYear() + futureYears; y++)
@@ -313,6 +319,57 @@ function submitLogin() {
 	}
 	
 	return false;
+}
+
+function startTimer() {
+	globalTimer.setListener(updateTimer);
+	globalTimer.start();
+	$("#starttime").attr("disabled", true);
+	$("#stoptime").attr("disabled", false);
+}
+
+function stopTimer() {
+	globalTimer.stop();
+	$("#starttime").attr("disabled", false);
+	$("#stoptime").attr("disabled", true);
+}
+
+function updateTimer() {
+	$("#time").text(globalTimer.toString());
+}
+
+function changeTime(amount) {
+	stopTimer();
+	var value = parseFloat($("#reporthours").val().replace(",", "."));
+	if(isNaN(value))
+		value = 0;
+	if(amount)
+		value += amount * 0.25;
+	
+	// * sanitize value (no negative registrations) and convert to h/m
+	value = Math.max(value, 0);
+	var hours = parseInt(value);
+	var partHours = parseFloat(value) - hours;
+	var mins = partHours * 60;
+	
+	globalTimer.setElapsed(hours, mins, 0);
+	$("#reporthours").val(hours + (mins/60));
+	updateTimer();
+}
+
+function keyDownTime(e) {
+	var VK_UP = 38, VK_DOWN = 40;
+	switch(e.keyCode) {
+		case VK_UP:
+			// * increment time
+			changeTime(1);
+			return false;
+			
+		case VK_DOWN:
+			// * decrement time
+			changeTime(-1);
+			return false;
+	}
 }
 
 // * Classes, Project {{{
