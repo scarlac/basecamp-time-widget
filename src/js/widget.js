@@ -126,6 +126,7 @@ function pullProjects() {
 
 	opts.url = projectsURL;
 	opts.success = function(root) { parseProjects(root); };
+	console.log(opts);
 	$.ajax(opts);
 }
 
@@ -298,13 +299,16 @@ function submitLogin() {
 	var password = $("#bc_password").val();
 	var base_url = $("#bc_base_url").val();
 	
-	if(username && password && base_url) {
+	// * todo: make some better validation, e.g. url-validation
+	if(username != '' && password != '' && base_url != '') {
 		widget.setPreferenceForKey(username, "username");
 		widget.setPreferenceForKey(password, "password");
 		widget.setPreferenceForKey(base_url, "base_url");
 		bc_username = username;
 		bc_password = password;
 		bc_base_url = base_url;
+		ajaxOptions.username = bc_username;
+		ajaxOptions.password = bc_password;
 		pullProjects();
 	}
 	
