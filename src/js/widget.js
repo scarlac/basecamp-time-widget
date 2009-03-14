@@ -126,19 +126,18 @@ function loadTodos() {
 
 function pullProjects() {
 	var projectsURL = bc_base_url + "/projects.xml";
-	var opts = ajaxOptions;
+	var opts = cloneObject(ajaxOptions);
 	
 	console.log('pulling projects data from login');
 
 	opts.url = projectsURL;
 	opts.success = function(root) { parseProjects(root); };
-	console.log(opts);
 	$.ajax(opts);
 }
 
 function pullProjectTodoLists(project_id) {
 	var todoURL = bc_base_url + "/projects/"+project_id+"/todo_lists.xml";
-	var opts = ajaxOptions;
+	var opts = cloneObject(ajaxOptions);
 	
 	console.log('pulling project todos from project ' + project_id);
 	
@@ -149,7 +148,7 @@ function pullProjectTodoLists(project_id) {
 
 function pullTodoItems(project_id, list_id) {
 	var listURL = bc_base_url + "/todo_lists/"+list_id+"/todo_items.xml";
-	var opts = ajaxOptions;
+	var opts = cloneObject(ajaxOptions);
 	
 	console.log('pulling project todos from project ' + project_id + ', list ' + list_id);
 
@@ -223,8 +222,9 @@ function parseProjectTodoLists(todoNode) {
 	for(var i in todolists) {
 		var list = todolists[i];
 		// * only pull lists with content
-		if(list.complete == false)
+		if(list.complete == false) {
 			pullTodoItems(list.projectId, list.id);
+		}
 	}
 }
 
@@ -241,8 +241,10 @@ function parseTodoItems(itemsNode, project_id, list_id) {
 		var item = new TodoItem(id, content, completed);
 		
 		var prj = allProjects[project_id];
-		if(prj != null)
+		if(prj != null) {
+			console.log('adding item '+id+' to list '+list_id);
 			prj.todolists[list_id].items[id] = item;
+		}
 	});
 	updateProjectTodos();
 }
@@ -261,14 +263,17 @@ function updateProjectTodos() {
 		$("#todos").html('<option value="">- Select todo -</option>');
 		for(var i in todolists) {
 			var list = todolists[i];
-			var displayName = strlimit(list.name, 30) + (list.complete ? ' (complete)' : '');
-			$("#todos").append('<option value="" disabled="disabled">'+displayName+'</option>');
-			
-			var items = list.items;
-			for(var i in items) {
-				var item = items[i];
-				var displayName = strlimit(item.content, 30) + (item.completed ? ' (complete)' : '');
-				$("#todos").append('<option value="'+item.id+'">&nbsp;&nbsp;'+displayName+'</option>');
+			// * ignore complete lists
+			if(!list.complete) {
+				var displayName = strlimit(list.name, 40);
+				$("#todos").append('<option value="" disabled="disabled">'+displayName+'</option>');
+				
+				var items = list.items;
+				for(var i in items) {
+					var item = items[i];
+					var displayName = strlimit(item.content, 40) + (item.completed ? ' (complete)' : '');
+					$("#todos").append('<option value="'+item.id+'">&nbsp;&nbsp;'+displayName+'</option>');
+				}
 			}
 		}
 	}

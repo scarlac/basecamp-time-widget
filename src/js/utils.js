@@ -171,4 +171,12 @@ Timer.prototype.onTick = function() {
 var delegate = function(that, method) {
 	return function() { return method.call(that) }
 };
+// * shallow copy only
+cloneObject = function(t) {
+	var o = {};
+	for(var i in t) {
+		o[i] = t[i];
+	}
+	return o;
+}
 
