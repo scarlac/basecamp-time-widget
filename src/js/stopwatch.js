@@ -48,8 +48,7 @@ Stopwatch.prototype.getElapsed = function() {
 	var elapsed = 0;
 	if(this.started)
 		elapsed = new Date().getTime() - this.startTime;
-	else
-		elapsed = this.totalElapsed;
+	elapsed += this.totalElapsed;
 	
 	var hours = parseInt(elapsed / this.onehour);
 	elapsed %= this.onehour;

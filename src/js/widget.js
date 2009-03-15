@@ -38,7 +38,7 @@ function setup() {
 	
 	allProjects = {};
 	allCompanies = {};
-	globalTimer = new Stopwatch(updateTimer, 100);
+	globalTimer = new Stopwatch(updateTimer, 500);
 	
 	// * load settings {{{
 	BC_USERNAME = widget.preferenceForKey("username");
@@ -420,11 +420,13 @@ function keyDownTime(e) {
 	switch(e.keyCode) {
 		case VK_UP:
 			// * increment time
+			changeTime();
 			changeTime(1);
 			return false;
 			
 		case VK_DOWN:
 			// * decrement time
+			changeTime();
 			changeTime(-1);
 			return false;
 	}
