@@ -14,6 +14,7 @@ Stopwatch = function(listener, resolution) {
 	this.onesec  = 1000;
 }
 Stopwatch.prototype.start = function() {
+	var delegate = function(that, method) { return function() { return method.call(that) } };
 	if(!this.started) {
 		this.startTime = new Date().getTime();
 		this.stopTime = 0;

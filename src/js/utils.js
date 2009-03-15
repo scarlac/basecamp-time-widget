@@ -1,7 +1,3 @@
-var delegate = function(that, method) {
-	return function() { return method.call(that) }
-};
-
 function strlimit(str, limit) {
 	if(str.length > limit)
 		return str.substr(0, limit) + "...";
