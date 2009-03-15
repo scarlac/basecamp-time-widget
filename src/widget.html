@@ -20,16 +20,14 @@
 			<b>Front</b><br/>
 			
 			<p>
-				<select id="projects"><option disabled="disabled" value="">- No projects -</option></select>
-				<input type="button" value="Pull projects" onclick="loadProjects()" />
+				<b>Project / To-Do:</b> <input type="button" value="Refresh Projects" onclick="loadProjects()" /><br/>
+				<select id="projects"><option disabled="disabled" value="">- No projects -</option></select><br/>
+				<select id="todos"><option disabled="disabled" value="">- No todos -</option></select><br/>
+				<!--<input type="button" value="Pull todos on project" onclick="loadTodos()" />-->
 			</p>
 			
 			<p>
-				<select id="todos"><option disabled="disabled" value="">- No todos -</option></select>
-				<input type="button" value="Pull todos on project" onclick="loadTodos()" />
-			</p>
-			
-			<p>
+				<b>Report time</b><br/>
 				<input type="text" value="Description" id="reportdescription" />
 				<input type="text" value="0,0" id="reporthours" /> hours<br/>
 				Date: <select id="reportdate_m"><option/></select><select id="reportdate_d"><option/></select><select id="reportdate_y"><option/></select><br/>
@@ -37,6 +35,7 @@
 			</p>
 			
 			<p>
+				<b>Stopwatch:</b><br/>
 				<span id="time">00:00:00</span>
 				<input type="button" value="Start" id="starttime" />
 				<input type="button" value="Stop" id="stoptime" />

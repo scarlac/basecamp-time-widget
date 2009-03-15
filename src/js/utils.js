@@ -1,3 +1,7 @@
+var delegate = function(that, method) {
+	return function() { return method.call(that) }
+};
+
 function strlimit(str, limit) {
 	if(str.length > limit)
 		return str.substr(0, limit) + "...";
@@ -12,6 +16,15 @@ function zerofill(no, digits) {
 	} else {
 		return no;
 	}
+}
+
+function len(obj) {
+	var length = 0;
+	for(var i in obj) {
+		if(obj.hasOwnProperty(i))
+			length++;
+	}
+	return length;
 }
 
 // * enable widget object so browsers don't barf and no need for fail-safe code in widget
@@ -167,16 +180,4 @@ Timer.prototype.onTick = function() {
 	}
 }
 // }}}
-
-var delegate = function(that, method) {
-	return function() { return method.call(that) }
-};
-// * shallow copy only
-cloneObject = function(t) {
-	var o = {};
-	for(var i in t) {
-		o[i] = t[i];
-	}
-	return o;
-}
 

@@ -14,3 +14,5 @@ body { background: transparent; font: 13px verdana; color: #fff; width: 400px; h
 #todolist { height: 70px; overflow: auto; width: 200px; }
 
 #time {}
+
+p { margin: 10px 0px; }

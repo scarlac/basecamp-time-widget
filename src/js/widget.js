@@ -51,7 +51,7 @@ function setup() {
 	// }}}
 	
 	// * ui hooks {{{
-	$("#projects").change(updateProjectTodos);
+	$("#projects").change(changeProject);
 	$("#login_form").submit(submitLogin);
 	$("#starttime").click(startTimer);
 	$("#stoptime").click(stopTimer).attr("disabled", true);
@@ -83,7 +83,7 @@ function setup() {
 	var pastYears = 1; // * how many years back in the drop down
 	var futureYears = 1; // * how many years forth in the drop down
 	for(var y = today.getFullYear() - pastYears; y <= today.getFullYear() + futureYears; y++)
-		$("#reportdate_y").append('<option value="' + y + '">' + y + '</option>');
+		$("#reportdate_y").append('<option '+(y == today.getFullYear() ? 'selected="selected"' : '')+' value="' + y + '">' + y + '</option>');
 	// }}}
 }
 
@@ -126,7 +126,7 @@ function loadTodos() {
 
 function pullProjects() {
 	var projectsURL = bc_base_url + "/projects.xml";
-	var opts = cloneObject(ajaxOptions);
+	var opts = $.extend({}, ajaxOptions);
 	
 	console.log('pulling projects data from login');
 
@@ -137,7 +137,7 @@ function pullProjects() {
 
 function pullProjectTodoLists(project_id) {
 	var todoURL = bc_base_url + "/projects/"+project_id+"/todo_lists.xml";
-	var opts = cloneObject(ajaxOptions);
+	var opts = $.extend({}, ajaxOptions);
 	
 	console.log('pulling project todos from project ' + project_id);
 	
@@ -148,7 +148,7 @@ function pullProjectTodoLists(project_id) {
 
 function pullTodoItems(project_id, list_id) {
 	var listURL = bc_base_url + "/todo_lists/"+list_id+"/todo_items.xml";
-	var opts = cloneObject(ajaxOptions);
+	var opts = $.extend({}, ajaxOptions);
 	
 	console.log('pulling project todos from project ' + project_id + ', list ' + list_id);
 
@@ -260,7 +260,7 @@ function updateProjectTodos() {
 	
 	if(prj != null) {
 		var todolists = prj.todolists;
-		$("#todos").html('<option value="">- Select todo -</option>');
+		$("#todos").html('<option value="">- Select To-Do -</option>');
 		for(var i in todolists) {
 			var list = todolists[i];
 			// * ignore complete lists
@@ -279,14 +279,36 @@ function updateProjectTodos() {
 	}
 }
 
+// * Changes to the selected project (may fetch nescessary data)
+function changeProject() {
+	var projectId = $("#projects").val();
+	var prj = allProjects[projectId];
+	
+	if(prj != null) {
+		if(len(prj.todolists) > 0) {
+			updateProjectTodos();
+		} else {
+			pullProjectTodoLists(prj.id);
+		}
+	}
+}
+
 function reportTime() {
-	var todoItemId = $("#todos").val();
 	var hours = $("#reporthours").val();
-	
-	var timeURL = bc_base_url + "/todo_items/" + todoItemId + "/time_entries.xml";
+	var description = $("#reportdescription").val();
+	var todoItemId = parseInt($("#todos").val());
+	var projectId = parseInt($("#projects").val());
 	var opts = ajaxOptions;
+	var timeURL = null;
 	
-	console.log('reporting time on item ' + todoItemId);
+	if(todoItemId > 0) {
+		timeURL = bc_base_url + "/todo_items/" + todoItemId + "/time_entries.xml";
+		console.log('reporting time on to-do ' + todoItemId);
+	} else {
+		var projectId = 
+		timeURL = bc_base_url + "/projects/" + projectId + "/time_entries.xml";
+		console.log('reporting time on project ' + projectId);
+	}
 	
 	var d = new Date();
 	var date = $("#reportdate_y").val() + "-" + zerofill(parseInt($("#reportdate_m").val())+1, 2) + "-" + zerofill($("#reportdate_d").val(), 2);
@@ -294,7 +316,7 @@ function reportTime() {
 	data += '<person-id>3310494</person-id>';
 	data += '<date>' + date + '</date>';
 	data += '<hours>' + hours + '</hours>';
-	data += '<description>Lorem ipsum, widget time registration</description>';
+	data += '<description>' + description + '</description>';
 	data += '</time-entry>';
 	opts.data = data;
 	opts.processData = false;
