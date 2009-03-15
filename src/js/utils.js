@@ -10,12 +10,10 @@ function strlimit(str, limit) {
 }
 
 function zeropad(no, digits) {
-	if(no.toString().length < digits) {
+	no = no.toString();
+	while(no.length < digits)
 		no = '0' + no;
-		return zerofill(no, digits);
-	} else {
-		return no;
-	}
+	return no;
 }
 
 function len(obj) {

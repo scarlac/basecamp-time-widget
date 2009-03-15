@@ -298,7 +298,7 @@ function reportTime() {
 	var description = $("#reportdescription").val();
 	var todoItemId = parseInt($("#todos").val());
 	var projectId = parseInt($("#projects").val());
-	var opts = ajaxOptions;
+	var opts = $.extend({}, ajaxOptions);
 	var timeURL = null;
 	
 	if(todoItemId > 0) {
