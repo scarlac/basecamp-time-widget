@@ -30,8 +30,9 @@ function enableBrowserSupport() {
 	if(!window.widget) {
 		window.widget = {};
 		window.widget.preferenceForKey = function(key) {
-			console.log('reading preference: '+key);
-			return cookie(key);
+			var value = cookie(key);
+			console.log('reading preference: '+key+'='+value);
+			return value;
 		}
 		window.widget.setPreferenceForKey = function(value, key) {
 			console.log('writing preference: '+key+'='+value);

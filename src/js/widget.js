@@ -1,11 +1,14 @@
 var gDoneButton = null;
 var gInfoButton = null;
-var allProjects = null;
-var allCompanies = null;
-var bc_username = null;
-var bc_password = null;
-var bc_base_url = null;
-var globalTimer = null;
+var allProjects = null; // * Array of all collected projects
+var allCompanies = null; // * Array of all collected companies
+
+var BC_USERNAME = null; // * Basecamp username
+var BC_PASSWORD = null; // * Basecamp password
+var BC_BASE_URL = null; // * Basecamp base url
+var HOUR_PRECISION = 60; // * hour precision, specified in minutes
+
+var globalTimer = null; // * Stopwatch object
 var ajaxOptions = {
 	type: 'GET',
 	username: '',
@@ -38,16 +41,18 @@ function setup() {
 	globalTimer = new Stopwatch(updateTimer, 100);
 	
 	// * load settings {{{
-	bc_username = widget.preferenceForKey("username");
-	bc_password = widget.preferenceForKey("password");
-	bc_base_url = widget.preferenceForKey("base_url");
+	BC_USERNAME = widget.preferenceForKey("username");
+	BC_PASSWORD = widget.preferenceForKey("password");
+	BC_BASE_URL = widget.preferenceForKey("base_url");
+	HOUR_PRECISION = parseInt(widget.preferenceForKey("hour_precision"));
+	if(HOUR_PRECISION == 0) HOUR_PRECISION = 15; // * 15 minutes of default rounding (1/4 hour)
 	
-	$("#bc_username").val(bc_username);
-	$("#bc_password").val(bc_password);
-	$("#bc_base_url").val(bc_base_url);
+	$("#bc_username").val(BC_USERNAME);
+	$("#bc_password").val(BC_PASSWORD);
+	$("#bc_base_url").val(BC_BASE_URL);
 	
-	ajaxOptions.username = bc_username;
-	ajaxOptions.password = bc_password;
+	ajaxOptions.username = BC_USERNAME;
+	ajaxOptions.password = BC_PASSWORD;
 	// }}}
 	
 	// * ui hooks {{{
@@ -58,6 +63,7 @@ function setup() {
 	$("#reportbtn").click(reportTime);
 	$("#reporthours").change(function(e) { changeTime() });
 	$("#reporthours").keydown(keyDownTime);
+	$("#roundtime").change(changeRoundTime);
 	// }}}
 	
 	// * set-up load indicator {{{
@@ -66,24 +72,31 @@ function setup() {
 	$("#loadindicator").ajaxStop(function() { $(this).hide(); });
 	// }}}
 	
-	// * generate data for date-drop downs {{{
+	// * Generate data for date-drop downs {{{
 	var today = new Date();
 	// * months
 	$("#reportdate_m").html("");
 	for(var m = 0; m < 12; m++)
-		$("#reportdate_m").append('<option '+(m == today.getMonth() ? 'selected="selected"' : '')+' value="' + m + '">' + monthNames[m].short + '</option>');
+		$("#reportdate_m").append('<option value="' + m + '">' + monthNames[m].short + '</option>');
 	
 	// * days
 	$("#reportdate_d").html("");
 	for(var d = 1; d <= 31; d++)
-		$("#reportdate_d").append('<option '+(d == today.getDate() ? 'selected="selected"' : '')+' value="' + d + '">' + d + '</option>');
+		$("#reportdate_d").append('<option value="' + d + '">' + d + '</option>');
 	
 	// * years
 	$("#reportdate_y").html("");
 	var pastYears = 1; // * how many years back in the drop down
 	var futureYears = 1; // * how many years forth in the drop down
 	for(var y = today.getFullYear() - pastYears; y <= today.getFullYear() + futureYears; y++)
-		$("#reportdate_y").append('<option '+(y == today.getFullYear() ? 'selected="selected"' : '')+' value="' + y + '">' + y + '</option>');
+		$("#reportdate_y").append('<option value="' + y + '">' + y + '</option>');
+	// }}}
+	
+	// * UI defaults {{{
+	$("#reportdate_d").val(today.getDate());
+	$("#reportdate_m").val(today.getMonth());
+	$("#reportdate_y").val(today.getFullYear());
+	$("#roundtime").val(HOUR_PRECISION);
 	// }}}
 }
 
@@ -125,7 +138,7 @@ function loadTodos() {
 // * Data-pulling/ajax functions {{{
 
 function pullProjects() {
-	var projectsURL = bc_base_url + "/projects.xml";
+	var projectsURL = BC_BASE_URL + "/projects.xml";
 	var opts = $.extend({}, ajaxOptions);
 	
 	console.log('pulling projects data from login');
@@ -136,7 +149,7 @@ function pullProjects() {
 }
 
 function pullProjectTodoLists(project_id) {
-	var todoURL = bc_base_url + "/projects/"+project_id+"/todo_lists.xml";
+	var todoURL = BC_BASE_URL + "/projects/"+project_id+"/todo_lists.xml";
 	var opts = $.extend({}, ajaxOptions);
 	
 	console.log('pulling project todos from project ' + project_id);
@@ -147,7 +160,7 @@ function pullProjectTodoLists(project_id) {
 }
 
 function pullTodoItems(project_id, list_id) {
-	var listURL = bc_base_url + "/todo_lists/"+list_id+"/todo_items.xml";
+	var listURL = BC_BASE_URL + "/todo_lists/"+list_id+"/todo_items.xml";
 	var opts = $.extend({}, ajaxOptions);
 	
 	console.log('pulling project todos from project ' + project_id + ', list ' + list_id);
@@ -302,11 +315,11 @@ function reportTime() {
 	var timeURL = null;
 	
 	if(todoItemId > 0) {
-		timeURL = bc_base_url + "/todo_items/" + todoItemId + "/time_entries.xml";
+		timeURL = BC_BASE_URL + "/todo_items/" + todoItemId + "/time_entries.xml";
 		console.log('reporting time on to-do ' + todoItemId);
 	} else {
 		var projectId = 
-		timeURL = bc_base_url + "/projects/" + projectId + "/time_entries.xml";
+		timeURL = BC_BASE_URL + "/projects/" + projectId + "/time_entries.xml";
 		console.log('reporting time on project ' + projectId);
 	}
 	
@@ -337,11 +350,11 @@ function submitLogin() {
 		widget.setPreferenceForKey(username, "username");
 		widget.setPreferenceForKey(password, "password");
 		widget.setPreferenceForKey(base_url, "base_url");
-		bc_username = username;
-		bc_password = password;
-		bc_base_url = base_url;
-		ajaxOptions.username = bc_username;
-		ajaxOptions.password = bc_password;
+		BC_USERNAME = username;
+		BC_PASSWORD = password;
+		BC_BASE_URL = base_url;
+		ajaxOptions.username = BC_USERNAME;
+		ajaxOptions.password = BC_PASSWORD;
 		pullProjects();
 	}
 	
@@ -364,22 +377,41 @@ function updateTimer() {
 	$("#time").text(globalTimer.toString());
 }
 
+// * Rounds an hour to the given precious, specified in minutes
+function roundHour(hour, precision) {
+	var minutes = parseFloat(hour) * 60;
+	var rest = minutes % precision;
+	minutes = minutes - rest; // round down and perhaps round up
+	if(rest >= precision/2) {
+		return (minutes + precision) / 60;
+	} else {
+		return minutes / 60;
+	}
+}
+
+function changeRoundTime() {
+	HOUR_PRECISION = $("#roundtime").val();
+	widget.setPreferenceForKey(HOUR_PRECISION, "hour_precision");
+}
+
 function changeTime(amount) {
 	stopTimer();
-	var value = parseFloat($("#reporthours").val().replace(",", "."));
-	if(isNaN(value))
-		value = 0;
-	if(amount)
-		value += amount * 0.25;
+	var reporthours = $("#reporthours").val().replace(",", ".");
+	if(isNaN(reporthours)) reporthours = 0;
 	
-	// * sanitize value (no negative registrations) and convert to h/m
-	value = Math.max(value, 0);
-	var hours = parseInt(value);
-	var partHours = parseFloat(value) - hours;
-	var mins = partHours * 60;
+	var e = globalTimer.getElapsed();
+	if(amount) {
+		e.minutes = parseInt(e.minutes + amount * HOUR_PRECISION);
+	} else {
+		e.hours = parseFloat(reporthours);
+		e.minutes = 0;
+		e.seconds = 0;
+	}
 	
-	globalTimer.setElapsed(hours, mins, 0);
-	$("#reporthours").val(hours + (mins/60));
+	globalTimer.setElapsed(e.hours, e.minutes, e.seconds);
+	e = globalTimer.getElapsed();
+	$("#reporthours").val(e.hours + (e.minutes/60) + (e.seconds/60));
+	
 	updateTimer();
 }
 
