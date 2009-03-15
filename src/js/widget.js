@@ -336,7 +336,7 @@ function reportTime() {
 	var d = new Date();
 	var date = $("#reportdate_y").val() + "-" + zeropad(parseInt($("#reportdate_m").val())+1, 2) + "-" + zeropad($("#reportdate_d").val(), 2);
 	var data = '<time-entry>';
-	data += '<person-id>3310494</person-id>';
+	data += '<person-id>'+BC_USER_ID+'</person-id>';
 	data += '<date>' + date + '</date>';
 	data += '<hours>' + hours + '</hours>';
 	data += '<description>' + description + '</description>';
