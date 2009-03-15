@@ -33,8 +33,8 @@ monthNames = [
 function setup() {
 	enableBrowserSupport();
 	
-	gDoneButton = new AppleGlassButton(document.getElementById("done"), "Back", hidePrefs);
-	gInfoButton = new AppleInfoButton(document.getElementById("info"), document.getElementById("front"), "white", "white", showPrefs);
+	gDoneButton = new AppleGlassButton(document.getElementById("done"), "Back", showFront);
+	gInfoButton = new AppleInfoButton(document.getElementById("info"), document.getElementById("front"), "white", "white", showBack);
 	
 	allProjects = {};
 	allCompanies = {};
@@ -44,32 +44,20 @@ function setup() {
 	BC_USERNAME = widget.preferenceForKey("username");
 	BC_PASSWORD = widget.preferenceForKey("password");
 	BC_BASE_URL = widget.preferenceForKey("base_url");
+	BC_USER_ID  = widget.preferenceForKey("user_id");
 	HOUR_PRECISION = parseInt(widget.preferenceForKey("hour_precision"));
 	if(HOUR_PRECISION == 0) HOUR_PRECISION = 15; // * 15 minutes of default rounding (1/4 hour)
-	
-	$("#bc_username").val(BC_USERNAME);
-	$("#bc_password").val(BC_PASSWORD);
-	$("#bc_base_url").val(BC_BASE_URL);
+	if(BC_USER_ID == '') BC_USER_ID = 0; // * 15 minutes of default rounding (1/4 hour)
+	BC_USER_ID = parseInt(BC_USER_ID); // * ensure it's an int when it gets read from settings
 	
 	ajaxOptions.username = BC_USERNAME;
 	ajaxOptions.password = BC_PASSWORD;
 	// }}}
 	
-	// * ui hooks {{{
-	$("#projects").change(changeProject);
-	$("#login_form").submit(submitLogin);
-	$("#starttime").click(startTimer);
-	$("#stoptime").click(stopTimer).attr("disabled", true);
-	$("#reportbtn").click(reportTime);
-	$("#reporthours").change(function(e) { changeTime() });
-	$("#reporthours").keydown(keyDownTime);
-	$("#roundtime").change(changeRoundTime);
-	// }}}
-	
 	// * set-up load indicator {{{
-	$("#loadindicator").hide();
-	$("#loadindicator").ajaxStart(function() { $(this).show(); });
-	$("#loadindicator").ajaxStop(function() { $(this).hide(); });
+	$(".loadindicator").hide();
+	$(".loadindicator").ajaxStart(function() { $(this).show(); });
+	$(".loadindicator").ajaxStop(function() { $(this).hide(); });
 	// }}}
 	
 	// * Generate data for date-drop downs {{{
@@ -93,14 +81,33 @@ function setup() {
 	// }}}
 	
 	// * UI defaults {{{
+	$("#bc_username").val(BC_USERNAME);
+	$("#bc_password").val(BC_PASSWORD);
+	$("#bc_base_url").val(BC_BASE_URL);
+	$("#bc_user_id").val(BC_USER_ID);
+	
 	$("#reportdate_d").val(today.getDate());
 	$("#reportdate_m").val(today.getMonth());
 	$("#reportdate_y").val(today.getFullYear());
 	$("#roundtime").val(HOUR_PRECISION);
+	$("#reportcontainer").hide();
+	$("#done").hide(); // * initially hide until user logs in
+	showBack();
+	// }}}
+	
+	// * ui hooks {{{
+	$("#projects").change(changeProject);
+	$("#login_form").submit(submitLogin);
+	$("#starttime").click(startTimer);
+	$("#stoptime").click(stopTimer).attr("disabled", true);
+	$("#reportbtn").click(reportTime);
+	$("#reporthours").change(function(e) { changeTime() });
+	$("#reporthours").keydown(keyDownTime);
+	$("#roundtime").change(changeRoundTime);
 	// }}}
 }
 
-function showPrefs() {
+function showBack() {
 	var front = document.getElementById("front");
 	var back = document.getElementById("back");
 	
@@ -112,7 +119,7 @@ function showPrefs() {
 	setTimeout('widget.performTransition();', 0);
 }
 
-function hidePrefs() {
+function showFront() {
 	var front = document.getElementById("front");
 	var back = document.getElementById("back");
 	
@@ -125,10 +132,6 @@ function hidePrefs() {
 }
 
 // * Temporary debugging functions {{{
-function loadProjects() {
-	pullProjects();
-}
-
 function loadTodos() {
 	var prj_id = $("#projects").val();
 	pullProjectTodoLists(prj_id);
@@ -137,14 +140,14 @@ function loadTodos() {
 
 // * Data-pulling/ajax functions {{{
 
-function pullProjects() {
+function pullProjects(callback) {
 	var projectsURL = BC_BASE_URL + "/projects.xml";
 	var opts = $.extend({}, ajaxOptions);
 	
 	console.log('pulling projects data from login');
 
 	opts.url = projectsURL;
-	opts.success = function(root) { parseProjects(root); };
+	opts.success = function(root) { parseProjects(root); callback(); };
 	$.ajax(opts);
 }
 
@@ -168,6 +171,11 @@ function pullTodoItems(project_id, list_id) {
 	opts.url = listURL;
 	opts.success = function(root) { parseTodoItems(root, project_id, list_id); };
 	$.ajax(opts);
+}
+
+function pullUserId(callback) {
+	// * pulling the users id requires some hacks. They are moved to an external file.
+	getCategories(callback);
 }
 
 // }}}
@@ -297,12 +305,14 @@ function changeProject() {
 	var projectId = $("#projects").val();
 	var prj = allProjects[projectId];
 	
+	$("#reportcontainer").hide();
 	if(prj != null) {
 		if(len(prj.todolists) > 0) {
 			updateProjectTodos();
 		} else {
 			pullProjectTodoLists(prj.id);
 		}
+		$("#reportcontainer").show();
 	}
 }
 
@@ -355,7 +365,21 @@ function submitLogin() {
 		BC_BASE_URL = base_url;
 		ajaxOptions.username = BC_USERNAME;
 		ajaxOptions.password = BC_PASSWORD;
-		pullProjects();
+		
+		pullProjects(function() {
+			function enableFront() {
+				$("#done").show();
+				showFront();
+			}
+			
+			// * only pull user id if we haven't got it
+			// * else: just show the front now
+			if(BC_USER_ID == 0) {
+				pullUserId(enableFront);
+			} else {
+				enableFront();
+			}
+		});
 	}
 	
 	return false;
