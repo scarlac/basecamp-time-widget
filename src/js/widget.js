@@ -35,7 +35,7 @@ function setup() {
 	
 	allProjects = {};
 	allCompanies = {};
-	globalTimer = new Timer();
+	globalTimer = new Stopwatch(updateTimer, 100);
 	
 	// * load settings {{{
 	bc_username = widget.preferenceForKey("username");
@@ -311,7 +311,7 @@ function reportTime() {
 	}
 	
 	var d = new Date();
-	var date = $("#reportdate_y").val() + "-" + zerofill(parseInt($("#reportdate_m").val())+1, 2) + "-" + zerofill($("#reportdate_d").val(), 2);
+	var date = $("#reportdate_y").val() + "-" + zeropad(parseInt($("#reportdate_m").val())+1, 2) + "-" + zeropad($("#reportdate_d").val(), 2);
 	var data = '<time-entry>';
 	data += '<person-id>3310494</person-id>';
 	data += '<date>' + date + '</date>';
@@ -349,7 +349,6 @@ function submitLogin() {
 }
 
 function startTimer() {
-	globalTimer.setListener(updateTimer);
 	globalTimer.start();
 	$("#starttime").attr("disabled", true);
 	$("#stoptime").attr("disabled", false);

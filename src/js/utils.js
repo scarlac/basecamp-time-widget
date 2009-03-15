@@ -9,7 +9,7 @@ function strlimit(str, limit) {
 		return str;
 }
 
-function zerofill(no, digits) {
+function zeropad(no, digits) {
 	if(no.toString().length < digits) {
 		no = '0' + no;
 		return zerofill(no, digits);
@@ -89,95 +89,4 @@ function cookie(name, value, options) {
         return cookieValue;
     }
 }
-
-// * Timer class {{{
-Timer = function() {
-	this.startTime = 0;
-	this.stopTime = 0;
-	this.elapsed = 0; // * elapsed number of ms for current timing
-	this.totalElapsed = 0; // * elapsed number of ms in total
-	this.started = false;
-	this.listener = null;
-	this.tickResolution = 1000; // * how long between each tick in milliseconds
-	this.tickInterval = null;
-	
-	// * pretty static vars
-	this.onehour = 1000 * 60 * 60;
-	this.onemin  = 1000 * 60;
-	this.onesec  = 1000;
-}
-Timer.prototype.start = function() {
-	if(!this.started) {
-		this.startTime = new Date().getTime();
-		this.stopTime = 0;
-		this.started = true;
-		this.tickInterval = setInterval(delegate(this, this.onTick), this.tickResolution);
-	}
-}
-Timer.prototype.stop = function() {
-	if(this.started) {
-		this.stopTime = new Date().getTime();
-		this.elapsed = this.stopTime - this.startTime;
-		this.totalElapsed += this.elapsed;
-		this.started = false;
-		if(this.tickInterval != null)
-			clearInterval(this.tickInterval);
-	}
-	return this.getElapsed();
-}
-Timer.prototype.reset = function() {
-	this.elapsed = 0;
-	this.totalElapsed = 0;
-	// * if timer is running, reset it to current time
-	this.startTime = new Date().getTime();
-	this.stopTime = this.startTime;
-}
-Timer.prototype.restart = function() {
-	this.stop();
-	this.reset();
-	this.start();
-}
-Timer.prototype.getElapsed = function() {
-	// * if timer is stopped, use that date, else use now
-	var elapsed = 0;
-	if(this.started)
-		elapsed = new Date().getTime() - this.startTime;
-	else
-		elapsed = this.stopTime - this.startTime;
-	
-	elapsed = elapsed + this.totalElapsed;
-	
-	var hours = parseInt(elapsed / this.onehour);
-	elapsed %= this.onehour;
-	var mins = parseInt(elapsed / this.onemin);
-	elapsed %= this.onemin;
-	var secs = parseInt(elapsed / this.onesec);
-	
-	return {
-		hours: hours,
-		minutes: mins,
-		seconds: secs
-	};
-}
-Timer.prototype.setElapsed = function(hours, mins, secs) {
-	this.reset();
-	this.totalElapsed = 0;
-	this.totalElapsed += hours * this.onehour;
-	this.totalElapsed += mins  * this.onemin;
-	this.totalElapsed += secs  * this.onesec;
-}
-Timer.prototype.toString = function() {
-	var e = this.getElapsed();
-	return zerofill(e.hours,2) + ":" + zerofill(e.minutes,2) + ":" + zerofill(e.seconds,2);
-}
-Timer.prototype.setListener = function(listener) {
-	this.listener = listener;
-}
-// * triggered every <resolution> ms
-Timer.prototype.onTick = function() {
-	if(this.listener != null) {
-		this.listener(this);
-	}
-}
-// }}}
 
