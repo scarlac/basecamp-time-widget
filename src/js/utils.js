@@ -40,6 +40,9 @@ function enableBrowserSupport() {
 		window.widget.performTransition = function() {
 			console.log('performing transition animation');
 		}
+		widget.openURL = function(url) {
+			window.open(url, '', '');
+		}
 	}
 }
 

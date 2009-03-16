@@ -6,7 +6,7 @@ var allCompanies = null; // * Array of all collected companies
 var BC_USERNAME = null; // * Basecamp username
 var BC_PASSWORD = null; // * Basecamp password
 var BC_BASE_URL = null; // * Basecamp base url
-var HOUR_PRECISION = 60; // * hour precision, specified in minutes
+var HOUR_PRECISION = 30; // * hour precision, specified in minutes
 
 var globalTimer = null; // * Stopwatch object
 var ajaxOptions = {
@@ -45,8 +45,8 @@ function setup() {
 	BC_PASSWORD = widget.preferenceForKey("password");
 	BC_BASE_URL = widget.preferenceForKey("base_url");
 	BC_USER_ID  = widget.preferenceForKey("user_id");
-	HOUR_PRECISION = parseInt(widget.preferenceForKey("hour_precision"));
-	if(HOUR_PRECISION == 0) HOUR_PRECISION = 15; // * 15 minutes of default rounding (1/4 hour)
+	HOUR_PRECISION = widget.preferenceForKey("hour_precision");
+	if(HOUR_PRECISION == '') HOUR_PRECISION = 30; // * 30 minutes of default rounding (1/2 hour)
 	if(BC_USER_ID == '') BC_USER_ID = 0; // * 15 minutes of default rounding (1/4 hour)
 	BC_USER_ID = parseInt(BC_USER_ID); // * ensure it's an int when it gets read from settings
 	
@@ -91,6 +91,7 @@ function setup() {
 	$("#reportdate_y").val(today.getFullYear());
 	$("#roundtime").val(HOUR_PRECISION);
 	$("#reportcontainer").hide();
+	$("#show_project").hide();
 	$("#done").hide(); // * initially hide until user logs in
 	showBack();
 	// }}}
@@ -104,6 +105,7 @@ function setup() {
 	$("#reporthours").change(function(e) { changeTime() });
 	$("#reporthours").keydown(keyDownTime);
 	$("#roundtime").change(changeRoundTime);
+	$("#show_project").click(openProjectURL);
 	// }}}
 }
 
@@ -306,6 +308,7 @@ function changeProject() {
 	var prj = allProjects[projectId];
 	
 	$("#reportcontainer").hide();
+	$("#show_project").hide();
 	if(prj != null) {
 		if(len(prj.todolists) > 0) {
 			updateProjectTodos();
@@ -313,6 +316,7 @@ function changeProject() {
 			pullProjectTodoLists(prj.id);
 		}
 		$("#reportcontainer").show();
+		$("#show_project").show();
 	}
 }
 
@@ -454,6 +458,12 @@ function keyDownTime(e) {
 			changeTime(-1);
 			return false;
 	}
+}
+
+function openProjectURL() {
+	var projectId = $("#projects").val();
+	if(projectId)
+		widget.openURL(BC_BASE_URL + '/projects/' + projectId);
 }
 
 // * Classes, Project {{{
