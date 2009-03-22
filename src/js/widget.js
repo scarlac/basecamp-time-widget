@@ -127,6 +127,9 @@ function showBack(animate) {
 }
 
 function showFront(animate) {
+	if(animate == undefined)
+		animate = true;
+	
 	var front = document.getElementById("front");
 	var back = document.getElementById("back");
 	
