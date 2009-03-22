@@ -21,39 +21,39 @@
 		<div id="front" class="widgetside">
 			<div class="widgetcontent">
 				<div class="loadindicator"><img src="images/ajax-loader.gif" alt="Loading..."/></div>
-				<b>Front</b><br/>
 				
+				<h2>Select Project</h2>
 				<p>
-					<b>Project / To-Do:</b><br/>
-					<select id="projects"><option disabled="disabled" value="">- No projects -</option></select> <a href="#" id="show_project">(open project)</a><br/>
-					<select id="todos"><option disabled="disabled" value="">- No todos -</option></select><br/>
-					<!--<input type="button" value="Pull todos on project" onclick="loadTodos()" />-->
+					<select id="projects"><option disabled="disabled" value="">- No projects -</option></select>
+					<a href="#" id="show_project">(open project)</a>
 				</p>
 				
+				<h2>Stopwatch</h2>
 				<p>
-					<b>Stopwatch:</b><br/>
 					<span id="time">00:00:00</span>
 					<input type="button" value="Start" id="starttime" />
 					<input type="button" value="Stop" id="stoptime" />
 				</p>
 				
-				<p id="reportcontainer">
-					<b>Report time</b><br/>
-					<input type="text" value="Description" id="reportdescription" />
-					<input type="text" value="0,0" id="reporthours" /> hours <input type="button" id="reportbtn" value="Report" /><br/>
-					Date: <select id="reportdate_m"><option/></select><select id="reportdate_d"><option/></select><select id="reportdate_y"><option/></select><br/>
-				</p>
+				<div id="reportcontainer">
+					<h2>Report time</h2>
+					<p>
+						<select id="todos"><option disabled="disabled" value="">- No todos -</option></select><br/>
+						<input type="text" value="Description" id="reportdescription" />
+						<input type="text" value="0,0" id="reporthours" /> hours <input type="button" id="reportbtn" value="Report" /><br/>
+					</p>
+					<p>
+						Date: <select id="reportdate_m"><option/></select><select id="reportdate_d"><option/></select><select id="reportdate_y"><option/></select><br/>
+					</p>
+				</div>
 				
 				<div id="info">&nbsp;</div>
 			</div>
 		</div>
 		<div id="back" class="widgetside" style="display:none">
 			<div class="widgetcontent">
-				<div class="loadindicator"><img src="images/ajax-loader.gif" alt="Loading..."/></div>
-				<b>Back</b><br/>
-				
-				<div id="your_user_id">N/A</div>
-				
+				<div class="loadindicator"><img src="images/ajax-loader-back.gif" alt="Loading..."/></div>
+				<br/>
 				<form action="#" method="get" id="login_form">
 					<p>
 						<label>Username</label>
@@ -86,15 +86,16 @@
 					</p>
 				</form>
 				
-				<span onclick="$('#debug').slideToggle(250)" style="cursor:pointer">Debug...</span><br/>
+				<span onclick="$('#debug').slideToggle(250)" id="debugbtn"></span><br/>
 				<div id="debug" style="display: none; padding: 10px; border: 1px solid white; width: 200px;">
-					<p>
-						<input type="button" value="Reload Projects" onclick="pullProjects()" /><br/>
-						<input type="button" value="Get User Id" onclick="pullUserId()" /><br/>
-						<input type="button" value="Show front" onclick="showFront()" /><br/>
-					</p>
+					<input type="button" value="Reload Projects" onclick="pullProjects()" />
+					<input type="button" value="Show report" onclick="$('#reportcontainer').show();" /><br/>
+					
+					<input type="button" value="Get User Id" onclick="pullUserId()" />
+					<input type="button" value="Show front" onclick="showFront()" /><br/>
 				</div>
 				
+				<div id="your_user_id">N/A</div>
 				<div id="done">&nbsp;</div>
 			</div>
 		</div>

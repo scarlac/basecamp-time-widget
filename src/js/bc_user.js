@@ -93,7 +93,7 @@ function deletePost(post_id, callback) {
 	opts.url = deletePostURL;
 	opts.type = 'DELETE';
 	opts.success = function(root) { /* bah. ignore it. */ };
-	//$.ajax(opts);
+	$.ajax(opts);
 	
 	callback();
 }

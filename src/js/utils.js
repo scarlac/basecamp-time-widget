@@ -21,6 +21,11 @@ function len(obj) {
 	return length;
 }
 
+function roundNumber(num, dec) {
+	var result = Math.round(num*Math.pow(10,dec))/Math.pow(10,dec);
+	return result;
+}
+
 // * enable widget object so browsers don't barf and no need for fail-safe code in widget
 function enableBrowserSupport() {
 	if(!window.widget) {

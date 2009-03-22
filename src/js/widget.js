@@ -33,8 +33,8 @@ monthNames = [
 function setup() {
 	enableBrowserSupport();
 	
-	gDoneButton = new AppleGlassButton(document.getElementById("done"), "Back", showFront);
-	gInfoButton = new AppleInfoButton(document.getElementById("info"), document.getElementById("front"), "white", "white", showBack);
+	gDoneButton = new AppleGlassButton(document.getElementById("done"), "Back", function() { showFront() });
+	gInfoButton = new AppleInfoButton(document.getElementById("info"), document.getElementById("front"), "white", "white", function() { showBack() });
 	
 	allProjects = {};
 	allCompanies = {};
@@ -275,7 +275,7 @@ function parseTodoItems(itemsNode, project_id, list_id) {
 		
 		var prj = allProjects[project_id];
 		if(prj != null) {
-			console.log('adding item '+id+' to list '+list_id);
+			//console.log('adding item '+id+' to list '+list_id);
 			prj.todolists[list_id].items[id] = item;
 		}
 	});
@@ -304,6 +304,8 @@ function updateProjectTodos() {
 				var items = list.items;
 				for(var i in items) {
 					var item = items[i];
+					if(item.completed)
+						continue;
 					var displayName = strlimit(item.content, 40) + (item.completed ? ' (complete)' : '');
 					$("#todos").append('<option value="'+item.id+'">&nbsp;&nbsp;'+displayName+'</option>');
 				}
@@ -445,6 +447,13 @@ function startTimer() {
 }
 
 function stopTimer() {
+	if(globalTimer.started) {
+		var e = globalTimer.getElapsed();
+		var hours = roundNumber(e.hours + (e.minutes / 60) + (e.seconds / 60 / 60), 2);
+		// * User may be trying to select something, so only change the value if needed.
+		if($("#reporthours").val() != hours.toString())
+			$("#reporthours").val(hours);
+	}
 	globalTimer.stop();
 	$("#starttime").attr("disabled", false);
 	$("#stoptime").attr("disabled", true);

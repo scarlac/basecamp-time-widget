@@ -1,10 +1,11 @@
 html { margin: 0px; padding: 0px; }
 body { background: transparent; font: 13px 'Lucida Grande'; color: #fff; width: 400px; height: 350px; }
 p { margin: 10px 0px; }
+h2 { font-size: 15px; font-family: 'Lucida Grande'; padding: 6px 0px 0px }
 
 #info { position: absolute; right: 35px; bottom: 25px; cursor: default; }
 #done { position: absolute; right: 25px; bottom: 25px; cursor: default; }
-.loadindicator { position: absolute; right: 25px; top: 10px; cursor: default; }
+.loadindicator { position: absolute; right: 18px; top: 18px; cursor: default; }
 .widgetside { position: relative; width: 400px; height: 350px; }
 .widgetside .widgetcontent { padding: 20px 20px; height: 310px; position: relative; }
 
@@ -14,7 +15,7 @@ p { margin: 10px 0px; }
 #reporthours { width: 40px; }
 #todolist { height: 70px; overflow: auto; width: 200px; }
 
-label { width: 100px; float: left; }
+label { width: 100px; float: left; clear: left; line-height: 21px; margin: 2px 0px; }
 input[type=text],
 input[type=password] { font-size: 14px; padding: 2px; }
 #back input[type=text],
@@ -26,3 +27,9 @@ input[type=password] { font-size: 14px; padding: 2px; }
 input[type=text].error { background: #fcc; }
 
 #your_user_id { position: absolute; bottom: 20px; left: 20px; color: #999; font-size: 9px; }
+
+#projects { font-size: 24px; width: 290px; }
+#todos { width: 270px; }
+
+#debug { position: absolute; bottom: 35px; left: 20px; }
+#debugbtn { position: absolute; bottom: 20px; left: 70px; color: #999; font-size: 9px; background: transparent url('../images/debug.png') no-repeat left top; width: 51px; height: 14px; cursor: pointer; }
