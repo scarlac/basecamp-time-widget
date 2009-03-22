@@ -75,9 +75,10 @@ function readPost(xobj, callback) {
 		authorId = $(postRoot).find("post > author-id").text();
 		postId = $(postRoot).find("post > id").text();
 		
+		console.log("read user id from post: "+authorId);
 		BC_USER_ID = authorId;
 		widget.setPreferenceForKey(authorId, "user_id");
-		$("#bc_user_id").val(BC_USER_ID);
+		$("#your_user_id").val(BC_USER_ID);
 		
 		deletePost(postId, callback);
 	};
@@ -92,7 +93,7 @@ function deletePost(post_id, callback) {
 	opts.url = deletePostURL;
 	opts.type = 'DELETE';
 	opts.success = function(root) { /* bah. ignore it. */ };
-	$.ajax(opts);
+	//$.ajax(opts);
 	
 	callback();
 }

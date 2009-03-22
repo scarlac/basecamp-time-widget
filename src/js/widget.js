@@ -364,15 +364,16 @@ function reportTime() {
 function submitLogin() {
 	try
 	{
-		var username = $("#bc_username").removeClass("error").val();
-		var password = $("#bc_password").removeClass("error").val();
-		var base_url = $("#bc_base_url").removeClass("error").val();
+		var username = $("#bc_username").val();
+		var password = $("#bc_password").val();
+		var base_url = $("#bc_base_url").val();
 		
 		// * todo: make some better validation, e.g. url-validation
 		if(validateLoginForm()) {
 			var usernameChanged = true; // * assume the worst
 			if(BC_USERNAME != null)
 				usernameChanged = (username.toLowerCase() != BC_USERNAME.toLowerCase());
+			
 			widget.setPreferenceForKey(username, "username");
 			widget.setPreferenceForKey(password, "password");
 			widget.setPreferenceForKey(base_url, "base_url");

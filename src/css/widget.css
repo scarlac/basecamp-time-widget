@@ -1,15 +1,20 @@
+html { margin: 0px; padding: 0px; }
 body { background: transparent; font: 13px 'Lucida Grande'; color: #fff; width: 400px; height: 350px; }
 p { margin: 10px 0px; }
 
-#info { position: absolute; right: 25px; bottom: 10px; cursor: default; }
-#done { position: absolute; right: 15px; bottom: 10px; cursor: default; }
+#info { position: absolute; right: 35px; bottom: 25px; cursor: default; }
+#done { position: absolute; right: 25px; bottom: 25px; cursor: default; }
 .loadindicator { position: absolute; right: 25px; top: 10px; cursor: default; }
-.widgetside { background: transparent url('../images/bg.png') no-repeat 0px 0px; position: relative; padding: 10px; width: 380px; height: 330px; }
+.widgetside { position: relative; width: 400px; height: 350px; }
+.widgetside .widgetcontent { padding: 20px 20px; height: 310px; position: relative; }
+
+#front { background: transparent url('../images/bg-front.png') no-repeat 0px 0px; }
+#back { background: transparent url('../images/bg-back.png') no-repeat 0px 0px; }
 
 #reporthours { width: 40px; }
 #todolist { height: 70px; overflow: auto; width: 200px; }
 
-label { width: 110px; float: left; }
+label { width: 100px; float: left; }
 input[type=text],
 input[type=password] { font-size: 14px; padding: 2px; }
 #back input[type=text],
@@ -19,3 +24,5 @@ input[type=password] { font-size: 14px; padding: 2px; }
 #show_project:hover { color: #fff; }
 
 input[type=text].error { background: #fcc; }
+
+#your_user_id { position: absolute; bottom: 20px; left: 20px; color: #999; font-size: 9px; }

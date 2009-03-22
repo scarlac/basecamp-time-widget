@@ -19,81 +19,84 @@
 	
 	<body onload="setup()">
 		<div id="front" class="widgetside">
-			<div class="loadindicator"><img src="images/ajax-loader.gif" alt="Loading..."/></div>
-			<b>Front</b><br/>
-			
-			<p>
-				<b>Project / To-Do:</b><br/>
-				<select id="projects"><option disabled="disabled" value="">- No projects -</option></select> <a href="#" id="show_project">(open project)</a><br/>
-				<select id="todos"><option disabled="disabled" value="">- No todos -</option></select><br/>
-				<!--<input type="button" value="Pull todos on project" onclick="loadTodos()" />-->
-			</p>
-			
-			<p>
-				<b>Stopwatch:</b><br/>
-				<span id="time">00:00:00</span>
-				<input type="button" value="Start" id="starttime" />
-				<input type="button" value="Stop" id="stoptime" />
-			</p>
-			
-			<p id="reportcontainer">
-				<b>Report time</b><br/>
-				<input type="text" value="Description" id="reportdescription" />
-				<input type="text" value="0,0" id="reporthours" /> hours <input type="button" id="reportbtn" value="Report" /><br/>
-				Date: <select id="reportdate_m"><option/></select><select id="reportdate_d"><option/></select><select id="reportdate_y"><option/></select><br/>
-			</p>
-			
-			<div id="info">&nbsp;</div>
+			<div class="widgetcontent">
+				<div class="loadindicator"><img src="images/ajax-loader.gif" alt="Loading..."/></div>
+				<b>Front</b><br/>
+				
+				<p>
+					<b>Project / To-Do:</b><br/>
+					<select id="projects"><option disabled="disabled" value="">- No projects -</option></select> <a href="#" id="show_project">(open project)</a><br/>
+					<select id="todos"><option disabled="disabled" value="">- No todos -</option></select><br/>
+					<!--<input type="button" value="Pull todos on project" onclick="loadTodos()" />-->
+				</p>
+				
+				<p>
+					<b>Stopwatch:</b><br/>
+					<span id="time">00:00:00</span>
+					<input type="button" value="Start" id="starttime" />
+					<input type="button" value="Stop" id="stoptime" />
+				</p>
+				
+				<p id="reportcontainer">
+					<b>Report time</b><br/>
+					<input type="text" value="Description" id="reportdescription" />
+					<input type="text" value="0,0" id="reporthours" /> hours <input type="button" id="reportbtn" value="Report" /><br/>
+					Date: <select id="reportdate_m"><option/></select><select id="reportdate_d"><option/></select><select id="reportdate_y"><option/></select><br/>
+				</p>
+				
+				<div id="info">&nbsp;</div>
+			</div>
 		</div>
 		<div id="back" class="widgetside" style="display:none">
-			<div class="loadindicator"><img src="images/ajax-loader.gif" alt="Loading..."/></div>
-			<b>Back</b><br/>
-			
-			<div id="your_user_id">N/A</div>
-			
-			<form action="#" method="get" id="login_form">
-				<p>
-					<label>Username</label>
-					<input type="text" value="" id="bc_username" />
-				</p>
-				<p>
-					<label>Password</label>
-					<input type="password" value="" id="bc_password" />
-				</p>
-				<p>
-					<label>Basecamp URL</label>
-					<input type="text" value="https://konstellationdk.basecamphq.com" id="bc_base_url" />
-				</p>
-				<p style="display:none">
-					<label>User ID</label>
-					<input type="text" value="0" id="bc_user_id" />
-				</p>
-				<p>
-					<label>Round time to:</label>
-					<select id="roundtime">
-						<option value="60">Whole hours only</option>
-						<option value="30">1/2 hour (30 minutes)</option>
-						<option value="15">1/4 hour (15 minutes)</option>
-						<option value="10">1/6 hour (10 minutes)</option>
-						<option value="5">1/12 hour (5 minutes)</option>
-					</select>
-				</p>
-				<p>
-					<input type="submit" value="Login" />
-				</p>
-			</form>
-			
-			<span onclick="$('#debug').slideToggle(250)" style="cursor:pointer">Debug...</span><br/>
-			<div id="debug" style="display: none; padding: 10px; border: 1px solid white; width: 200px;">
-				<p>
-					<input type="button" value="Reload Projects" onclick="pullProjects()" />
-				</p>
-				<p>
-					<input type="button" value="Get User Id" onclick="pullUserId()" />
-				</p>
+			<div class="widgetcontent">
+				<div class="loadindicator"><img src="images/ajax-loader.gif" alt="Loading..."/></div>
+				<b>Back</b><br/>
+				
+				<div id="your_user_id">N/A</div>
+				
+				<form action="#" method="get" id="login_form">
+					<p>
+						<label>Username</label>
+						<input type="text" value="" id="bc_username" />
+					</p>
+					<p>
+						<label>Password</label>
+						<input type="password" value="" id="bc_password" />
+					</p>
+					<p>
+						<label>Basecamp URL</label>
+						<input type="text" value="https://konstellationdk.basecamphq.com" id="bc_base_url" />
+					</p>
+					<p style="display:none">
+						<label>User ID</label>
+						<input type="text" value="0" id="bc_user_id" />
+					</p>
+					<p>
+						<label>Round time to:</label>
+						<select id="roundtime">
+							<option value="60">Whole hours only</option>
+							<option value="30">1/2 hour (30 minutes)</option>
+							<option value="15">1/4 hour (15 minutes)</option>
+							<option value="10">1/6 hour (10 minutes)</option>
+							<option value="5">1/12 hour (5 minutes)</option>
+						</select>
+					</p>
+					<p>
+						<input type="submit" value="Login" />
+					</p>
+				</form>
+				
+				<span onclick="$('#debug').slideToggle(250)" style="cursor:pointer">Debug...</span><br/>
+				<div id="debug" style="display: none; padding: 10px; border: 1px solid white; width: 200px;">
+					<p>
+						<input type="button" value="Reload Projects" onclick="pullProjects()" /><br/>
+						<input type="button" value="Get User Id" onclick="pullUserId()" /><br/>
+						<input type="button" value="Show front" onclick="showFront()" /><br/>
+					</p>
+				</div>
+				
+				<div id="done">&nbsp;</div>
 			</div>
-			
-			<div id="done">&nbsp;</div>
 		</div>
 	</body>
 </html>
