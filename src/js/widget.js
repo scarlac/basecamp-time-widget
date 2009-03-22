@@ -49,6 +49,7 @@ function setup() {
 	if(HOUR_PRECISION == null) HOUR_PRECISION = 30; // * 30 minutes of default rounding (1/2 hour)
 	if(BC_USER_ID == null || BC_USER_ID == 0) BC_USER_ID = 0;
 	BC_USER_ID = parseInt(BC_USER_ID); // * ensure it's an int when it gets read from settings
+	$("#your_user_id").text(BC_USER_ID);
 	
 	ajaxOptions.username = BC_USERNAME;
 	ajaxOptions.password = BC_PASSWORD;
@@ -84,7 +85,6 @@ function setup() {
 	$("#bc_username").val(BC_USERNAME);
 	$("#bc_password").val(BC_PASSWORD);
 	$("#bc_base_url").val(BC_BASE_URL);
-	$("#bc_user_id").val(BC_USER_ID);
 	
 	$("#reportdate_d").val(today.getDate());
 	$("#reportdate_m").val(today.getMonth());
@@ -93,7 +93,7 @@ function setup() {
 	$("#reportcontainer").hide();
 	$("#show_project").hide();
 	$("#done").hide(); // * initially hide until user logs in
-	showBack();
+	showBack(false);
 	// }}}
 	
 	// * ui hooks {{{
@@ -109,28 +109,35 @@ function setup() {
 	// }}}
 }
 
-function showBack() {
+function showBack(animate) {
+	if(animate == undefined)
+		animate = true;
+	
 	var front = document.getElementById("front");
 	var back = document.getElementById("back");
 	
-	widget.prepareForTransition("ToBack");
+	if(animate)
+		widget.prepareForTransition("ToBack");
 	
 	front.style.display="none";
 	back.style.display="block";
 	
-	setTimeout('widget.performTransition();', 0);
+	if(animate)
+		setTimeout('widget.performTransition();', 0);
 }
 
-function showFront() {
+function showFront(animate) {
 	var front = document.getElementById("front");
 	var back = document.getElementById("back");
 	
-	widget.prepareForTransition("ToFront");
+	if(animate)
+		widget.prepareForTransition("ToFront");
 	
 	back.style.display="none";
 	front.style.display="block";
 	
-	setTimeout('widget.performTransition();', 0);
+	if(animate)
+		setTimeout('widget.performTransition();', 0);
 }
 
 // * Temporary debugging functions {{{
@@ -355,39 +362,76 @@ function reportTime() {
 }
 
 function submitLogin() {
-	var username = $("#bc_username").val();
-	var password = $("#bc_password").val();
-	var base_url = $("#bc_base_url").val();
-	
-	// * todo: make some better validation, e.g. url-validation
-	if(username != '' && password != '' && base_url != '') {
-		var usernameChanged = (BC_USERNAME.toLowerCase() != username);
-		widget.setPreferenceForKey(username, "username");
-		widget.setPreferenceForKey(password, "password");
-		widget.setPreferenceForKey(base_url, "base_url");
-		BC_USERNAME = username;
-		BC_PASSWORD = password;
-		BC_BASE_URL = base_url;
-		ajaxOptions.username = BC_USERNAME;
-		ajaxOptions.password = BC_PASSWORD;
+	try
+	{
+		var username = $("#bc_username").removeClass("error").val();
+		var password = $("#bc_password").removeClass("error").val();
+		var base_url = $("#bc_base_url").removeClass("error").val();
 		
-		pullProjects(function() {
-			function enableFront() {
-				$("#done").show();
-				showFront();
-			}
+		// * todo: make some better validation, e.g. url-validation
+		if(validateLoginForm()) {
+			var usernameChanged = true; // * assume the worst
+			if(BC_USERNAME != null)
+				usernameChanged = (username.toLowerCase() != BC_USERNAME.toLowerCase());
+			widget.setPreferenceForKey(username, "username");
+			widget.setPreferenceForKey(password, "password");
+			widget.setPreferenceForKey(base_url, "base_url");
+			BC_USERNAME = username;
+			BC_PASSWORD = password;
+			BC_BASE_URL = base_url;
+			ajaxOptions.username = BC_USERNAME;
+			ajaxOptions.password = BC_PASSWORD;
 			
-			// * only pull user id if we haven't got it
-			// * else: just show the front now
-			if(usernameChanged && BC_USER_ID == 0) {
-				pullUserId(enableFront);
-			} else {
-				enableFront();
-			}
-		});
+			pullProjects(function() {
+				function enableFront() {
+					$("#done").show();
+					showFront();
+					$("#your_user_id").text(BC_USER_ID);
+				}
+				
+				// * only pull user id if we haven't got it
+				// * else: just show the front now
+				if(usernameChanged || BC_USER_ID == 0) {
+					pullUserId(enableFront);
+				} else {
+					enableFront();
+				}
+			});
+		}
+	} catch(e) {
+		alert(e.message);
 	}
 	
 	return false;
+}
+
+// * Validates and sanitizes the form data
+function validateLoginForm() {
+	var success = true;
+	var username = $("#bc_username").removeClass("error").val();
+	var password = $("#bc_password").removeClass("error").val();
+	var base_url = $("#bc_base_url").removeClass("error").val();
+	
+	if(username.length == 0) {
+		$("#bc_username").addClass("error");
+		success = false;
+	}
+	if(password.length == 0) {
+		$("#bc_password").addClass("error");
+		success = false;
+	}
+	var isURL = /^(http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?$/;
+	if(base_url.length == 0 || !isURL.test(base_url)) {
+		$("#bc_base_url").addClass("error");
+		success = false;
+	}
+	
+	// * If we're OK, sanitize the data
+	if(success) {
+		// * remove trailing slashes
+		$("#bc_base_url").val($("#bc_base_url").val().replace(/^(.*?)\/+$/, '$1'));
+	}
+	return success;
 }
 
 function startTimer() {
