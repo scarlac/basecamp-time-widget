@@ -46,8 +46,8 @@ function setup() {
 	BC_BASE_URL = widget.preferenceForKey("base_url");
 	BC_USER_ID  = widget.preferenceForKey("user_id");
 	HOUR_PRECISION = widget.preferenceForKey("hour_precision");
-	if(HOUR_PRECISION == '') HOUR_PRECISION = 30; // * 30 minutes of default rounding (1/2 hour)
-	if(BC_USER_ID == '') BC_USER_ID = 0; // * 15 minutes of default rounding (1/4 hour)
+	if(HOUR_PRECISION == null) HOUR_PRECISION = 30; // * 30 minutes of default rounding (1/2 hour)
+	if(BC_USER_ID == null || BC_USER_ID == 0) BC_USER_ID = 0;
 	BC_USER_ID = parseInt(BC_USER_ID); // * ensure it's an int when it gets read from settings
 	
 	ajaxOptions.username = BC_USERNAME;
@@ -361,6 +361,7 @@ function submitLogin() {
 	
 	// * todo: make some better validation, e.g. url-validation
 	if(username != '' && password != '' && base_url != '') {
+		var usernameChanged = (BC_USERNAME.toLowerCase() != username);
 		widget.setPreferenceForKey(username, "username");
 		widget.setPreferenceForKey(password, "password");
 		widget.setPreferenceForKey(base_url, "base_url");
@@ -378,7 +379,7 @@ function submitLogin() {
 			
 			// * only pull user id if we haven't got it
 			// * else: just show the front now
-			if(BC_USER_ID == 0) {
+			if(usernameChanged && BC_USER_ID == 0) {
 				pullUserId(enableFront);
 			} else {
 				enableFront();
