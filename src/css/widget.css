@@ -21,7 +21,7 @@ input[type=password] { font-size: 14px; padding: 2px; }
 
 #show_project { text-decoration: none; font-size: 9px; color: #000; position: absolute; right: 25px; top: 7px;  }
 #show_project:hover { color: #666; }
-#watch { background: transparent url('../images/watch.png') no-repeat center center; width: 47px; height: 67px; left: 121px; top: 40px; position: absolute; }
+#watch { background: transparent url('../images/watch.png') no-repeat center center; width: 56px; height: 63px; left: 117px; top: 40px; position: absolute; }
 
 input[type=text].error { background: #fcc; }
 
