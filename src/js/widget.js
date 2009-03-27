@@ -91,6 +91,7 @@ function setup() {
 	$("#reportdate_y").val(today.getFullYear());
 	$("#roundtime").val(HOUR_PRECISION);
 	$("#reportcontainer").hide();
+	$("#reportdate").hide();
 	$("#show_project").hide();
 	$("#done").hide(); // * initially hide until user logs in
 	showBack(false);
@@ -106,6 +107,7 @@ function setup() {
 	$("#reporthours").keydown(keyDownTime);
 	$("#roundtime").change(changeRoundTime);
 	$("#show_project").click(openProjectURL);
+	$("#reportdate_toggle").click(function() { $("#reportdate").fadeToggle(200) });
 	// }}}
 }
 
@@ -442,6 +444,7 @@ function validateLoginForm() {
 
 function startTimer() {
 	globalTimer.start();
+	$("#watch").shake(20, 5, 5);
 	$("#starttime").attr("disabled", true);
 	$("#stoptime").attr("disabled", false);
 }
@@ -455,6 +458,7 @@ function stopTimer() {
 			$("#reporthours").val(hours);
 	}
 	globalTimer.stop();
+	$("#watch").shake(20, 5, 5);
 	$("#starttime").attr("disabled", false);
 	$("#stoptime").attr("disabled", true);
 }

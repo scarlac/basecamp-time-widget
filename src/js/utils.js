@@ -26,6 +26,29 @@ function roundNumber(num, dec) {
 	return result;
 }
 
+jQuery.fn.fadeToggle = function(speed, easing, callback) { 
+	return this.animate({opacity: 'toggle'}, speed, easing, callback); 
+}
+
+jQuery.fn.shake = function(shakeSpeed, moveBy, shakeTimes){ 
+	if(shakeSpeed == undefined)
+		shakeSpeed = 50;
+	if(moveBy == undefined)
+		moveBy = 10;
+	if(shakeTimes == undefined)
+		shakeTimes = 2;
+     this.each(function(init){
+          var jqNode = $(this);
+          jqNode.animate({ left: "-=" + moveBy},shakeSpeed / 2); 
+          for (var x = 1; x <= shakeTimes; x++){ 
+               jqNode.animate({ left: "+=" + moveBy },shakeSpeed) 
+               .animate({ left: "-=" + moveBy },shakeSpeed) 
+          } 
+          jqNode.animate({ left: "+=" + moveBy },shakeSpeed / 2); 
+     }); 
+	 return this;
+}
+
 // * enable widget object so browsers don't barf and no need for fail-safe code in widget
 function enableBrowserSupport() {
 	if(!window.widget) {

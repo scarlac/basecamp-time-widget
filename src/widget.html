@@ -20,31 +20,29 @@
 	<body onload="setup()">
 		<div id="front" class="widgetside">
 			<div class="widgetcontent">
+				<div id="watch"></div>
 				<div class="loadindicator"><img src="images/ajax-loader.gif" alt="Loading..."/></div>
 				
-				<h2>Select Project</h2>
-				<p>
-					<select id="projects"><option disabled="disabled" value="">- No projects -</option></select>
-					<a href="#" id="show_project">(open project)</a>
-				</p>
+				<div id="projects_container">
+					<select id="projects"><option disabled="disabled" value="">Select a project &raquo;</option></select>
+					<a href="#" id="show_project">(open)</a>
+				</div>
 				
-				<h2>Stopwatch</h2>
-				<p>
+				<div id="time_container">
 					<span id="time">00:00:00</span>
+					<input type="text" value="0,0" id="reporthours" />
 					<input type="button" value="Start" id="starttime" />
 					<input type="button" value="Stop" id="stoptime" />
-				</p>
+				</div>
 				
 				<div id="reportcontainer">
-					<h2>Report time</h2>
-					<p>
-						<select id="todos"><option disabled="disabled" value="">- No todos -</option></select><br/>
-						<input type="text" value="Description" id="reportdescription" />
-						<input type="text" value="0,0" id="reporthours" /> hours <input type="button" id="reportbtn" value="Report" /><br/>
-					</p>
-					<p>
-						Date: <select id="reportdate_m"><option/></select><select id="reportdate_d"><option/></select><select id="reportdate_y"><option/></select><br/>
-					</p>
+					<div>
+						<select id="todos"><option disabled="disabled" value="">Select a todo &raquo;</option></select><br/>
+						<input type="text" value="Description" id="reportdescription" /><br/>
+						<div id="reportdate_toggle">· change date</div>
+						<div id="reportdate">Date: <select id="reportdate_m"><option/></select><select id="reportdate_d"><option/></select><select id="reportdate_y"><option/></select></div>
+						<input type="button" id="reportbtn" value="Report" /><br/>
+					</div>
 				</div>
 				
 				<div id="info">&nbsp;</div>
@@ -56,15 +54,15 @@
 				<br/>
 				<form action="#" method="get" id="login_form">
 					<p>
-						<label>Username</label>
+						<label>Username:</label>
 						<input type="text" value="" id="bc_username" />
 					</p>
 					<p>
-						<label>Password</label>
+						<label>Password:</label>
 						<input type="password" value="" id="bc_password" />
 					</p>
 					<p>
-						<label>Basecamp URL</label>
+						<label>Basecamp URL:</label>
 						<input type="text" value="https://konstellationdk.basecamphq.com" id="bc_base_url" />
 					</p>
 					<p style="display:none">
@@ -75,14 +73,14 @@
 						<label>Round time to:</label>
 						<select id="roundtime">
 							<option value="60">Whole hours only</option>
-							<option value="30">1/2 hour (30 minutes)</option>
-							<option value="15">1/4 hour (15 minutes)</option>
-							<option value="10">1/6 hour (10 minutes)</option>
-							<option value="5">1/12 hour (5 minutes)</option>
+							<option value="30">1/2 hour (30 min)</option>
+							<option value="15">1/4 hour (15 min)</option>
+							<option value="10">1/6 hour (10 min)</option>
+							<option value="5">1/12 hour  (5 min)</option>
 						</select>
 					</p>
 					<p>
-						<input type="submit" value="Login" />
+						<input type="submit" id="loginbtn" value="Login" />
 					</p>
 				</form>
 				
