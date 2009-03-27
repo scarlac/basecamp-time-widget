@@ -1,0 +1,693 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="386.70999"
+   height="545.77283"
+   id="svg2"
+   sodipodi:version="0.32"
+   inkscape:version="0.46"
+   sodipodi:docname="Icon.svg"
+   inkscape:output_extension="org.inkscape.output.svg.inkscape"
+   inkscape:export-filename="/Users/seph/Desktop/stopwatch_paper.png"
+   inkscape:export-xdpi="62.639782"
+   inkscape:export-ydpi="62.639782"
+   version="1.0">
+  <defs
+     id="defs4">
+    <linearGradient
+       id="linearGradient8272">
+      <stop
+         id="stop8274"
+         offset="0"
+         style="stop-color:#000000;stop-opacity:1;" />
+      <stop
+         id="stop8276"
+         offset="1"
+         style="stop-color:#000000;stop-opacity:0;" />
+    </linearGradient>
+    <linearGradient
+       id="linearGradient8028">
+      <stop
+         id="stop8030"
+         offset="0"
+         style="stop-color:#000000;stop-opacity:1;" />
+      <stop
+         style="stop-color:#000000;stop-opacity:1;"
+         offset="0.83898318"
+         id="stop8032" />
+      <stop
+         id="stop8034"
+         offset="1"
+         style="stop-color:#000000;stop-opacity:0;" />
+    </linearGradient>
+    <linearGradient
+       id="linearGradient7881">
+      <stop
+         style="stop-color:#000000;stop-opacity:1;"
+         offset="0"
+         id="stop7883" />
+      <stop
+         id="stop7889"
+         offset="0.18367347"
+         style="stop-color:#000000;stop-opacity:1;" />
+      <stop
+         style="stop-color:#000000;stop-opacity:0;"
+         offset="1"
+         id="stop7885" />
+    </linearGradient>
+    <linearGradient
+       inkscape:collect="always"
+       id="linearGradient7792">
+      <stop
+         style="stop-color:#ffffff;stop-opacity:1;"
+         offset="0"
+         id="stop7794" />
+      <stop
+         style="stop-color:#ffffff;stop-opacity:0;"
+         offset="1"
+         id="stop7796" />
+    </linearGradient>
+    <linearGradient
+       id="linearGradient3401">
+      <stop
+         style="stop-color:#000000;stop-opacity:0"
+         offset="0"
+         id="stop3403" />
+      <stop
+         style="stop-color:#000000;stop-opacity:1"
+         offset="1"
+         id="stop3405" />
+    </linearGradient>
+    <linearGradient
+       id="linearGradient3367">
+      <stop
+         style="stop-color:#ffffff;stop-opacity:1;"
+         offset="0"
+         id="stop3369" />
+      <stop
+         id="stop3375"
+         offset="0.5"
+         style="stop-color:#ffffff;stop-opacity:0.72950822;" />
+      <stop
+         style="stop-color:#ffffff;stop-opacity:0.29508197;"
+         offset="0.75"
+         id="stop3377" />
+      <stop
+         style="stop-color:#ffffff;stop-opacity:0;"
+         offset="1"
+         id="stop3371" />
+    </linearGradient>
+    <linearGradient
+       id="linearGradient3359">
+      <stop
+         style="stop-color:#ffffff;stop-opacity:1;"
+         offset="0"
+         id="stop3361" />
+      <stop
+         style="stop-color:#ffffff;stop-opacity:0;"
+         offset="1"
+         id="stop3363" />
+    </linearGradient>
+    <linearGradient
+       inkscape:collect="always"
+       id="linearGradient3351">
+      <stop
+         style="stop-color:#ffffff;stop-opacity:1;"
+         offset="0"
+         id="stop3353" />
+      <stop
+         style="stop-color:#ffffff;stop-opacity:0;"
+         offset="1"
+         id="stop3355" />
+    </linearGradient>
+    <linearGradient
+       id="linearGradient3335">
+      <stop
+         style="stop-color:#ffffff;stop-opacity:1;"
+         offset="0"
+         id="stop3337" />
+      <stop
+         style="stop-color:#ffffff;stop-opacity:0;"
+         offset="1"
+         id="stop3339" />
+    </linearGradient>
+    <linearGradient
+       id="linearGradient3327">
+      <stop
+         style="stop-color:#ffffff;stop-opacity:1;"
+         offset="0"
+         id="stop3329" />
+      <stop
+         style="stop-color:#ffffff;stop-opacity:0;"
+         offset="1"
+         id="stop3331" />
+    </linearGradient>
+    <inkscape:perspective
+       sodipodi:type="inkscape:persp3d"
+       inkscape:vp_x="0 : 526.18109 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_z="744.09448 : 526.18109 : 1"
+       inkscape:persp3d-origin="372.04724 : 350.78739 : 1"
+       id="perspective10" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3335"
+       id="radialGradient3697"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(1,0,0,0.8443847,0,20.435612)"
+       cx="249.14758"
+       cy="116.25882"
+       fx="249.14758"
+       fy="116.25882"
+       r="57.784271" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3327"
+       id="radialGradient3699"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(1,0,0,0.8443847,0,27.367799)"
+       cx="293.59842"
+       cy="186.82288"
+       fx="293.59842"
+       fy="186.82288"
+       r="46.919655" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3401"
+       id="radialGradient3701"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(1.0000003,1.206414,-3.1965674,2.6496442,1164.1083,-940.25697)"
+       cx="267.18805"
+       cy="375.77405"
+       fx="267.18805"
+       fy="375.77405"
+       r="113.26562" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3351"
+       id="radialGradient3703"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(1.314344,1.492104e-8,-1.5148676e-8,1.3343957,-61.287393,-106.78992)"
+       cx="194.96922"
+       cy="335.91998"
+       fx="194.96922"
+       fy="335.91998"
+       r="151.07597" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3359"
+       id="radialGradient3705"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(1.493199,0,0,1.1177248,-175.37238,-57.448446)"
+       cx="355.58136"
+       cy="534.53998"
+       fx="355.58136"
+       fy="534.53998"
+       r="122.67063" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3367"
+       id="radialGradient3707"
+       gradientUnits="userSpaceOnUse"
+       cx="132.85715"
+       cy="299.50504"
+       fx="132.85715"
+       fy="299.50504"
+       r="25.714285" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient7792"
+       id="radialGradient3709"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(2.6352732,0,0,2.6210032,-434.39832,-679.42096)"
+       cx="265.11288"
+       cy="418.98703"
+       fx="265.11288"
+       fy="418.98703"
+       r="32.193336" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient8272"
+       id="radialGradient3711"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(-0.815539,-0.9248132,0.8174596,-0.7208702,377.85757,476.29878)"
+       cx="266.29752"
+       cy="132.0016"
+       fx="266.29752"
+       fy="132.0016"
+       r="48.246914" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3359"
+       id="radialGradient3713"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(1.5992734,0,0,1.1971261,-207.31181,-89.953508)"
+       cx="355.58136"
+       cy="534.53998"
+       fx="355.58136"
+       fy="534.53998"
+       r="122.67063" />
+    <filter
+       inkscape:collect="always"
+       id="filter3727">
+      <feGaussianBlur
+         inkscape:collect="always"
+         stdDeviation="10.12486"
+         id="feGaussianBlur3729" />
+    </filter>
+    <filter
+       inkscape:collect="always"
+       id="filter4070">
+      <feGaussianBlur
+         inkscape:collect="always"
+         stdDeviation="7.8748911"
+         id="feGaussianBlur4072" />
+    </filter>
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     gridtolerance="10000"
+     guidetolerance="10"
+     objecttolerance="10"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.6115597"
+     inkscape:cx="329.34491"
+     inkscape:cy="271.31386"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     inkscape:window-width="1250"
+     inkscape:window-height="783"
+     inkscape:window-x="664"
+     inkscape:window-y="165"
+     showborder="false" />
+  <metadata
+     id="metadata7">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-88.571411,-80.87506)">
+    <g
+       id="g3529"
+       transform="matrix(0.859237,0.1323329,-0.1323329,0.859237,-192.04805,-0.416759)"
+       inkscape:export-filename="/Users/seph/Desktop/paper.png"
+       inkscape:export-xdpi="62.639782"
+       inkscape:export-ydpi="62.639782">
+      <rect
+         y="51.070393"
+         x="517.74933"
+         height="542.87421"
+         width="387.53372"
+         id="rect2479"
+         style="opacity:1;fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:3;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+      <path
+         sodipodi:nodetypes="cc"
+         id="path3309"
+         d="M 547.72291,88.679149 L 869.3094,88.679149"
+         style="fill:none;fill-rule:evenodd;stroke:#888888;stroke-width:3;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+      <path
+         style="fill:none;fill-rule:evenodd;stroke:#888888;stroke-width:3;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         d="M 547.72291,108.67915 L 869.3094,108.67915"
+         id="path3311"
+         sodipodi:nodetypes="cc" />
+      <path
+         sodipodi:nodetypes="cc"
+         id="path3313"
+         d="M 547.72291,128.67915 L 869.3094,128.67915"
+         style="fill:none;fill-rule:evenodd;stroke:#888888;stroke-width:3;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+      <path
+         style="fill:none;fill-rule:evenodd;stroke:#888888;stroke-width:3;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         d="M 547.72291,148.67915 L 869.3094,148.67915"
+         id="path3315"
+         sodipodi:nodetypes="cc" />
+      <path
+         sodipodi:nodetypes="cc"
+         id="path3317"
+         d="M 547.72291,168.67915 L 869.3094,168.67915"
+         style="fill:none;fill-rule:evenodd;stroke:#888888;stroke-width:3;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+      <path
+         style="fill:none;fill-rule:evenodd;stroke:#888888;stroke-width:3;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         d="M 547.72291,188.67915 L 869.3094,188.67915"
+         id="path3319"
+         sodipodi:nodetypes="cc" />
+      <path
+         sodipodi:nodetypes="cc"
+         id="path3323"
+         d="M 547.72291,228.67915 L 869.3094,228.67915"
+         style="fill:none;fill-rule:evenodd;stroke:#888888;stroke-width:3;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+      <path
+         style="fill:none;fill-rule:evenodd;stroke:#888888;stroke-width:3;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         d="M 547.72291,248.67915 L 869.3094,248.67915"
+         id="path3325"
+         sodipodi:nodetypes="cc" />
+      <path
+         sodipodi:nodetypes="cc"
+         id="path3327"
+         d="M 547.72291,268.67915 L 869.3094,268.67915"
+         style="fill:none;fill-rule:evenodd;stroke:#888888;stroke-width:3;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+      <path
+         style="fill:none;fill-rule:evenodd;stroke:#888888;stroke-width:3;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         d="M 547.72291,308.67915 L 869.3094,308.67915"
+         id="path3329"
+         sodipodi:nodetypes="cc" />
+      <path
+         sodipodi:nodetypes="cc"
+         id="path3331"
+         d="M 547.72291,328.67915 L 869.3094,328.67915"
+         style="fill:none;fill-rule:evenodd;stroke:#888888;stroke-width:3;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+      <path
+         style="fill:none;fill-rule:evenodd;stroke:#888888;stroke-width:3;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         d="M 547.72291,348.67915 L 869.3094,348.67915"
+         id="path3333"
+         sodipodi:nodetypes="cc" />
+      <path
+         sodipodi:nodetypes="cc"
+         id="path3335"
+         d="M 547.72291,368.67915 L 869.3094,368.67915"
+         style="fill:none;fill-rule:evenodd;stroke:#888888;stroke-width:3;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+      <path
+         sodipodi:nodetypes="cc"
+         id="path3321"
+         d="M 547.31486,208.67915 L 606.45618,208.67915"
+         style="fill:none;fill-rule:evenodd;stroke:#888888;stroke-width:3;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+      <path
+         style="fill:none;fill-rule:evenodd;stroke:#888888;stroke-width:3;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         d="M 547.60379,388.67915 L 792.57587,388.67915"
+         id="path3337"
+         sodipodi:nodetypes="cc" />
+      <path
+         style="fill:none;fill-rule:evenodd;stroke:#888888;stroke-width:3;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         d="M 547.72291,408.67915 L 869.3094,408.67915"
+         id="path3339"
+         sodipodi:nodetypes="cc" />
+      <path
+         sodipodi:nodetypes="cc"
+         id="path3341"
+         d="M 547.72291,428.67915 L 869.3094,428.67915"
+         style="fill:none;fill-rule:evenodd;stroke:#888888;stroke-width:3;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+      <path
+         style="fill:none;fill-rule:evenodd;stroke:#888888;stroke-width:3;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         d="M 547.72291,448.67915 L 869.3094,448.67915"
+         id="path3343"
+         sodipodi:nodetypes="cc" />
+      <path
+         sodipodi:nodetypes="cc"
+         id="path3345"
+         d="M 547.72291,468.67915 L 869.3094,468.67915"
+         style="fill:none;fill-rule:evenodd;stroke:#888888;stroke-width:3;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+      <path
+         style="fill:none;fill-rule:evenodd;stroke:#888888;stroke-width:3;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         d="M 547.72291,488.67915 L 869.3094,488.67915"
+         id="path3347"
+         sodipodi:nodetypes="cc" />
+      <path
+         sodipodi:nodetypes="cc"
+         id="path3349"
+         d="M 547.72291,508.67915 L 869.3094,508.67915"
+         style="fill:none;fill-rule:evenodd;stroke:#888888;stroke-width:3;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+      <path
+         style="fill:none;fill-rule:evenodd;stroke:#888888;stroke-width:3;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         d="M 547.72291,548.67915 L 869.3094,548.67915"
+         id="path3351"
+         sodipodi:nodetypes="cc" />
+    </g>
+    <g
+       id="g3845"
+       transform="translate(-508,8)"
+       style="opacity:0.45320197000000001;filter:url(#filter4070)">
+      <path
+         style="fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         d="M 793.72255,78.104733 C 753.00431,78.104733 719.9413,111.13649 719.9413,151.85473 C 719.9413,192.57297 753.0043,225.63598 793.72255,225.63598 C 834.44079,225.63598 867.47254,192.57297 867.47255,151.85473 C 867.47255,111.13649 834.44078,78.104734 793.72255,78.104733 z M 793.72255,92.292233 C 825.84853,92.292233 851.91005,118.35375 851.91005,150.47973 C 851.91004,182.60571 825.84853,208.69848 793.72255,208.69848 C 761.59658,208.69848 735.5038,182.60571 735.5038,150.47973 C 735.50381,118.35375 761.59657,92.292233 793.72255,92.292233 z"
+         id="path3736"
+         inkscape:export-filename="/Users/seph/Desktop/stopwatch.png"
+         inkscape:export-xdpi="62.639782"
+         inkscape:export-ydpi="62.639782" />
+      <path
+         style="fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:3;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         d="M 776.57326,238.81789 L 776.47752,211.64156 L 776.42965,186.0534 L 772.76543,184.92127 L 772.34501,172.47946 C 785.18627,168.92065 798.95769,169.11073 814.45438,172.33109 L 813.52921,184.77764 L 810.46548,185.93348 L 810.51335,211.52164 L 810.60908,238.69798"
+         id="path3742"
+         sodipodi:nodetypes="cccccccccc"
+         inkscape:export-filename="/Users/seph/Desktop/stopwatch.png"
+         inkscape:export-xdpi="62.639782"
+         inkscape:export-ydpi="62.639782" />
+      <path
+         transform="translate(513.44129,-3.2703267)"
+         sodipodi:type="arc"
+         style="fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         id="path3752"
+         sodipodi:cx="281.42856"
+         sodipodi:cy="433.79074"
+         sodipodi:rx="192.85715"
+         sodipodi:ry="192.85715"
+         d="M 474.28571,433.79074 A 192.85715,192.85715 0 1 1 88.571411,433.79074 A 192.85715,192.85715 0 1 1 474.28571,433.79074 z"
+         inkscape:export-filename="/Users/seph/Desktop/stopwatch.png"
+         inkscape:export-xdpi="62.639782"
+         inkscape:export-ydpi="62.639782" />
+    </g>
+    <g
+       id="g3554">
+      <path
+         inkscape:export-ydpi="62.639782"
+         inkscape:export-xdpi="62.639782"
+         inkscape:export-filename="/Users/seph/Desktop/stopwatch.png"
+         id="path3324"
+         d="M 280.28126,81.37506 C 239.56302,81.37506 206.50001,114.40682 206.50001,155.12506 C 206.50001,195.8433 239.56301,228.90631 280.28126,228.90631 C 320.9995,228.90631 354.03125,195.8433 354.03126,155.12506 C 354.03126,114.40682 320.99949,81.375061 280.28126,81.37506 z M 280.28126,95.56256 C 312.40724,95.56256 338.46876,121.62408 338.46876,153.75006 C 338.46875,185.87604 312.40724,211.96881 280.28126,211.96881 C 248.15529,211.96881 222.06251,185.87604 222.06251,153.75006 C 222.06252,121.62408 248.15528,95.56256 280.28126,95.56256 z"
+         style="fill:#818181;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+      <path
+         inkscape:export-ydpi="62.639782"
+         inkscape:export-xdpi="62.639782"
+         inkscape:export-filename="/Users/seph/Desktop/stopwatch.png"
+         style="fill:url(#radialGradient3697);fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         d="M 210.00104,135.52713 C 205.89179,150.86305 207.10193,166.3809 212.49926,180.11353 C 208.29594,167.18566 207.66367,152.93377 211.44177,138.8337 C 221.84356,100.01368 261.7929,76.948929 300.61292,87.350719 C 308.89006,89.568569 316.44628,93.136869 323.11914,97.74385 C 315.76049,91.973249 307.15083,87.551389 297.55219,84.979439 C 259.4383,74.766849 220.21363,97.41322 210.00104,135.52713 z"
+         id="path3320"
+         sodipodi:nodetypes="ccccsscs" />
+      <path
+         inkscape:export-ydpi="62.639782"
+         inkscape:export-xdpi="62.639782"
+         inkscape:export-filename="/Users/seph/Desktop/stopwatch.png"
+         sodipodi:nodetypes="ccccsscs"
+         id="path3322"
+         d="M 338.52835,172.45332 C 341.86498,160.00086 340.88237,147.40069 336.49985,136.25006 C 339.91287,146.74723 340.42625,158.31948 337.35851,169.76845 C 328.91247,201.28951 296.47441,220.01762 264.95335,211.57158 C 258.23248,209.77073 252.09698,206.87334 246.67875,203.13256 C 252.65383,207.81819 259.6447,211.40864 267.43859,213.49701 C 298.3863,221.78942 330.23593,203.40104 338.52835,172.45332 z"
+         style="fill:url(#radialGradient3699);fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:3;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0.78431373" />
+      <path
+         inkscape:export-ydpi="62.639782"
+         inkscape:export-xdpi="62.639782"
+         inkscape:export-filename="/Users/seph/Desktop/stopwatch.png"
+         sodipodi:nodetypes="cccccccccc"
+         id="rect3299"
+         d="M 263.13197,242.08822 L 263.03623,214.91189 L 262.98836,189.32373 L 259.32414,188.1916 L 258.90372,175.74979 C 271.74498,172.19098 285.5164,172.38106 301.01309,175.60142 L 300.08792,188.04797 L 297.02419,189.20381 L 297.07206,214.79197 L 297.16779,241.96831"
+         style="fill:#e2e2e2;fill-opacity:1;fill-rule:nonzero;stroke:#1f1f1f;stroke-width:3;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+      <rect
+         inkscape:export-ydpi="62.639782"
+         inkscape:export-xdpi="62.639782"
+         inkscape:export-filename="/Users/seph/Desktop/stopwatch.png"
+         style="fill:#1f1f1f;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:3;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         id="rect8168"
+         width="0.94997036"
+         height="55.53159"
+         x="293.53046"
+         y="186.87398" />
+      <rect
+         inkscape:export-ydpi="62.639782"
+         inkscape:export-xdpi="62.639782"
+         inkscape:export-filename="/Users/seph/Desktop/stopwatch.png"
+         y="186.87398"
+         x="265.49509"
+         height="55.531277"
+         width="0.94997036"
+         id="rect7998"
+         style="fill:#1f1f1f;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:3;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+      <path
+         inkscape:export-ydpi="62.639782"
+         inkscape:export-xdpi="62.639782"
+         inkscape:export-filename="/Users/seph/Desktop/stopwatch.png"
+         sodipodi:nodetypes="ccccc"
+         id="rect7879"
+         d="M 273.92252,185.60041 C 279.24855,184.43373 283.32585,184.70863 286.2734,185.60041 L 286.2734,241.26329 L 273.92252,241.26329 L 273.92252,185.60041 z"
+         style="fill:#1f1f1f;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:3;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1" />
+      <path
+         inkscape:export-ydpi="62.639782"
+         inkscape:export-xdpi="62.639782"
+         inkscape:export-filename="/Users/seph/Desktop/stopwatch.png"
+         sodipodi:nodetypes="ccc"
+         id="path3304"
+         d="M 296.24832,185.97894 C 284.4537,183.91643 275.75614,183.83093 263.56652,185.96263 C 276.52051,184.98218 287.17434,184.9889 296.24832,185.97894 z"
+         style="fill:#1f1f1f;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+      <path
+         inkscape:export-ydpi="62.639782"
+         inkscape:export-xdpi="62.639782"
+         inkscape:export-filename="/Users/seph/Desktop/stopwatch.png"
+         d="M 474.28571,433.79074 A 192.85715,192.85715 0 1 1 88.571411,433.79074 A 192.85715,192.85715 0 1 1 474.28571,433.79074 z"
+         sodipodi:ry="192.85715"
+         sodipodi:rx="192.85715"
+         sodipodi:cy="433.79074"
+         sodipodi:cx="281.42856"
+         id="path2385"
+         style="fill:#1f1f1f;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         sodipodi:type="arc" />
+      <path
+         inkscape:export-ydpi="62.639782"
+         inkscape:export-xdpi="62.639782"
+         inkscape:export-filename="/Users/seph/Desktop/stopwatch.png"
+         transform="matrix(0.8533408,0,0,0.8533408,41.274082,63.619395)"
+         sodipodi:type="arc"
+         style="fill:#e2e2e2;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         id="path2389"
+         sodipodi:cx="281.42856"
+         sodipodi:cy="433.79074"
+         sodipodi:rx="192.85715"
+         sodipodi:ry="192.85715"
+         d="M 474.28571,433.79074 A 192.85715,192.85715 0 1 1 88.571411,433.79074 A 192.85715,192.85715 0 1 1 474.28571,433.79074 z" />
+      <path
+         inkscape:export-ydpi="62.639782"
+         inkscape:export-xdpi="62.639782"
+         inkscape:export-filename="/Users/seph/Desktop/stopwatch.png"
+         id="path3383"
+         d="M 281.4375,269.21875 C 190.59327,269.21875 116.84375,342.93702 116.84375,433.78125 C 116.84375,452.12987 119.85714,469.79559 125.40625,486.28125 C 125.18076,482.44516 125.03125,478.57985 125.03125,474.6875 C 125.03124,367.14498 212.33248,279.875 319.875,279.875 C 327.8348,279.875 335.66437,280.35213 343.375,281.28125 C 324.25032,273.49798 303.34765,269.21875 281.4375,269.21875 z"
+         style="opacity:0.63681593;fill:url(#radialGradient3701);fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+      <path
+         inkscape:export-ydpi="62.639782"
+         inkscape:export-xdpi="62.639782"
+         inkscape:export-filename="/Users/seph/Desktop/stopwatch.png"
+         sodipodi:nodetypes="ccccsscs"
+         id="path2391"
+         d="M 97.70551,382.51821 C 86.96195,422.61372 90.12585,463.18486 104.23706,499.0886 C 93.24755,465.28891 91.5945,428.02757 101.47228,391.1632 C 128.66758,289.66892 233.11445,229.36652 334.60871,256.56182 C 356.24914,262.36036 376.00475,271.68962 393.45084,283.7345 C 374.21178,268.64736 351.70195,257.08648 326.60649,250.36217 C 226.95837,223.66153 124.40616,282.87007 97.70551,382.51821 z"
+         style="opacity:0.93000034;fill:url(#radialGradient3703);fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+      <g
+         inkscape:export-ydpi="62.639782"
+         inkscape:export-xdpi="62.639782"
+         inkscape:export-filename="/Users/seph/Desktop/stopwatch.png"
+         transform="matrix(1.0359472,0,0,0.9835222,-10.118294,7.1475405)"
+         style="stroke:#000000;stroke-width:5.13129473;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         id="g3204">
+        <path
+           style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:5.13129473;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+           d="M 281.42847,273.52038 L 281.42847,298.64136"
+           id="path3186"
+           sodipodi:nodetypes="cc" />
+        <path
+           sodipodi:nodetypes="cc"
+           id="path3188"
+           d="M 131.06405,433.79066 L 158.38772,433.79066"
+           style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:5.13129473;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+           inkscape:transform-center-x="10.237162"
+           inkscape:transform-center-y="6.1166491" />
+        <path
+           inkscape:transform-center-y="10.132795"
+           inkscape:transform-center-x="-6.1389882"
+           style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:5.13129473;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+           d="M 281.42847,594.01305 L 281.42847,566.96804"
+           id="path3190"
+           sodipodi:nodetypes="cc" />
+        <path
+           sodipodi:nodetypes="cc"
+           id="path3192"
+           d="M 431.88908,433.79066 L 408.41414,433.79066"
+           style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:5.13129473;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+           inkscape:transform-center-x="-8.795225"
+           inkscape:transform-center-y="-6.1167356" />
+      </g>
+      <path
+         inkscape:export-ydpi="62.639782"
+         inkscape:export-xdpi="62.639782"
+         inkscape:export-filename="/Users/seph/Desktop/stopwatch.png"
+         style="opacity:0.93000034;fill:url(#radialGradient3705);fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:3;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0.78431373"
+         d="M 433.73795,479.0611 C 442.46151,446.50437 439.89249,413.56143 428.43447,384.40832 C 437.35774,411.85299 438.69997,442.10844 430.67941,472.04155 C 408.59739,554.45283 323.78865,603.41716 241.37738,581.33513 C 223.80579,576.62683 207.76463,569.05166 193.59875,559.27145 C 209.2205,571.52194 227.498,580.90912 247.87501,586.36913 C 328.78726,608.0495 412.05757,559.97338 433.73795,479.0611 z"
+         id="path2396"
+         sodipodi:nodetypes="ccccsscs" />
+      <path
+         inkscape:export-ydpi="62.639782"
+         inkscape:export-xdpi="62.639782"
+         inkscape:export-filename="/Users/seph/Desktop/stopwatch.png"
+         transform="matrix(0.8782051,0,0,0.8782051,72.370998,73.279419)"
+         d="M 158.57143,299.50504 A 25.714285,25.714285 0 1 1 107.14286,299.50504 A 25.714285,25.714285 0 1 1 158.57143,299.50504 z"
+         sodipodi:ry="25.714285"
+         sodipodi:rx="25.714285"
+         sodipodi:cy="299.50504"
+         sodipodi:cx="132.85715"
+         id="path3168"
+         style="opacity:0.93000034;fill:url(#radialGradient3707);fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         sodipodi:type="arc" />
+      <path
+         inkscape:export-ydpi="62.639782"
+         inkscape:export-xdpi="62.639782"
+         inkscape:export-filename="/Users/seph/Desktop/stopwatch.png"
+         transform="matrix(0.1111111,0,0,0.1111111,250.15871,385.59176)"
+         sodipodi:type="arc"
+         style="fill:#4c4c4c;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         id="path3269"
+         sodipodi:cx="281.42856"
+         sodipodi:cy="433.79074"
+         sodipodi:rx="192.85715"
+         sodipodi:ry="192.85715"
+         d="M 474.28571,433.79074 A 192.85715,192.85715 0 1 1 88.571411,433.79074 A 192.85715,192.85715 0 1 1 474.28571,433.79074 z" />
+      <path
+         inkscape:export-ydpi="62.639782"
+         inkscape:export-xdpi="62.639782"
+         inkscape:export-filename="/Users/seph/Desktop/stopwatch.png"
+         sodipodi:nodetypes="cccc"
+         id="path3275"
+         d="M 257.08382,455.8671 L 399.01026,354.85185 L 252.03306,448.79604 L 257.08382,455.8671 z"
+         style="fill:#4c4c4c;fill-opacity:1;fill-rule:evenodd;stroke:#4c4c4c;stroke-width:3;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+      <path
+         inkscape:export-ydpi="62.639782"
+         inkscape:export-xdpi="62.639782"
+         inkscape:export-filename="/Users/seph/Desktop/stopwatch.png"
+         d="M 474.28571,433.79074 A 192.85715,192.85715 0 1 1 88.571411,433.79074 A 192.85715,192.85715 0 1 1 474.28571,433.79074 z"
+         sodipodi:ry="192.85715"
+         sodipodi:rx="192.85715"
+         sodipodi:cy="433.79074"
+         sodipodi:cx="281.42856"
+         id="path3271"
+         style="fill:#232323;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         sodipodi:type="arc"
+         transform="matrix(8.5185175e-2,0,0,8.5185175e-2,257.45501,396.83819)" />
+      <path
+         inkscape:export-ydpi="62.639782"
+         inkscape:export-xdpi="62.639782"
+         inkscape:export-filename="/Users/seph/Desktop/stopwatch.png"
+         sodipodi:nodetypes="ccccsscs"
+         id="path7863"
+         d="M 232.05321,428.1507 C 232.05321,438.42627 235.40909,447.92453 241.08355,455.60538 C 236.29032,448.22762 233.50776,439.42397 233.50776,429.97647 C 233.50775,403.96579 254.61852,382.85504 280.6292,382.85503 C 286.17515,382.85504 291.49664,383.82003 296.43988,385.58232 C 290.873,383.20746 284.74998,381.88533 278.31858,381.88533 C 252.78102,381.88533 232.05321,402.61314 232.05321,428.1507 z"
+         style="opacity:0.93000034;fill:url(#radialGradient3709);fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+      <path
+         inkscape:export-ydpi="62.639782"
+         inkscape:export-xdpi="62.639782"
+         inkscape:export-filename="/Users/seph/Desktop/stopwatch.png"
+         sodipodi:nodetypes="cscc"
+         id="path8262"
+         d="M 316.77811,106.86449 C 310.64119,102.05197 303.46096,98.364242 295.45594,96.219301 C 263.66994,87.702262 230.95756,106.58876 222.44052,138.37478 C 219.01352,151.16454 220.02274,164.10603 224.52398,175.5587"
+         style="fill:none;fill-opacity:1;fill-rule:nonzero;stroke:url(#radialGradient3711);stroke-width:3.09264874;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+      <path
+         sodipodi:nodetypes="ccccsscs"
+         id="path2455"
+         d="M 445.0687,484.66878 C 454.41196,449.79927 451.66045,414.51612 439.38846,383.29202 C 448.94563,412.68632 450.38321,445.09106 441.79288,477.15057 C 418.14219,565.41621 327.30878,617.85888 239.04315,594.20818 C 220.22331,589.16541 203.04261,581.05211 187.87041,570.57713 C 204.6019,583.69787 224.1778,593.75191 246.00236,599.59979 C 332.66249,622.82029 421.84818,571.32893 445.0687,484.66878 z"
+         style="opacity:0.93000034;fill:url(#radialGradient3713);fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:3;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0.78431373"
+         inkscape:export-filename="/Users/seph/Desktop/stopwatch.png"
+         inkscape:export-xdpi="62.639782"
+         inkscape:export-ydpi="62.639782" />
+    </g>
+  </g>
+</svg>
