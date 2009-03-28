@@ -9,19 +9,34 @@
    xmlns:xlink="http://www.w3.org/1999/xlink"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   width="386.70999"
-   height="545.77283"
+   width="491.77899"
+   height="550.5025"
    id="svg2"
    sodipodi:version="0.32"
    inkscape:version="0.46"
    sodipodi:docname="Icon.svg"
    inkscape:output_extension="org.inkscape.output.svg.inkscape"
    inkscape:export-filename="/Users/seph/Desktop/stopwatch_paper.png"
-   inkscape:export-xdpi="62.639782"
-   inkscape:export-ydpi="62.639782"
+   inkscape:export-xdpi="10.299681"
+   inkscape:export-ydpi="10.299681"
    version="1.0">
   <defs
      id="defs4">
+    <linearGradient
+       id="linearGradient2819">
+      <stop
+         style="stop-color:#828282;stop-opacity:1;"
+         offset="0"
+         id="stop2821" />
+      <stop
+         id="stop3648"
+         offset="0.28749999"
+         style="stop-color:#525252;stop-opacity:1;" />
+      <stop
+         style="stop-color:#232323;stop-opacity:1;"
+         offset="1"
+         id="stop2823" />
+    </linearGradient>
     <linearGradient
        id="linearGradient8272">
       <stop
@@ -157,10 +172,18 @@
        inkscape:vp_z="744.09448 : 526.18109 : 1"
        inkscape:persp3d-origin="372.04724 : 350.78739 : 1"
        id="perspective10" />
+    <filter
+       inkscape:collect="always"
+       id="filter4070">
+      <feGaussianBlur
+         inkscape:collect="always"
+         stdDeviation="7.8748911"
+         id="feGaussianBlur4072" />
+    </filter>
     <radialGradient
        inkscape:collect="always"
        xlink:href="#linearGradient3335"
-       id="radialGradient3697"
+       id="radialGradient3628"
        gradientUnits="userSpaceOnUse"
        gradientTransform="matrix(1,0,0,0.8443847,0,20.435612)"
        cx="249.14758"
@@ -171,7 +194,7 @@
     <radialGradient
        inkscape:collect="always"
        xlink:href="#linearGradient3327"
-       id="radialGradient3699"
+       id="radialGradient3630"
        gradientUnits="userSpaceOnUse"
        gradientTransform="matrix(1,0,0,0.8443847,0,27.367799)"
        cx="293.59842"
@@ -182,7 +205,7 @@
     <radialGradient
        inkscape:collect="always"
        xlink:href="#linearGradient3401"
-       id="radialGradient3701"
+       id="radialGradient3632"
        gradientUnits="userSpaceOnUse"
        gradientTransform="matrix(1.0000003,1.206414,-3.1965674,2.6496442,1164.1083,-940.25697)"
        cx="267.18805"
@@ -193,7 +216,7 @@
     <radialGradient
        inkscape:collect="always"
        xlink:href="#linearGradient3351"
-       id="radialGradient3703"
+       id="radialGradient3634"
        gradientUnits="userSpaceOnUse"
        gradientTransform="matrix(1.314344,1.492104e-8,-1.5148676e-8,1.3343957,-61.287393,-106.78992)"
        cx="194.96922"
@@ -204,7 +227,7 @@
     <radialGradient
        inkscape:collect="always"
        xlink:href="#linearGradient3359"
-       id="radialGradient3705"
+       id="radialGradient3636"
        gradientUnits="userSpaceOnUse"
        gradientTransform="matrix(1.493199,0,0,1.1177248,-175.37238,-57.448446)"
        cx="355.58136"
@@ -215,7 +238,7 @@
     <radialGradient
        inkscape:collect="always"
        xlink:href="#linearGradient3367"
-       id="radialGradient3707"
+       id="radialGradient3638"
        gradientUnits="userSpaceOnUse"
        cx="132.85715"
        cy="299.50504"
@@ -224,8 +247,19 @@
        r="25.714285" />
     <radialGradient
        inkscape:collect="always"
+       xlink:href="#linearGradient2819"
+       id="radialGradient3640"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(1.0927275,0.9480014,-1.0019798,1.1549506,342.80914,-246.37641)"
+       cx="200.92969"
+       cy="360.72662"
+       fx="200.92969"
+       fy="360.72662"
+       r="192.85715" />
+    <radialGradient
+       inkscape:collect="always"
        xlink:href="#linearGradient7792"
-       id="radialGradient3709"
+       id="radialGradient3642"
        gradientUnits="userSpaceOnUse"
        gradientTransform="matrix(2.6352732,0,0,2.6210032,-434.39832,-679.42096)"
        cx="265.11288"
@@ -236,7 +270,7 @@
     <radialGradient
        inkscape:collect="always"
        xlink:href="#linearGradient8272"
-       id="radialGradient3711"
+       id="radialGradient3644"
        gradientUnits="userSpaceOnUse"
        gradientTransform="matrix(-0.815539,-0.9248132,0.8174596,-0.7208702,377.85757,476.29878)"
        cx="266.29752"
@@ -247,7 +281,7 @@
     <radialGradient
        inkscape:collect="always"
        xlink:href="#linearGradient3359"
-       id="radialGradient3713"
+       id="radialGradient3646"
        gradientUnits="userSpaceOnUse"
        gradientTransform="matrix(1.5992734,0,0,1.1971261,-207.31181,-89.953508)"
        cx="355.58136"
@@ -255,22 +289,6 @@
        fx="355.58136"
        fy="534.53998"
        r="122.67063" />
-    <filter
-       inkscape:collect="always"
-       id="filter3727">
-      <feGaussianBlur
-         inkscape:collect="always"
-         stdDeviation="10.12486"
-         id="feGaussianBlur3729" />
-    </filter>
-    <filter
-       inkscape:collect="always"
-       id="filter4070">
-      <feGaussianBlur
-         inkscape:collect="always"
-         stdDeviation="7.8748911"
-         id="feGaussianBlur4072" />
-    </filter>
   </defs>
   <sodipodi:namedview
      id="base"
@@ -283,16 +301,17 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="0.6115597"
-     inkscape:cx="329.34491"
-     inkscape:cy="271.31386"
+     inkscape:cx="51.693386"
+     inkscape:cy="270.71299"
      inkscape:document-units="px"
-     inkscape:current-layer="layer1"
+     inkscape:current-layer="g3597"
      showgrid="false"
-     inkscape:window-width="1250"
-     inkscape:window-height="783"
-     inkscape:window-x="664"
-     inkscape:window-y="165"
-     showborder="false" />
+     inkscape:window-width="1280"
+     inkscape:window-height="702"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     showborder="true"
+     showguides="true" />
   <metadata
      id="metadata7">
     <rdf:RDF>
@@ -301,7 +320,29 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <cc:license
+           rdf:resource="http://creativecommons.org/licenses/by-sa/3.0/" />
+        <dc:creator>
+          <cc:Agent>
+            <dc:title>Seph Soliman</dc:title>
+          </cc:Agent>
+        </dc:creator>
       </cc:Work>
+      <cc:License
+         rdf:about="http://creativecommons.org/licenses/by-sa/3.0/">
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#Reproduction" />
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#Distribution" />
+        <cc:requires
+           rdf:resource="http://creativecommons.org/ns#Notice" />
+        <cc:requires
+           rdf:resource="http://creativecommons.org/ns#Attribution" />
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#DerivativeWorks" />
+        <cc:requires
+           rdf:resource="http://creativecommons.org/ns#ShareAlike" />
+      </cc:License>
     </rdf:RDF>
   </metadata>
   <g
@@ -434,40 +475,40 @@
          sodipodi:nodetypes="cc" />
     </g>
     <g
-       id="g3845"
-       transform="translate(-508,8)"
-       style="opacity:0.45320197000000001;filter:url(#filter4070)">
-      <path
-         style="fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-         d="M 793.72255,78.104733 C 753.00431,78.104733 719.9413,111.13649 719.9413,151.85473 C 719.9413,192.57297 753.0043,225.63598 793.72255,225.63598 C 834.44079,225.63598 867.47254,192.57297 867.47255,151.85473 C 867.47255,111.13649 834.44078,78.104734 793.72255,78.104733 z M 793.72255,92.292233 C 825.84853,92.292233 851.91005,118.35375 851.91005,150.47973 C 851.91004,182.60571 825.84853,208.69848 793.72255,208.69848 C 761.59658,208.69848 735.5038,182.60571 735.5038,150.47973 C 735.50381,118.35375 761.59657,92.292233 793.72255,92.292233 z"
-         id="path3736"
-         inkscape:export-filename="/Users/seph/Desktop/stopwatch.png"
-         inkscape:export-xdpi="62.639782"
-         inkscape:export-ydpi="62.639782" />
-      <path
-         style="fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:3;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-         d="M 776.57326,238.81789 L 776.47752,211.64156 L 776.42965,186.0534 L 772.76543,184.92127 L 772.34501,172.47946 C 785.18627,168.92065 798.95769,169.11073 814.45438,172.33109 L 813.52921,184.77764 L 810.46548,185.93348 L 810.51335,211.52164 L 810.60908,238.69798"
-         id="path3742"
-         sodipodi:nodetypes="cccccccccc"
-         inkscape:export-filename="/Users/seph/Desktop/stopwatch.png"
-         inkscape:export-xdpi="62.639782"
-         inkscape:export-ydpi="62.639782" />
-      <path
-         transform="translate(513.44129,-3.2703267)"
-         sodipodi:type="arc"
-         style="fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-         id="path3752"
-         sodipodi:cx="281.42856"
-         sodipodi:cy="433.79074"
-         sodipodi:rx="192.85715"
-         sodipodi:ry="192.85715"
-         d="M 474.28571,433.79074 A 192.85715,192.85715 0 1 1 88.571411,433.79074 A 192.85715,192.85715 0 1 1 474.28571,433.79074 z"
-         inkscape:export-filename="/Users/seph/Desktop/stopwatch.png"
-         inkscape:export-xdpi="62.639782"
-         inkscape:export-ydpi="62.639782" />
-    </g>
-    <g
-       id="g3554">
+       id="g3597">
+      <g
+         style="opacity:0.45320201;filter:url(#filter4070)"
+         transform="translate(-508,8)"
+         id="g3845">
+        <path
+           inkscape:export-ydpi="62.639782"
+           inkscape:export-xdpi="62.639782"
+           inkscape:export-filename="/Users/seph/Desktop/stopwatch.png"
+           id="path3736"
+           d="M 793.72255,78.104733 C 753.00431,78.104733 719.9413,111.13649 719.9413,151.85473 C 719.9413,192.57297 753.0043,225.63598 793.72255,225.63598 C 834.44079,225.63598 867.47254,192.57297 867.47255,151.85473 C 867.47255,111.13649 834.44078,78.104734 793.72255,78.104733 z M 793.72255,92.292233 C 825.84853,92.292233 851.91005,118.35375 851.91005,150.47973 C 851.91004,182.60571 825.84853,208.69848 793.72255,208.69848 C 761.59658,208.69848 735.5038,182.60571 735.5038,150.47973 C 735.50381,118.35375 761.59657,92.292233 793.72255,92.292233 z"
+           style="fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+        <path
+           inkscape:export-ydpi="62.639782"
+           inkscape:export-xdpi="62.639782"
+           inkscape:export-filename="/Users/seph/Desktop/stopwatch.png"
+           sodipodi:nodetypes="cccccccccc"
+           id="path3742"
+           d="M 776.57326,238.81789 L 776.47752,211.64156 L 776.42965,186.0534 L 772.76543,184.92127 L 772.34501,172.47946 C 785.18627,168.92065 798.95769,169.11073 814.45438,172.33109 L 813.52921,184.77764 L 810.46548,185.93348 L 810.51335,211.52164 L 810.60908,238.69798"
+           style="fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:3;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+        <path
+           inkscape:export-ydpi="62.639782"
+           inkscape:export-xdpi="62.639782"
+           inkscape:export-filename="/Users/seph/Desktop/stopwatch.png"
+           d="M 474.28571,433.79074 A 192.85715,192.85715 0 1 1 88.571411,433.79074 A 192.85715,192.85715 0 1 1 474.28571,433.79074 z"
+           sodipodi:ry="192.85715"
+           sodipodi:rx="192.85715"
+           sodipodi:cy="433.79074"
+           sodipodi:cx="281.42856"
+           id="path3752"
+           style="fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+           sodipodi:type="arc"
+           transform="translate(513.44129,-3.2703267)" />
+      </g>
       <path
          inkscape:export-ydpi="62.639782"
          inkscape:export-xdpi="62.639782"
@@ -479,7 +520,7 @@
          inkscape:export-ydpi="62.639782"
          inkscape:export-xdpi="62.639782"
          inkscape:export-filename="/Users/seph/Desktop/stopwatch.png"
-         style="fill:url(#radialGradient3697);fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         style="fill:url(#radialGradient3628);fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
          d="M 210.00104,135.52713 C 205.89179,150.86305 207.10193,166.3809 212.49926,180.11353 C 208.29594,167.18566 207.66367,152.93377 211.44177,138.8337 C 221.84356,100.01368 261.7929,76.948929 300.61292,87.350719 C 308.89006,89.568569 316.44628,93.136869 323.11914,97.74385 C 315.76049,91.973249 307.15083,87.551389 297.55219,84.979439 C 259.4383,74.766849 220.21363,97.41322 210.00104,135.52713 z"
          id="path3320"
          sodipodi:nodetypes="ccccsscs" />
@@ -490,7 +531,7 @@
          sodipodi:nodetypes="ccccsscs"
          id="path3322"
          d="M 338.52835,172.45332 C 341.86498,160.00086 340.88237,147.40069 336.49985,136.25006 C 339.91287,146.74723 340.42625,158.31948 337.35851,169.76845 C 328.91247,201.28951 296.47441,220.01762 264.95335,211.57158 C 258.23248,209.77073 252.09698,206.87334 246.67875,203.13256 C 252.65383,207.81819 259.6447,211.40864 267.43859,213.49701 C 298.3863,221.78942 330.23593,203.40104 338.52835,172.45332 z"
-         style="fill:url(#radialGradient3699);fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:3;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0.78431373" />
+         style="fill:url(#radialGradient3630);fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:3;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0.78431373" />
       <path
          inkscape:export-ydpi="62.639782"
          inkscape:export-xdpi="62.639782"
@@ -566,7 +607,7 @@
          inkscape:export-filename="/Users/seph/Desktop/stopwatch.png"
          id="path3383"
          d="M 281.4375,269.21875 C 190.59327,269.21875 116.84375,342.93702 116.84375,433.78125 C 116.84375,452.12987 119.85714,469.79559 125.40625,486.28125 C 125.18076,482.44516 125.03125,478.57985 125.03125,474.6875 C 125.03124,367.14498 212.33248,279.875 319.875,279.875 C 327.8348,279.875 335.66437,280.35213 343.375,281.28125 C 324.25032,273.49798 303.34765,269.21875 281.4375,269.21875 z"
-         style="opacity:0.63681593;fill:url(#radialGradient3701);fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+         style="opacity:0.63681593;fill:url(#radialGradient3632);fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
       <path
          inkscape:export-ydpi="62.639782"
          inkscape:export-xdpi="62.639782"
@@ -574,7 +615,7 @@
          sodipodi:nodetypes="ccccsscs"
          id="path2391"
          d="M 97.70551,382.51821 C 86.96195,422.61372 90.12585,463.18486 104.23706,499.0886 C 93.24755,465.28891 91.5945,428.02757 101.47228,391.1632 C 128.66758,289.66892 233.11445,229.36652 334.60871,256.56182 C 356.24914,262.36036 376.00475,271.68962 393.45084,283.7345 C 374.21178,268.64736 351.70195,257.08648 326.60649,250.36217 C 226.95837,223.66153 124.40616,282.87007 97.70551,382.51821 z"
-         style="opacity:0.93000034;fill:url(#radialGradient3703);fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+         style="opacity:0.93000034;fill:url(#radialGradient3634);fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
       <g
          inkscape:export-ydpi="62.639782"
          inkscape:export-xdpi="62.639782"
@@ -613,7 +654,7 @@
          inkscape:export-ydpi="62.639782"
          inkscape:export-xdpi="62.639782"
          inkscape:export-filename="/Users/seph/Desktop/stopwatch.png"
-         style="opacity:0.93000034;fill:url(#radialGradient3705);fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:3;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0.78431373"
+         style="opacity:0.93000034;fill:url(#radialGradient3636);fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:3;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0.78431373"
          d="M 433.73795,479.0611 C 442.46151,446.50437 439.89249,413.56143 428.43447,384.40832 C 437.35774,411.85299 438.69997,442.10844 430.67941,472.04155 C 408.59739,554.45283 323.78865,603.41716 241.37738,581.33513 C 223.80579,576.62683 207.76463,569.05166 193.59875,559.27145 C 209.2205,571.52194 227.498,580.90912 247.87501,586.36913 C 328.78726,608.0495 412.05757,559.97338 433.73795,479.0611 z"
          id="path2396"
          sodipodi:nodetypes="ccccsscs" />
@@ -628,7 +669,7 @@
          sodipodi:cy="299.50504"
          sodipodi:cx="132.85715"
          id="path3168"
-         style="opacity:0.93000034;fill:url(#radialGradient3707);fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         style="opacity:0.93000034;fill:url(#radialGradient3638);fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
          sodipodi:type="arc" />
       <path
          inkscape:export-ydpi="62.639782"
@@ -661,7 +702,7 @@
          sodipodi:cy="433.79074"
          sodipodi:cx="281.42856"
          id="path3271"
-         style="fill:#232323;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         style="fill:url(#radialGradient3640);fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
          sodipodi:type="arc"
          transform="matrix(8.5185175e-2,0,0,8.5185175e-2,257.45501,396.83819)" />
       <path
@@ -671,7 +712,7 @@
          sodipodi:nodetypes="ccccsscs"
          id="path7863"
          d="M 232.05321,428.1507 C 232.05321,438.42627 235.40909,447.92453 241.08355,455.60538 C 236.29032,448.22762 233.50776,439.42397 233.50776,429.97647 C 233.50775,403.96579 254.61852,382.85504 280.6292,382.85503 C 286.17515,382.85504 291.49664,383.82003 296.43988,385.58232 C 290.873,383.20746 284.74998,381.88533 278.31858,381.88533 C 252.78102,381.88533 232.05321,402.61314 232.05321,428.1507 z"
-         style="opacity:0.93000034;fill:url(#radialGradient3709);fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+         style="opacity:0.93000034;fill:url(#radialGradient3642);fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
       <path
          inkscape:export-ydpi="62.639782"
          inkscape:export-xdpi="62.639782"
@@ -679,12 +720,12 @@
          sodipodi:nodetypes="cscc"
          id="path8262"
          d="M 316.77811,106.86449 C 310.64119,102.05197 303.46096,98.364242 295.45594,96.219301 C 263.66994,87.702262 230.95756,106.58876 222.44052,138.37478 C 219.01352,151.16454 220.02274,164.10603 224.52398,175.5587"
-         style="fill:none;fill-opacity:1;fill-rule:nonzero;stroke:url(#radialGradient3711);stroke-width:3.09264874;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+         style="fill:none;fill-opacity:1;fill-rule:nonzero;stroke:url(#radialGradient3644);stroke-width:3.09264874;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
       <path
          sodipodi:nodetypes="ccccsscs"
          id="path2455"
          d="M 445.0687,484.66878 C 454.41196,449.79927 451.66045,414.51612 439.38846,383.29202 C 448.94563,412.68632 450.38321,445.09106 441.79288,477.15057 C 418.14219,565.41621 327.30878,617.85888 239.04315,594.20818 C 220.22331,589.16541 203.04261,581.05211 187.87041,570.57713 C 204.6019,583.69787 224.1778,593.75191 246.00236,599.59979 C 332.66249,622.82029 421.84818,571.32893 445.0687,484.66878 z"
-         style="opacity:0.93000034;fill:url(#radialGradient3713);fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:3;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0.78431373"
+         style="opacity:0.93000034;fill:url(#radialGradient3646);fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:3;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0.78431373"
          inkscape:export-filename="/Users/seph/Desktop/stopwatch.png"
          inkscape:export-xdpi="62.639782"
          inkscape:export-ydpi="62.639782" />
