@@ -90,7 +90,7 @@ function setup() {
 	$("#reportdate_m").val(today.getMonth());
 	$("#reportdate_y").val(today.getFullYear());
 	$("#roundtime").val(HOUR_PRECISION);
-	//$("#reportcontainer").hide();
+	$("#reportcontainer").hide();
 	$("#reportdate").hide();
 	$("#show_project").hide();
 	$("#done").hide(); // * initially hide until user logs in
@@ -108,6 +108,13 @@ function setup() {
 	$("#roundtime").change(changeRoundTime);
 	$("#show_project").click(openProjectURL);
 	$("#reportdate_toggle").click(function() { $("#reportdate").fadeToggle(200) });
+	$("#reportcontainerbutton").toggle(function() {
+		$("#front").addClass("expanded");
+		$("#reportcontainer").show(); 
+	}, function() {
+		$("#front").removeClass("expanded");
+		$("#reportcontainer").hide(); 
+	});
 	// }}}
 }
 
@@ -189,12 +196,34 @@ function pullTodoItems(project_id, list_id) {
 
 function pullUserId(callback) {
 	// * pulling the users id requires some hacks. They are moved to an external file.
-	getCategories(callback);
+	
+	var userURL = BC_BASE_URL + "/me.xml";
+	var opts = $.extend({}, ajaxOptions);
+	
+	console.log('pulling user info');
+
+	opts.url = userURL;
+	opts.success = function(root) { parseUserInfo(root); callback(); };
+	$.ajax(opts);
 }
 
 // }}}
 
 // * Data parsing functions {{{
+
+function parseUserInfo(personNode, callback) {
+	console.log('parsing user data');
+	
+	var userId = parseInt($(personNode).find("person > id").text());
+	var username = $(personNode).find("person > username").text();
+	var email = $(personNode).find("person > email-address").text();
+	var firstname = $(personNode).find("person > first-name").text();
+	var lastname = $(personNode).find("person > last-name").text();
+	
+	BC_USER_ID = userId;
+	widget.setPreferenceForKey(userId, "user_id");
+	$("#your_user_id").val(BC_USER_ID);
+}
 
 function parseProjects(projectsNode) {
 	console.log('parsing projects data');
@@ -220,7 +249,7 @@ function parseProjects(projectsNode) {
 	
 	// * setup the drop down
 	console.log('setting up projects drop down');
-	$("#projects").html('<option value="">- Select project -</option>');
+	$("#projects").html('<option value="">Select a project &raquo;</option>');
 	for(var i in allCompanies) {
 		var cmp = allCompanies[i];
 		var projects = cmp.getProjects();
@@ -445,8 +474,9 @@ function validateLoginForm() {
 function startTimer() {
 	globalTimer.start();
 	//$("#watch").shake(20, 5, 5);
-	$("#starttime").attr("disabled", true);
-	$("#stoptime").attr("disabled", false);
+	$("#starttime").attr("disabled", true).hide();
+	$("#stoptime").attr("disabled", false).show();
+	$("#reporthours").attr("disabled", true);
 }
 
 function stopTimer() {
@@ -459,8 +489,9 @@ function stopTimer() {
 	}
 	globalTimer.stop();
 	//$("#watch").shake(20, 5, 5);
-	$("#starttime").attr("disabled", false);
-	$("#stoptime").attr("disabled", true);
+	$("#starttime").attr("disabled", false).show();
+	$("#stoptime").attr("disabled", true).hide();
+	$("#reporthours").attr("disabled", false);
 }
 
 function updateTimer() {
@@ -525,7 +556,7 @@ function keyDownTime(e) {
 function openProjectURL() {
 	var projectId = $("#projects").val();
 	if(projectId)
-		widget.openURL(BC_BASE_URL + '/projects/' + projectId);
+		widget.openURL(BC_BASE_URL + '/projects/' + projectId + '/time_entries');
 }
 
 // * Classes, Project {{{
