@@ -109,11 +109,19 @@ function setup() {
 	$("#show_project").click(openProjectURL);
 	$("#reportdate_toggle").click(function() { $("#reportdate").fadeToggle(200) });
 	$("#reportcontainerbutton").toggle(function() {
-		$("#front").addClass("expanded");
-		$("#reportcontainer").show(); 
+		$("#front").addClass("expanding");
+		$("#reportcontainer").css('height', '27px').addClass('sliding').animate({ height: '+=94px' }, 2500, 'swing', function() {
+			$("#front").removeClass("expanding");
+			$("#front").addClass("expanded");
+			$(this).removeClass('sliding').show();
+		});
 	}, function() {
-		$("#front").removeClass("expanded");
-		$("#reportcontainer").hide(); 
+		$("#front").addClass("expanding").removeClass('expanded');
+		$("#reportcontainer").addClass('sliding').animate({ height: '-=94px' }, 2500, 'swing', function() {
+			$("#front").removeClass("expanding");
+			$("#front").removeClass("expanded");
+			$(this).removeClass('sliding').hide();
+		});
 	});
 	// }}}
 }
@@ -358,7 +366,6 @@ function changeProject() {
 		} else {
 			pullProjectTodoLists(prj.id);
 		}
-		$("#reportcontainer").show();
 		$("#show_project").show();
 	}
 }
