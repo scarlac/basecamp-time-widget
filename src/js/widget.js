@@ -101,13 +101,21 @@ function setup() {
 	$("#projects").change(changeProject);
 	$("#login_form").submit(submitLogin);
 	$("#starttime").click(startTimer);
-	$("#stoptime").click(stopTimer).attr("disabled", true);
+	$("#stoptime").click(stopTimer).attr("disabled", 'disabled');
 	$("#reportbtn").click(reportTime);
 	$("#reporthours").change(function(e) { changeTime() });
 	$("#reporthours").keydown(keyDownTime);
 	$("#roundtime").change(changeRoundTime);
 	$("#show_project").click(openProjectURL);
-	$("#reportdate_toggle").click(function() { $("#reportdate").fadeToggle(200) });
+	$("#reportdate_toggle").toggle(function() {
+		$('span:first', this).fadeIn(200);
+		$('span:last', this).fadeOut(250);
+		$("#reportdate").fadeIn(200)
+	}, function() {
+		$('span:first', this).fadeOut(250);
+		$('span:last', this).fadeIn(200);
+		$("#reportdate").fadeOut(200)
+	});
 	$("#reportcontainerbutton").toggle(function() {
 		$("#front").addClass("expanding");
 		$("#reportcontainer").addClass('sliding').animate({ height: '+=94px' }, 250, 'swing', function() {
@@ -122,6 +130,9 @@ function setup() {
 			$("#front").removeClass("expanded");
 			$(this).removeClass('sliding').hide();
 		});
+	});
+	$("#reportcontainer").helptexts({
+		description: 'No comment'
 	});
 	// }}}
 }
@@ -240,19 +251,20 @@ function parseProjects(projectsNode) {
 	allCompanies = {};
 	$(projectsNode).find("projects > project").each(function(i) {
 		var t = $(this);
-		
-		var id = t.find("> id").text();
-		var name = t.find("> name").text();
-		var prj = new Project(id, name);
-		
-		var c_id = t.find("> company > id").text();
-		var c_name = t.find("> company > name").text();
-		var cmp = new Company(c_id, c_name);
-		
-		prj.company = cmp;
-		
-		allProjects[prj.id] = prj;
-		allCompanies[cmp.id] = cmp;
+		if(t.find("> status").text() == 'active') {
+			var id = t.find("> id").text();
+			var name = t.find("> name").text();
+			var prj = new Project(id, name);
+			
+			var c_id = t.find("> company > id").text();
+			var c_name = t.find("> company > name").text();
+			var cmp = new Company(c_id, c_name);
+			
+			prj.company = cmp;
+			
+			allProjects[prj.id] = prj;
+			allCompanies[cmp.id] = cmp;
+		}
 	});
 	
 	// * setup the drop down
@@ -332,7 +344,7 @@ function updateProjectTodos() {
 	
 	if(prj != null) {
 		var todolists = prj.todolists;
-		$("#todos").html('<option value="">- Select To-Do -</option>');
+		$("#todos").html('<option value="">Select a to-do &raquo;</option>');
 		for(var i in todolists) {
 			var list = todolists[i];
 			// * ignore complete lists
@@ -358,7 +370,6 @@ function changeProject() {
 	var projectId = $("#projects").val();
 	var prj = allProjects[projectId];
 	
-	$("#reportcontainer").hide();
 	$("#show_project").hide();
 	if(prj != null) {
 		if(len(prj.todolists) > 0) {
@@ -481,9 +492,15 @@ function validateLoginForm() {
 function startTimer() {
 	globalTimer.start();
 	//$("#watch").shake(20, 5, 5);
-	$("#starttime").attr("disabled", true).hide();
-	$("#stoptime").attr("disabled", false).show();
-	$("#reporthours").attr("disabled", true);
+	$("#starttime").attr("disabled", 'disabled').hide();
+	$("#stoptime").attr("disabled", '').show();
+	$("#reporthours").attr("disabled", 'disabled');
+	
+	// Reset report date to today and forth on
+	var today = new Date();
+	$("#reportdate_d").val(today.getDate());
+	$("#reportdate_m").val(today.getMonth());
+	$("#reportdate_y").val(today.getFullYear());
 }
 
 function stopTimer() {
@@ -496,9 +513,9 @@ function stopTimer() {
 	}
 	globalTimer.stop();
 	//$("#watch").shake(20, 5, 5);
-	$("#starttime").attr("disabled", false).show();
-	$("#stoptime").attr("disabled", true).hide();
-	$("#reporthours").attr("disabled", false);
+	$("#starttime").attr("disabled", '').show();
+	$("#stoptime").attr("disabled", 'disabled').hide();
+	$("#reporthours").attr("disabled", '');
 }
 
 function updateTimer() {
