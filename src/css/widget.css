@@ -21,8 +21,6 @@ input[type=password] { font-size: 14px; padding: 2px; }
 #back p { margin: 0px 0px 10px; }
 #loginbtn { float: right; }
 
-#show_project { text-decoration: none; font-size: 9px; color: #000; position: absolute; right: 25px; top: 7px;  }
-#show_project:hover { color: #666; }
 #watch { background: transparent url('../images/watch.png') no-repeat center center; width: 56px; height: 63px; right: 25px; top: 40px; position: absolute; }
 
 input[type=text].error { background: #fcc; }
@@ -40,18 +38,17 @@ input[type=text].error { background: #fcc; }
 #time_container #time { float: left; }
 #time_container input[type=button] { float: right; margin-left: 5px; vertical-align: middle; margin-top: 1px; }
 
-#reportcontainerbutton { font-size: 9px; position: absolute; top: 109px; left: 0px; width: 100%; text-align: center;  }
-#reportcontainerbutton a { color: #fff; text-decoration: none; }
+#reportcontainerbutton { font-size: 9px; position: absolute; top: 110px; left: 130px; color: #fff; text-decoration: none; background: transparent url('../images/down-arrow.png') no-repeat right 4px; padding-right: 10px; }
+#show_project { font-size: 9px; position: absolute; top: 110px; left: 25px; color: #fff; text-decoration: none;  }
 
-#reportcontainer { position: absolute; top: 128px; left: -2px; width: 265px; padding-left: 22px; }
+#reportcontainer { position: absolute; top: 128px; left: -2px; width: 265px; padding-left: 22px; height: 27px; }
 #reportcontainer.sliding { background: transparent url('../images/slide-bottom.png') no-repeat 2px bottom; overflow: hidden; }
-#reportcontainer div:first-child { margin: 20px 0px 25px; position: absolute; bottom: 0px; }
-#reporthours { width: 30px; font-size: 11px; margin-left: 5px; }
-#reportdescription { width: 195px; font-size: 11px; margin-top: 3px; }
-#reportdate { margin: 3px 0px 0px; }
-#reportdate_toggle { font-size: 9px; margin: 3px 0px 0px; cursor: pointer; }
+#reportcontainer div:first-child { margin: 0px 0px 45px; position: absolute; bottom: 0px; }
+#reporthours { width: 30px; font-size: 11px; margin-left: 8px; }
+#reportdescription { width: 192px; font-size: 11px; margin-top: 5px; }
+#reportdate { position: absolute; margin: 3px 0px 0px; }
+#reportdate_toggle { font-size: 9px; margin: 5px 0px 0px; cursor: pointer; position: absolute; left: 0px; top: 52px; }
 #todolist { height: 70px; overflow: auto; width: 200px; }
 #todos { width: 248px; }
-#reportbtn { position: absolute; top: 51px; right: 0px; }
+#reportbtn { position: absolute; top: 55px; right: 0px; }
 
-#slidebottom { position: absolute; left: -17px; bottom: 0px; }

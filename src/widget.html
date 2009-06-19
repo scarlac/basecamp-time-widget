@@ -26,8 +26,10 @@
 				
 				<div id="projects_container">
 					<select id="projects"><option disabled="disabled" value="">Select a project &raquo;</option><option disabled="disabled" value="">Login to obtain project list</option></select>
-					<a href="#" id="show_project">(open)</a>
 				</div>
+				
+				<a href="#" id="show_project">Open Basecamp</a>
+				<a id="reportcontainerbutton" href="#">Report</a>
 				
 				<div id="time_container">
 					<span id="time">00:00:00</span>
@@ -35,15 +37,11 @@
 					<input type="button" value="Stop" id="stoptime" style="display:none" />
 				</div>
 				
-				<div id="reportcontainerbutton">
-					<a href="#">Report &raquo;</a>
-				</div>
-				
 				<div id="reportcontainer">
 					<div>
 						<select id="todos"><option disabled="disabled" value="">Select a todo &raquo;</option></select><br/>
 						<input type="text" value="Description" id="reportdescription" /><input type="text" value="0,0" id="reporthours" /><br/>
-						<div id="reportdate_toggle">· change date</div>
+						<div id="reportdate_toggle">change date ·</div>
 						<div id="reportdate"><select id="reportdate_m"><option/></select><select id="reportdate_d"><option/></select><select id="reportdate_y"><option/></select></div>
 						<input type="button" id="reportbtn" value="Report" /><br/>
 					</div>

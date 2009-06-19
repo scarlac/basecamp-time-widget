@@ -110,14 +110,14 @@ function setup() {
 	$("#reportdate_toggle").click(function() { $("#reportdate").fadeToggle(200) });
 	$("#reportcontainerbutton").toggle(function() {
 		$("#front").addClass("expanding");
-		$("#reportcontainer").css('height', '27px').addClass('sliding').animate({ height: '+=94px' }, 2500, 'swing', function() {
+		$("#reportcontainer").addClass('sliding').animate({ height: '+=94px' }, 250, 'swing', function() {
 			$("#front").removeClass("expanding");
 			$("#front").addClass("expanded");
 			$(this).removeClass('sliding').show();
 		});
 	}, function() {
 		$("#front").addClass("expanding").removeClass('expanded');
-		$("#reportcontainer").addClass('sliding').animate({ height: '-=94px' }, 2500, 'swing', function() {
+		$("#reportcontainer").addClass('sliding').animate({ height: '-=94px' }, 250, 'swing', function() {
 			$("#front").removeClass("expanding");
 			$("#front").removeClass("expanded");
 			$(this).removeClass('sliding').hide();
