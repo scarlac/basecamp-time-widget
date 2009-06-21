@@ -95,7 +95,7 @@ function setup() {
 	$("#reportdate").hide();
 	$("#show_project").hide();
 	$("#done").hide(); // * initially hide until user logs in
-	//showBack(false);
+	$("#reportbtn").attr('disabled', 'disabled');
 	// }}}
 	
 	// * ui hooks {{{
@@ -371,7 +371,6 @@ function changeProject() {
 	var projectId = $("#projects").val();
 	var prj = allProjects[projectId];
 	
-	$("#show_project").hide();
 	if(prj != null) {
 		if(len(prj.todolists) > 0) {
 			updateProjectTodos();
@@ -379,6 +378,10 @@ function changeProject() {
 			pullProjectTodoLists(prj.id);
 		}
 		$("#show_project").show();
+		$("#reportbtn").attr('disabled', '');
+	} else {
+		$("#show_project").hide();
+		$("#reportbtn").attr('disabled', 'disabled');
 	}
 }
 
@@ -394,33 +397,40 @@ function reportTime() {
 		timeURL = BC_BASE_URL + "/todo_items/" + todoItemId + "/time_entries.xml";
 		console.log('reporting time on to-do ' + todoItemId);
 	} else {
-		var projectId = 
 		timeURL = BC_BASE_URL + "/projects/" + projectId + "/time_entries.xml";
 		console.log('reporting time on project ' + projectId);
 	}
 	
-	var d = new Date();
-	var date = $("#reportdate_y").val() + "-" + zeropad(parseInt($("#reportdate_m").val())+1, 2) + "-" + zeropad($("#reportdate_d").val(), 2);
-	var data = '<time-entry>';
-	data += '<person-id>'+BC_USER_ID+'</person-id>';
-	data += '<date>' + date + '</date>';
-	data += '<hours>' + hours + '</hours>';
-	data += '<description>' + description + '</description>';
-	data += '</time-entry>';
-	opts.data = data;
-	opts.processData = false;
-	
-	opts.type = 'POST';
-	opts.url = timeURL;
-	opts.success = function(root) {
-		$("#reportloader").attr('src', 'images/tick.png');
-		setTimeout(function() {
-			$("#reportloader").fadeOut(250);
-		}, 2000);
-		/* Returns HTTP status code 201 (Created) on success, with the Location header set to the URL of the new time entry. The integer ID of the entry may be extracted from that URL*/
-	};
-	$("#reportloader").attr('src', 'images/ajax-loader-submit.gif').show();
-	$.ajax(opts);
+	if(allProjects[projectId]) {
+		var d = new Date();
+		var date = $("#reportdate_y").val() + "-" + zeropad(parseInt($("#reportdate_m").val())+1, 2) + "-" + zeropad($("#reportdate_d").val(), 2);
+		var data = '<time-entry>';
+		data += '<person-id>'+BC_USER_ID+'</person-id>';
+		data += '<date>' + date + '</date>';
+		data += '<hours>' + hours + '</hours>';
+		data += '<description>' + description + '</description>';
+		data += '</time-entry>';
+		opts.data = data;
+		opts.processData = false;
+		
+		opts.type = 'POST';
+		opts.url = timeURL;
+		opts.complete = function(request, textstatus) {
+			if(request.status == 201) {
+				$("#reportloader").attr('src', 'images/tick.png');
+				setTimeout(function() {
+					$("#reportloader").fadeOut(250);
+				}, 2000);
+				/* Returns HTTP status code 201 (Created) on success, with the Location header set to the URL of the new time entry. The integer ID of the entry may be extracted from that URL*/
+			} else {
+				$("#reportdescription").val('Error (HTTP code '+request.status+'). ' + request.responseText);
+			}
+		};
+		$("#reportloader").attr('src', 'images/ajax-loader-submit.gif').show();
+		$.ajax(opts);
+	} else {
+		$("#reportdescription").val('Please select a project first.');
+	}
 }
 
 function submitLogin() {
