@@ -1,0 +1,21 @@
+CHANGELOG
+---------
+
+Version 1.1, 21st of June, 2009
+-----------
+* Trimmed UI
+* Added visual feedback when reporting time
+* Removed debugging buttons
+* Widget now shows back when initialized as it should
+* Minor bug fixes
+* Added CHANGELOG for future reference
+
+Version 1.0, 19th of June, 2009
+-----------
+* New UI
+* Much faster login process
+* Several bug fixes
+
+Version 0.9
+-----------
+* Initial public release
