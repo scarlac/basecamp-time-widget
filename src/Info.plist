@@ -19,7 +19,7 @@
     <key>CloseBoxInsetY</key>
     <integer>13</integer>
 	<key>Height</key>
-	<integer>326</integer>
+	<integer>249</integer>
 	<key>MainHTML</key>
 	<string>widget.html</string>
 	<key>Width</key>

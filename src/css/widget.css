@@ -1,12 +1,14 @@
+@import 'debug.css';
+
 html { margin: 0px; padding: 0px; }
-body { background: transparent; font: 13px 'Lucida Grande'; color: #fff; width: 289px; height: 326px; }
+body { background: transparent; font: 13px 'Lucida Grande'; color: #fff; width: 289px; height: 249px; }
 h2 { font-size: 15px; font-family: 'Lucida Grande'; padding: 6px 0px 0px }
 
 #info { position: absolute; right: 45px; top: 25px; cursor: default; }
-#done { position: absolute; left: 25px; bottom: 48px; cursor: default; }
+#done { position: absolute; left: 25px; bottom: 28px; cursor: default; }
 .loadindicator { position: absolute; right: 18px; top: 18px; cursor: default; }
-.widgetside { position: relative; width: 289px; height: 326px; }
-.widgetside .widgetcontent { padding: 20px 20px; height: 310px; position: relative; }
+.widgetside { position: relative; width: 289px; height: 249px; }
+.widgetside .widgetcontent { padding: 20px 20px; height: 209px; position: relative; }
 
 #front { background: transparent url('../images/bg-front-collapsed.png') no-repeat 0px 0px; }
 #front.expanding { background: transparent url('../images/bg-front-collapsed-sliding.png') no-repeat 0px 0px; }
@@ -28,10 +30,10 @@ input[type=text].error { background: #fcc; }
 
 #projects { font-size: 24px; width: 173px; }
 
-#your_user_id { position: absolute; bottom: 42px; right: 20px; color: #999; font-size: 9px; }
-#debug { position: absolute; bottom: 55px; right: 20px; }
+#your_user_id { position: absolute; bottom: 20px; right: 20px; color: #999; font-size: 9px; }
+#debug { position: absolute; bottom: 35px; left: 20px; }
 #debug input { width: 95px; }
-#debugbtn { position: absolute; bottom: 40px; right: 70px; color: #999; font-size: 9px; background: transparent url('../images/debug.png') no-repeat left top; width: 51px; height: 14px; cursor: pointer; }
+#debugbtn { position: absolute; bottom: 20px; right: 70px; color: #999; font-size: 9px; background: transparent url('../images/debug.png') no-repeat left top; width: 51px; height: 14px; cursor: pointer; }
 
 #projects_container { position: absolute; top: 45px; left: 25px; }
 #time_container { position: absolute; top: 79px; left: 25px; height: 25px; width: 173px; text-align: center; font-size: 20px; }
@@ -60,4 +62,5 @@ input[type=text].error { background: #fcc; }
 input[disabled] { opacity: .4; }
 input[type=text].fieldHelp { color: #999; }
 
+.debug { visibility: hidden; }
 

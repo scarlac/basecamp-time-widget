@@ -20,7 +20,7 @@
 	</head>
 	
 	<body onload="setup()">
-		<div id="front" class="widgetside">
+		<div id="front" class="widgetside" style="display:none">
 			<div class="widgetcontent">
 				<div id="watch"></div>
 				<div class="loadindicator"><img src="images/ajax-loader.gif" alt="Loading..."/></div>
@@ -54,7 +54,7 @@
 				<div id="info">&nbsp;</div>
 			</div>
 		</div>
-		<div id="back" class="widgetside" style="display:none">
+		<div id="back" class="widgetside">
 			<div class="widgetcontent">
 				<div class="loadindicator"><img src="images/ajax-loader-back.gif" alt="Loading..."/></div>
 				<br/>
@@ -90,16 +90,16 @@
 					</p>
 				</form>
 				
-				<span onclick="$('#debug').slideToggle(250)" id="debugbtn"></span><br/>
-				<div id="debug" style="display: none; padding: 10px; border: 1px solid white; width: 200px;">
+				<span class="debug" onclick="$('#debug').slideToggle(250)" id="debugbtn"></span><br/>
+				<div class="debug" id="debug" style="display: none; width: 200px;">
 					<input type="button" value="Reload Projects" onclick="pullProjects()" />
 					<input type="button" value="Show report" onclick="$('#reportcontainer').show();" /><br/>
 					
 					<input type="button" value="Get User Id" onclick="pullUserId()" />
 					<input type="button" value="Show front" onclick="showFront()" /><br/>
 				</div>
+				<div class="debug" id="your_user_id">N/A</div>
 				
-				<div id="your_user_id">N/A</div>
 				<div id="done">&nbsp;</div>
 			</div>
 		</div>
