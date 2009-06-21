@@ -46,7 +46,8 @@ input[type=text].error { background: #fcc; }
 #reportcontainer div:first-child { margin: 0px 0px 15px; position: absolute; bottom: 0px; width: 248px; }
 #reporthours { width: 30px; font-size: 11px; margin: 0px 5px; }
 #reporttime { position: absolute; left: 0px; top: 0px; height: 25px; }
-#reportdescription { width: 179px; font-size: 11px; margin-top: 5px; }
+#reportdescription { width: 179px; font-size: 11px; margin-top: 5px; padding-right: 0px; }
+#reportdescription.loading { width: 159px; padding-right: 20px; }
 #reportdate_toggle { cursor: pointer; display: inline; color: #ccc; }
 #reportdate_toggle:hover { color: #fff; }
 #reportdate { position: absolute; right: 0px; top: 0px; }
@@ -54,7 +55,9 @@ input[type=text].error { background: #fcc; }
 #todolist { height: 70px; overflow: auto; width: 200px; }
 #todos { width: 248px; margin-top: 30px; }
 #reportbtn { position: absolute; top: 56px; right: 0px; }
+#reportloader { position: absolute; top: 58px; right: 65px; background: #fff; }
 
 input[disabled] { opacity: .4; }
 input[type=text].fieldHelp { color: #999; }
+
 

@@ -59,6 +59,7 @@ function setup() {
 	$(".loadindicator").hide();
 	$(".loadindicator").ajaxStart(function() { $(this).show(); });
 	$(".loadindicator").ajaxStop(function() { $(this).hide(); });
+	$("#reportloader").hide();
 	// }}}
 	
 	// * Generate data for date-drop downs {{{
@@ -411,7 +412,14 @@ function reportTime() {
 	
 	opts.type = 'POST';
 	opts.url = timeURL;
-	opts.success = function(root) { /* Returns HTTP status code 201 (Created) on success, with the Location header set to the URL of the new time entry. The integer ID of the entry may be extracted from that URL*/ };
+	opts.success = function(root) {
+		$("#reportloader").attr('src', 'images/tick.png');
+		setTimeout(function() {
+			$("#reportloader").fadeOut(250);
+		}, 2000);
+		/* Returns HTTP status code 201 (Created) on success, with the Location header set to the URL of the new time entry. The integer ID of the entry may be extracted from that URL*/
+	};
+	$("#reportloader").attr('src', 'images/ajax-loader-submit.gif').show();
 	$.ajax(opts);
 }
 
