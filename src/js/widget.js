@@ -601,6 +601,14 @@ function openProjectURL() {
 		widget.openURL(BC_BASE_URL + '/projects/' + projectId + '/time_entries');
 }
 
+function onEnterIdle() {
+	alert('entering idle state');
+}
+
+function onExitIdle() {
+	alert('exit idle state');
+}
+
 // * Classes, Project {{{
 Project = function(id, name) {
 	this.id = id;
