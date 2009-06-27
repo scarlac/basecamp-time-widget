@@ -13,6 +13,7 @@
 		<script type='text/javascript' src='js/jquery.js' charset='utf-8'></script>
 		<script type='text/javascript' src='js/jquery.color.js' charset='utf-8'></script>
 		<script type='text/javascript' src='js/jquery.helptext.js' charset='utf-8'></script>
+		<script type='text/javascript' src='js/jquery.pulsate.js' charset='utf-8'></script>
 		<script type='text/javascript' src='js/stopwatch.js' charset='utf-8'></script>
 		<script type='text/javascript' src='js/utils.js' charset='utf-8'></script>
 		<script type='text/javascript' src='js/idle.js' charset='utf-8'></script>
@@ -33,7 +34,10 @@
 				<a id="reportcontainerbutton" href="#">Report</a>
 				
 				<div id="time_container">
-					<span id="time">00:00:00</span>
+					<div id="timereset_container">
+						<div id="timereset"></div>
+						<span id="time">00:00:00</span>
+					</div>
 					<input type="button" value="Start" id="starttime" />
 					<input type="button" value="Stop" id="stoptime" style="display:none" />
 				</div>

@@ -8,6 +8,7 @@ var BC_PASSWORD = null; // * Basecamp password
 var BC_BASE_URL = null; // * Basecamp base url
 var HOUR_PRECISION = 30; // * hour precision, specified in minutes
 
+var idle = null; // * Idle object
 var globalTimer = null; // * Stopwatch object
 var ajaxOptions = {
 	type: 'GET',
@@ -15,6 +16,8 @@ var ajaxOptions = {
 	password: '',
 	contentType: 'application/xml'
 };
+
+
 monthNames = [
 	{ short: 'Jan', long: 'January'},
 	{ short: 'Feb', long: 'Febuary'},
@@ -99,6 +102,7 @@ function setup() {
 	// }}}
 	
 	// * ui hooks {{{
+	$("#timereset").click(resetTimer);
 	$("#projects").change(changeProject);
 	$("#login_form").submit(submitLogin);
 	$("#starttime").click(startTimer);
@@ -536,6 +540,24 @@ function stopTimer() {
 	$("#reporthours").attr("disabled", '');
 }
 
+function pauseTimer() {
+	stopTimer();
+	pulsateStart();
+}
+
+function resetTimer() {
+	globalTimer.reset();
+	updateTimer();
+}
+
+function pulsateStart() {
+	if(timerIdle) {
+		$("#starttime").pulsateOpacity(function() {
+			setTimeout(pulsateStart);
+		}, 500);
+	}
+}
+
 function updateTimer() {
 	$("#time").text(globalTimer.toString());
 }
@@ -601,12 +623,23 @@ function openProjectURL() {
 		widget.openURL(BC_BASE_URL + '/projects/' + projectId + '/time_entries');
 }
 
+var timerIdle = false;
 function onEnterIdle() {
-	alert('entering idle state');
+	console.log('entering idle state');
+	if(globalTimer.started && !timerIdle) {
+		timerIdle = true; // indicate that we may resume once active again
+		pauseTimer();
+		console.log('user idle, pausing timer');
+	}
 }
 
 function onExitIdle() {
-	alert('exit idle state');
+	console.log('exit idle state');
+	if(timerIdle) {
+		timerIdle = false;
+		startTimer();
+		console.log('user active, resuming timer');
+	}
 }
 
 // * Classes, Project {{{

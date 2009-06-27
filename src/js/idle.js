@@ -1,21 +1,16 @@
-Idle = function() {
-	this.idleMinutes = 0.1;
-	this.isIdle = false;
-}
-
-Idle.prototype.poll = function() {
+function idlePoll() {
 	if(widget && widget.system) {
 		var idleSeconds = parseInt(widget.system("ioreg -c IOHIDSystem | perl -ane 'if (/Idle/) {$idle=(pop @F)/1000000000; print $idle,\"\";last}' ", null).outputString);
 		
-		if(idleSeconds > this.idleMinutes * 60) {
-			if(!this.isIdle) {
-				this.isIdle = true;
+		if(idleSeconds > _idleMinutes * 60) {
+			if(!_isIdle) {
+				_isIdle = true;
 				if(onEnterIdle)
 					onEnterIdle();
 			}
 		} else {
-			if(this.isIdle) {
-				this.isIdle = false;
+			if(_isIdle) {
+				_isIdle = false;
 				if(onExitIdle)
 					onExitIdle();
 			}
@@ -23,6 +18,7 @@ Idle.prototype.poll = function() {
 	}
 }
 
-idle = new Idle();
-setInterval(function() { idle.poll() }, 5000) // start polling
+_isIdle = false;
+_idleMinutes = 3;
+setInterval(idlePoll, 5000) // start polling
 
