@@ -4,6 +4,8 @@ html { margin: 0px; padding: 0px; }
 body { background: transparent; font: 13px 'Lucida Grande'; color: #fff; width: 289px; height: 249px; }
 h2 { font-size: 15px; font-family: 'Lucida Grande'; padding: 6px 0px 0px }
 
+a { color: #fff; }
+
 #info { position: absolute; right: 45px; top: 25px; cursor: default; }
 #done { position: absolute; left: 25px; bottom: 28px; cursor: default; }
 .loadindicator { position: absolute; right: 18px; top: 18px; cursor: default; }
