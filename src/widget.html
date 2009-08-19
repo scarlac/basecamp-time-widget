@@ -94,9 +94,9 @@
 						<input type="checkbox" id="pause_inactive" />
 					</p>
 					<p id="feedback_login_p">
-						<a onclick="widget.openURL(this.getAttribute('href')); return false;" href="http://bitbucket.org/seph/basecamp-time-widget/issue/2/feedback">Give feedback</a>
 						<input type="submit" id="loginbtn" value="Login" />
 					</p>
+					<a id="give_feedback" onclick="widget.openURL(this.getAttribute('href')); return false;" href="http://bitbucket.org/seph/basecamp-time-widget/issue/2/feedback">Give feedback</a>
 				</form>
 				
 				<span class="debug" onclick="$('#debug').slideToggle(250)" id="debugbtn"></span><br/>
@@ -108,6 +108,7 @@
 					<input type="button" value="Show front" onclick="showFront()" /><br/>
 				</div>
 				<div class="debug" id="your_user_id">N/A</div>
+				<div id="version">v1.3</div>
 				
 				<div id="done">&nbsp;</div>
 			</div>

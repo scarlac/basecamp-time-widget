@@ -36,7 +36,7 @@ input[type=text].error { background: #fcc; }
 
 #projects { font-size: 24px; width: 173px; }
 
-#your_user_id { position: absolute; bottom: 20px; right: 20px; color: #999; font-size: 9px; }
+#your_user_id { position: absolute; bottom: 22px; left: 75px; color: #999; font-size: 9px; }
 #debug { position: absolute; bottom: 35px; left: 20px; }
 #debug input { width: 95px; }
 #debugbtn { position: absolute; bottom: 20px; left: 20px; color: #999; font-size: 9px; background: transparent url('../images/debug.png') no-repeat left top; width: 51px; height: 14px; cursor: pointer; }
@@ -72,6 +72,9 @@ input[type=text].error { background: #fcc; }
 
 input[disabled] { opacity: .4; }
 input[type=text].fieldHelp { color: #999; }
+
+#give_feedback { position: absolute; bottom: 20px; left: 110px; font-size: 10px; }
+#version { position: absolute; bottom: 20px; right: 20px; color: #999; font-size: 9px; }
 
 .debug { visibility: hidden; }
 
