@@ -17,13 +17,17 @@ a { color: #fff; }
 #front.expanded { background-image: url('../images/bg-front.png'); }
 #back { background: transparent url('../images/bg-back.png') no-repeat 0px 0px; }
 
-label { width: 100px; float: left; clear: left; line-height: 21px; margin: 2px 0px; }
+label { width: 100px; float: left; clear: left; line-height: 21px; margin: 2px 0px; font-size: 12px; }
 input[type=text],
-input[type=password] { font-size: 14px; padding: 2px; }
+input[type=password] { font-size: 14px; padding: 2px; font-size: 12px; }
 #back input[type=text],
 #back input[type=password] { width: 140px; }
 #back p { margin: 0px 0px 10px; }
 #loginbtn { float: right; }
+
+#login_form p { margin: 0 0 5px; clear: both; }
+#login_form #pause_inactive_p label { line-height: 14px; }
+#feedback_login_p { padding-top: 5px; }
 
 #watch { background: transparent url('../images/watch.png') no-repeat center center; width: 56px; height: 63px; right: 25px; top: 40px; position: absolute; }
 
@@ -32,10 +36,10 @@ input[type=text].error { background: #fcc; }
 
 #projects { font-size: 24px; width: 173px; }
 
-#your_user_id { position: absolute; bottom: 20px; right: 20px; color: #999; font-size: 9px; }
+#your_user_id { position: absolute; bottom: 22px; left: 75px; color: #999; font-size: 9px; }
 #debug { position: absolute; bottom: 35px; left: 20px; }
 #debug input { width: 95px; }
-#debugbtn { position: absolute; bottom: 20px; right: 70px; color: #999; font-size: 9px; background: transparent url('../images/debug.png') no-repeat left top; width: 51px; height: 14px; cursor: pointer; }
+#debugbtn { position: absolute; bottom: 20px; left: 20px; color: #999; font-size: 9px; background: transparent url('../images/debug.png') no-repeat left top; width: 51px; height: 14px; cursor: pointer; }
 
 #projects_container { position: absolute; top: 45px; left: 25px; }
 #time_container { position: absolute; top: 79px; left: 25px; height: 25px; width: 173px; text-align: center; font-size: 20px; }
@@ -59,6 +63,8 @@ input[type=text].error { background: #fcc; }
 #reportdate_toggle:hover { color: #fff; }
 #reportdate { position: absolute; right: 0px; top: 0px; }
 #reportdate #reportdate_y { display: none; }
+#reportdate_text { position: absolute; top: 2px; left: 130px; }
+#reportdate_arrow { position: absolute; top: 2px; left: 130px; }
 #todolist { height: 70px; overflow: auto; width: 200px; }
 #todos { width: 248px; margin-top: 30px; }
 #reportbtn { position: absolute; top: 56px; right: 0px; }
@@ -66,6 +72,9 @@ input[type=text].error { background: #fcc; }
 
 input[disabled] { opacity: .4; }
 input[type=text].fieldHelp { color: #999; }
+
+#give_feedback { position: absolute; bottom: 20px; left: 110px; font-size: 10px; }
+#version { position: absolute; bottom: 20px; right: 20px; color: #999; font-size: 9px; }
 
 .debug { visibility: hidden; }
 

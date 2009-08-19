@@ -46,7 +46,7 @@
 					<div>
 						<div id="reporttime">
 							<span>Time:<input type="text" value="0,0" id="reporthours" /> hours</span>
-							<div id="reportdate_toggle"><span style="display:none">&laquo;</span><span>today</span></div>
+							<div id="reportdate_toggle"><span style="display:none" id="reportdate_arrow">&laquo;</span><span id="reportdate_text">today</span></div>
 						</div>
 						<select id="todos"><option disabled="disabled" value="">Select a to-do &raquo;</option></select><br/>
 						<input type="text" value="" id="reportdescription" name="description" /><br/>
@@ -89,10 +89,14 @@
 							<option value="5">1/12 hour  (5 min)</option>
 						</select>
 					</p>
-					<p>
+					<p id="pause_inactive_p">
+						<label>Pause when inactive:</label>
+						<input type="checkbox" id="pause_inactive" />
+					</p>
+					<p id="feedback_login_p">
 						<input type="submit" id="loginbtn" value="Login" />
 					</p>
-					<p><a onclick="widget.openURL(this.getAttribute('href')); return false;" href="http://bitbucket.org/seph/basecamp-time-widget/issue/2/feedback">Give feedback</a></p>
+					<a id="give_feedback" onclick="widget.openURL(this.getAttribute('href')); return false;" href="http://bitbucket.org/seph/basecamp-time-widget/issue/2/feedback">Give feedback</a>
 				</form>
 				
 				<span class="debug" onclick="$('#debug').slideToggle(250)" id="debugbtn"></span><br/>
@@ -104,6 +108,7 @@
 					<input type="button" value="Show front" onclick="showFront()" /><br/>
 				</div>
 				<div class="debug" id="your_user_id">N/A</div>
+				<div id="version">v1.3</div>
 				
 				<div id="done">&nbsp;</div>
 			</div>

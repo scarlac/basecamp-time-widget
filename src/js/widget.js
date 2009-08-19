@@ -53,6 +53,7 @@ function setup() {
 	if(BC_USER_ID == null || BC_USER_ID == 0) BC_USER_ID = 0;
 	BC_USER_ID = parseInt(BC_USER_ID); // * ensure it's an int when it gets read from settings
 	$("#your_user_id").text(BC_USER_ID);
+	$('#pause_inactive').get(0).checked = widget.preferenceForKey("pause_inactive") == 'true' ? true : false;
 	
 	ajaxOptions.username = BC_USERNAME;
 	ajaxOptions.password = BC_PASSWORD;
@@ -112,14 +113,16 @@ function setup() {
 	$("#reporthours").keydown(keyDownTime);
 	$("#roundtime").change(changeRoundTime);
 	$("#show_project").click(openProjectURL);
+	$("#pause_inactive").click(togglePauseInactive);
 	$("#reportdate_toggle").toggle(function() {
-		$('span:first', this).fadeIn(200);
-		$('span:last', this).fadeOut(250);
-		$("#reportdate").fadeIn(200)
+		$('#reportdate_arrow').fadeIn(200);
+		$('#reportdate_text').fadeOut(250);
+		$("#reportdate").fadeIn(200);
 	}, function() {
-		$('span:first', this).fadeOut(250);
-		$('span:last', this).fadeIn(200);
-		$("#reportdate").fadeOut(200)
+		$('#reportdate_arrow').fadeOut(250);
+		$("#reportdate").fadeOut(200);
+		$('#reportdate_text').text('on ' + monthNames[$('#reportdate_m').val()].short + ', ' + $('#reportdate_d').val());
+		$('#reportdate_text').fadeIn(200);
 	});
 	$("#reportcontainerbutton").toggle(function() {
 		$("#front").addClass("expanding");
@@ -190,6 +193,7 @@ function pullProjects(callback) {
 	var opts = $.extend({}, ajaxOptions);
 	
 	console.log('pulling projects data from login');
+	$("#projects").html('<option value="" disabled="disabled">Loading projects...</option>');
 
 	opts.url = projectsURL;
 	opts.success = function(root) { parseProjects(root); callback(); };
@@ -201,6 +205,7 @@ function pullProjectTodoLists(project_id) {
 	var opts = $.extend({}, ajaxOptions);
 	
 	console.log('pulling project todos from project ' + project_id);
+	$("#todos").html('<option value="" disabled="disabled">Loading to-do items...</option>');
 	
 	opts.url = todoURL;
 	opts.success = function(root) { parseProjectTodoLists(root, project_id); };
@@ -274,7 +279,7 @@ function parseProjects(projectsNode) {
 	
 	// * setup the drop down
 	console.log('setting up projects drop down');
-	$("#projects").html('<option value="">Select a project &raquo;</option>');
+	$("#projects").html('<option value="" disabled="disabled">Select a project &raquo;</option>');
 	for(var i in allCompanies) {
 		var cmp = allCompanies[i];
 		var projects = cmp.getProjects();
@@ -290,6 +295,7 @@ function parseProjectTodoLists(todoNode) {
 	console.log('parsing project todos');
 	
 	todolists = {};
+	$("#todos").html('<option value="" disabled="disabled">Select a to-do &raquo;</option>');
 	$(todoNode).find("todo-lists > todo-list").each(function(i) {
 		var t = $(this);
 		
@@ -349,7 +355,6 @@ function updateProjectTodos() {
 	
 	if(prj != null) {
 		var todolists = prj.todolists;
-		$("#todos").html('<option value="">Select a to-do &raquo;</option>');
 		for(var i in todolists) {
 			var list = todolists[i];
 			// * ignore complete lists
@@ -623,10 +628,14 @@ function openProjectURL() {
 		widget.openURL(BC_BASE_URL + '/projects/' + projectId + '/time_entries');
 }
 
+function togglePauseInactive() {
+	widget.setPreferenceForKey(this.checked ? 'true' : 'false', "pause_inactive");
+}
+
 var timerIdle = false;
 function onEnterIdle() {
 	console.log('entering idle state');
-	if(globalTimer.started && !timerIdle) {
+	if(globalTimer.started && !timerIdle && $('#pause_inactive').get(0).checked) {
 		timerIdle = true; // indicate that we may resume once active again
 		pauseTimer();
 		console.log('user idle, pausing timer');
