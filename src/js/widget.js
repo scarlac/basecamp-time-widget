@@ -205,7 +205,7 @@ function pullProjectTodoLists(project_id) {
 	var opts = $.extend({}, ajaxOptions);
 	
 	console.log('pulling project todos from project ' + project_id);
-	$("#todos").html('<option value="">Loading to-do items...</option>');
+	$("#todos").html('<option value="" disabled="disabled">Loading to-do items...</option>');
 	
 	opts.url = todoURL;
 	opts.success = function(root) { parseProjectTodoLists(root, project_id); };
@@ -279,7 +279,7 @@ function parseProjects(projectsNode) {
 	
 	// * setup the drop down
 	console.log('setting up projects drop down');
-	$("#projects").html('<option value="">Select a project &raquo;</option>');
+	$("#projects").html('<option value="" disabled="disabled">Select a project &raquo;</option>');
 	for(var i in allCompanies) {
 		var cmp = allCompanies[i];
 		var projects = cmp.getProjects();
@@ -295,6 +295,7 @@ function parseProjectTodoLists(todoNode) {
 	console.log('parsing project todos');
 	
 	todolists = {};
+	$("#todos").html('<option value="" disabled="disabled">Select a to-do &raquo;</option>');
 	$(todoNode).find("todo-lists > todo-list").each(function(i) {
 		var t = $(this);
 		
