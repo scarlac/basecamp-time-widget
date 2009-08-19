@@ -115,13 +115,14 @@ function setup() {
 	$("#show_project").click(openProjectURL);
 	$("#pause_inactive").click(togglePauseInactive);
 	$("#reportdate_toggle").toggle(function() {
-		$('span:first', this).fadeIn(200);
-		$('span:last', this).fadeOut(250);
-		$("#reportdate").fadeIn(200)
+		$('#reportdate_arrow').fadeIn(200);
+		$('#reportdate_text').fadeOut(250);
+		$("#reportdate").fadeIn(200);
 	}, function() {
-		$('span:first', this).fadeOut(250);
-		$('span:last', this).fadeIn(200);
-		$("#reportdate").fadeOut(200)
+		$('#reportdate_arrow').fadeOut(250);
+		$("#reportdate").fadeOut(200);
+		$('#reportdate_text').text('on ' + monthNames[$('#reportdate_m').val()].short + ', ' + $('#reportdate_d').val());
+		$('#reportdate_text').fadeIn(200);
 	});
 	$("#reportcontainerbutton").toggle(function() {
 		$("#front").addClass("expanding");
@@ -192,6 +193,7 @@ function pullProjects(callback) {
 	var opts = $.extend({}, ajaxOptions);
 	
 	console.log('pulling projects data from login');
+	$("#projects").html('<option value="" disabled="disabled">Loading projects...</option>');
 
 	opts.url = projectsURL;
 	opts.success = function(root) { parseProjects(root); callback(); };
@@ -203,6 +205,7 @@ function pullProjectTodoLists(project_id) {
 	var opts = $.extend({}, ajaxOptions);
 	
 	console.log('pulling project todos from project ' + project_id);
+	$("#todos").html('<option value="">Loading to-do items...</option>');
 	
 	opts.url = todoURL;
 	opts.success = function(root) { parseProjectTodoLists(root, project_id); };
@@ -351,7 +354,6 @@ function updateProjectTodos() {
 	
 	if(prj != null) {
 		var todolists = prj.todolists;
-		$("#todos").html('<option value="">Select a to-do &raquo;</option>');
 		for(var i in todolists) {
 			var list = todolists[i];
 			// * ignore complete lists

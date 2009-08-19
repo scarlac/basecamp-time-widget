@@ -63,6 +63,8 @@ input[type=text].error { background: #fcc; }
 #reportdate_toggle:hover { color: #fff; }
 #reportdate { position: absolute; right: 0px; top: 0px; }
 #reportdate #reportdate_y { display: none; }
+#reportdate_text { position: absolute; top: 2px; left: 130px; }
+#reportdate_arrow { position: absolute; top: 2px; left: 130px; }
 #todolist { height: 70px; overflow: auto; width: 200px; }
 #todos { width: 248px; margin-top: 30px; }
 #reportbtn { position: absolute; top: 56px; right: 0px; }
