@@ -53,6 +53,7 @@ function setup() {
 	if(BC_USER_ID == null || BC_USER_ID == 0) BC_USER_ID = 0;
 	BC_USER_ID = parseInt(BC_USER_ID); // * ensure it's an int when it gets read from settings
 	$("#your_user_id").text(BC_USER_ID);
+	$('#pause_inactive').get(0).checked = widget.preferenceForKey("pause_inactive") == 'true' ? true : false;
 	
 	ajaxOptions.username = BC_USERNAME;
 	ajaxOptions.password = BC_PASSWORD;
@@ -112,6 +113,7 @@ function setup() {
 	$("#reporthours").keydown(keyDownTime);
 	$("#roundtime").change(changeRoundTime);
 	$("#show_project").click(openProjectURL);
+	$("#pause_inactive").click(togglePauseInactive);
 	$("#reportdate_toggle").toggle(function() {
 		$('span:first', this).fadeIn(200);
 		$('span:last', this).fadeOut(250);
@@ -623,10 +625,14 @@ function openProjectURL() {
 		widget.openURL(BC_BASE_URL + '/projects/' + projectId + '/time_entries');
 }
 
+function togglePauseInactive() {
+	widget.setPreferenceForKey(this.checked ? 'true' : 'false', "pause_inactive");
+}
+
 var timerIdle = false;
 function onEnterIdle() {
 	console.log('entering idle state');
-	if(globalTimer.started && !timerIdle) {
+	if(globalTimer.started && !timerIdle && $('#pause_inactive').get(0).checked) {
 		timerIdle = true; // indicate that we may resume once active again
 		pauseTimer();
 		console.log('user idle, pausing timer');
