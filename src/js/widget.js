@@ -277,15 +277,26 @@ function parseProjects(projectsNode) {
 		}
 	});
 	
+	var allCompanies_sorted = [];
+	for(var i in allCompanies) {
+		allCompanies_sorted.push(allCompanies[i]);
+	}
+	allCompanies_sorted.sort(function(a,b) { return a.name.localeCompare(b.name) });
+	
 	// * setup the drop down
 	console.log('setting up projects drop down');
 	$("#projects").html('<option value="" disabled="disabled">Select a project &raquo;</option>');
-	for(var i in allCompanies) {
-		var cmp = allCompanies[i];
+	for(var i = 0; i < allCompanies_sorted.length; i++) {
+		var cmp = allCompanies_sorted[i];
 		var projects = cmp.getProjects();
+		var cmpProjects_sorted = [];
+		for(var j in projects) {
+			cmpProjects_sorted.push(projects[j]);
+		}
+		cmpProjects_sorted.sort(function(a,b) { return a.name.localeCompare(b.name) });
 		$("#projects").append('<option value="" disabled="disabled">'+cmp.name+'</option>');
-		for(var i in projects) {
-			var prj = projects[i];
+		for(var j = 0; j < cmpProjects_sorted.length; j++) {
+			var prj = cmpProjects_sorted[j];
 			$("#projects").append('<option value="'+prj.id+'">&nbsp;&nbsp;'+prj.name+'</option>');
 		}
 	}
