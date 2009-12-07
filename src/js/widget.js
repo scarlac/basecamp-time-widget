@@ -564,6 +564,8 @@ function pauseTimer() {
 function resetTimer() {
 	globalTimer.reset();
 	updateTimer();
+	// also reset 'Time' text field
+	$("#reporthours").val('0');
 }
 
 function pulsateStart() {
