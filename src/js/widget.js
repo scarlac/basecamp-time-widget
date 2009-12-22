@@ -86,6 +86,12 @@ function setup() {
 		$("#reportdate_y").append('<option value="' + y + '">' + y + '</option>');
 	// }}}
 	
+	// Preload to avoid flickering {{{
+	$("#reportcontainer").addClass("sliding").removeClass("sliding");
+	$("#front").addClass("expanding").removeClass("expanding");
+	$("#front").addClass("expanded").removeClass("expanded");
+	// }}}
+
 	// * UI defaults {{{
 	$("#bc_username").val(BC_USERNAME);
 	$("#bc_password").val(BC_PASSWORD);
@@ -100,6 +106,7 @@ function setup() {
 	$("#show_project").hide();
 	$("#done").hide(); // * initially hide until user logs in
 	$("#reportbtn").attr('disabled', 'disabled');
+	$('#reportdate_text').text('on ' + monthNames[$('#reportdate_m').val()].short + ', ' + $('#reportdate_d').val());
 	// }}}
 	
 	// * ui hooks {{{
@@ -374,8 +381,12 @@ function updateProjectTodos() {
 				$("#todos").append('<option value="" disabled="disabled">'+displayName+'</option>');
 				
 				var items = list.items;
-				for(var i in items) {
-					var item = items[i];
+				var items_arr = [];
+				for(var n in items) items_arr.push(items[n]);
+				items_arr.sort(function(a,b) { return a.content.localeCompare(b.content) });
+				
+				for(var j in items_arr) {
+					var item = items_arr[j];
 					if(item.completed)
 						continue;
 					var displayName = strlimit(item.content, 40) + (item.completed ? ' (complete)' : '');
