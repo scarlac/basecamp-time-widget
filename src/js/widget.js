@@ -555,7 +555,9 @@ function startTimer() {
 function stopTimer() {
 	if(globalTimer.started) {
 		var e = globalTimer.getElapsed();
+		console.log(e);
 		var hours = roundNumber(e.hours + (e.minutes / 60) + (e.seconds / 60 / 60), 2);
+		//hours = roundHour(hours, HOUR_PRECISION); // rounding doesn't work correctly. 0.15 -> 0.91666
 		// * User may be trying to select something, so only change the value if needed.
 		if($("#reporthours").val() != hours.toString())
 			$("#reporthours").val(hours);
@@ -591,7 +593,7 @@ function updateTimer() {
 	$("#time").text(globalTimer.toString());
 }
 
-// * Rounds an hour to the given precious, specified in minutes
+// * Rounds an hour to the given precision, specified in minutes
 function roundHour(hour, precision) {
 	var minutes = parseFloat(hour) * 60;
 	var rest = minutes % precision;
