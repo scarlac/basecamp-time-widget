@@ -20,5 +20,5 @@ function idlePoll() {
 
 _isIdle = false;
 _idleMinutes = 3;
-setInterval(idlePoll, 5000) // start polling
+//setInterval(idlePoll, 5000) // start polling
 
